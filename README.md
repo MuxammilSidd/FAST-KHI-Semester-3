@@ -110,7 +110,7 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
 pata chale toh mujhe bhi bata dena pls
 
 ## Course wise guide
-### Data Structures & Algorithms:
+### 🌟 Data Structures & Algorithms:
 🔗 Useful Youtube Playlists:
 
 - [Data structures Illustrated by 'the roadmap'](https://youtube.com/playlist?list=PLkZYeFmDuaN2-KUIv-mvbjfKszIGJ4FaY&si=ux5N9jpJ18VHgMzB)
@@ -120,6 +120,59 @@ pata chale toh mujhe bhi bata dena pls
 
 - [Visualgo.net](https://visualgo.net/) - Learn DSA by visualization through animation!
 
+🔗 Google Drives:
+- [CS250: DSA](https://drive.google.com/drive/folders/1Rvotax4W1Pl0MDpm17xJPkggkfIgusyK?usp=drive_link) - NUST Fall'21 Google Drive.
 
 🔗 Full courses:
 - [Mastering Data Structures & Algorithms using C and C++](https://theetay.com/courses/udemy-mastering-data-structures-algorithms-using-c-and-c-abdul-bari/) : By Abdul Bari, available for free on [theetay.com](https://theetay.com) - (signup required)
+
+
+### 🌟 Computer Organization & Assembly Language:
+🔗 Useful Youtube Playlists:
+
+- []()
+
+🔗 Resources:
+- []() 
+
+- []() 
+
+🔗 Google Drives:
+- [CS235: COAL](https://drive.google.com/drive/folders/1cH61VF26g7fzMPLdawQy2WB3caSRHE3m?usp=drive_link) - NUST Fall'21 Google Drive.
+
+🔗 Full courses:
+- []() 
+
+
+### 🌟 Discrete Structures:
+🔗 Useful Youtube Playlists:
+
+- []()
+
+🔗 Resources:
+- []() 
+
+- []() 
+
+🔗 Google Drives:
+- []()
+
+🔗 Full courses:
+- []()
+
+
+### 🌟 Linear Algebra:
+🔗 Useful Youtube Playlists:
+
+- []()
+
+🔗 Resources:
+- []() 
+
+- []() 
+
+🔗 Google Drives:
+- [MATH222 LA](https://drive.google.com/drive/folders/1XaW7Vrsqrrd5WPFAZNU58LVHmRgCPl3m?usp=drive_link) - NUST Fall'21 Google Drive.
+
+🔗 Full courses:
+- []()
