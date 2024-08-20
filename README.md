@@ -52,7 +52,7 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
 .
 
 
-## Useful Websites you should know!
+## 🔗 Useful Websites you should know!
 
 - <a href="https://theresanaiforthat.com/">
     <img src="https://media.beehiiv.com/cdn-cgi/image/fit=scale-down,format=auto,onerror=redirect,quality=80/uploads/publication/logo/96f425ae-6c09-4f9f-b8f8-cedd1b726427/android-chrome-512x512.png" alt="Theresanaiforthat" width="30" height="30" style="vertical-align:middle; margin-bottom: 5px; text-decoration:none; border:none;">
@@ -84,7 +84,7 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
     <img src="https://www.keybr.com/cover.png" alt="Keybr" width="30" height="30" style="vertical-align:middle; margin-bottom: px; text-decoration:none; border:none; border-radius: 8px"> <span style="margin: 0;"> Keybr</span>
   </a> - Improve your typing speed and take it to the next level!
 
-## Useful tools you should know!
+## 🔗 Useful tools you should know!
 - <a href="https://solidpoint.ai/" >
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeMd6S0X2XFnVQLDr-kTJsyKjMhDwPCwFg9Q&s" alt="SolidPoint" width="25" height="25" style="vertical-align:middle; margin-bottom: 0; text-decoration:none; border:none; border-radius: 8px"> Solidpoint.ai
   </a> - Chat with your PDF documents — Extract information or answer questions from large PDF files like manuals, essays, books.!
@@ -93,7 +93,7 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
     <img src="https://pipedream.com/s.v0/app_n5hv82/logo/orig" alt="Chatpdf" width="25" height="25" style="vertical-align:middle; margin-bottom: 0; text-decoration:none; border:none; border-radius: 8px"> Chatpdf.com
   </a> - An online free YouTube Summarizer that automatically generates concise summaries of any video, saving you valuable time and energy!
 
-## Useful repositories you should know!
+## 🔗 Useful repositories you should know!
 - [Project Based Learning](https://github.com/practical-tutorials/project-based-learning) - Teaches you to code hands-on for free!
 
 - [Build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) - Coding projects and tutorials that might get you hired!
@@ -106,20 +106,20 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
 
 - [Awesome](https://github.com/sindresorhus/awesome) - Information on anything from business to hardware & software development.
 
-### Time Management
+## Time Management
 pata chale toh mujhe bhi bata dena pls
 
 ## Course wise guide
 ### Data Structures & Algorithms:
-Useful Youtube Playlists:
+🔗 Useful Youtube Playlists:
 
 - [Data structures Illustrated by 'the roadmap'](https://youtube.com/playlist?list=PLkZYeFmDuaN2-KUIv-mvbjfKszIGJ4FaY&si=ux5N9jpJ18VHgMzB)
 
-Resources:
+🔗 Resources:
 - [The Algorithms](https://the-algorithms.com/) - GitHub's largest open-source algorithm library!
 
 - [Visualgo.net](https://visualgo.net/) - Learn DSA by visualization through animation!
 
 
-Full courses:
+🔗 Full courses:
 - [Mastering Data Structures & Algorithms using C and C++](https://theetay.com/courses/udemy-mastering-data-structures-algorithms-using-c-and-c-abdul-bari/) : By Abdul Bari, available for free on [theetay.com](https://theetay.com) - (signup required)
