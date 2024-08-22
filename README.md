@@ -120,6 +120,10 @@ pata chale toh mujhe bhi bata dena pls
 
 - [Visualgo.net](https://visualgo.net/) - Learn DSA by visualization through animation!
 
+- [Neetcode.io](https://neetcode.io/) - Courses, practise questions & roadmaps for a better way to prepare for coding interviews!
+
+- [Big O Cheatsheet](https://www.bigocheatsheet.com/) - Cheatsheet covering space and time Big-O complexities of common algorithms used in Computer Science.
+
 🔗 Google Drives:
 - [CS250: DSA](https://drive.google.com/drive/folders/1Rvotax4W1Pl0MDpm17xJPkggkfIgusyK?usp=drive_link) - NUST Fall'21 Google Drive.
 
