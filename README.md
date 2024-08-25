@@ -3,10 +3,6 @@
 
 Welcome FASTians! Here you can find relevant material for your first semester (BSCS) at FAST NUCES Karachi. For any queries/improvement feel free to contact me on k232001@nu.edu.pk 
 
-
-
-
-
 ### 🔗 Links to other semester repositories
 - [1st Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-1)
 
@@ -24,33 +20,7 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
 
 - [Course-wise guide](#course-wise-guide)
 
-
 .
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
-.
-
 
 ## 🔗 Useful Websites you should know!
 
@@ -106,14 +76,15 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
 
 - [Awesome](https://github.com/sindresorhus/awesome) - Information on anything from business to hardware & software development.
 
-## Time Management
+## 🔗 Time Management
 pata chale toh mujhe bhi bata dena pls
 
-## Course wise guide
-### 🌟 Data Structures & Algorithms:
+## 🔗 Course wise guide
+### 📌 Data Structures & Algorithms:
 🔗 Useful Youtube Playlists:
 
 - [Data structures Illustrated by 'the roadmap'](https://youtube.com/playlist?list=PLkZYeFmDuaN2-KUIv-mvbjfKszIGJ4FaY&si=ux5N9jpJ18VHgMzB)
+- [Data Structures using C++ by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOfCp0uG9Bw8JVEreYcIl0H0)
 
 🔗 Resources:
 - [The Algorithms](https://the-algorithms.com/) - GitHub's largest open-source algorithm library!
@@ -130,11 +101,12 @@ pata chale toh mujhe bhi bata dena pls
 🔗 Full courses:
 - [Mastering Data Structures & Algorithms using C and C++](https://theetay.com/courses/udemy-mastering-data-structures-algorithms-using-c-and-c-abdul-bari/) : By Abdul Bari, available for free on [theetay.com](https://theetay.com) - (signup required)
 
+---
 
-### 🌟 Computer Organization & Assembly Language:
+### 📌 Computer Organization & Assembly Language:
 🔗 Useful Youtube Playlists:
 
-- []()
+- [Computer Organization & Architecture by Neso Academy](https://www.youtube.com/watch?v=Ol8D69VKX2k&list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q&pp=iAQB)
 
 🔗 Resources:
 - []() 
@@ -147,11 +119,12 @@ pata chale toh mujhe bhi bata dena pls
 🔗 Full courses:
 - []() 
 
+---
 
-### 🌟 Discrete Structures:
+### 📌 Discrete Structures:
 🔗 Useful Youtube Playlists:
 
-- []()
+- [Discrete Structures by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOduWhQPbEwLN2ULKMqgQ44m)
 
 🔗 Resources:
 - []() 
@@ -164,11 +137,13 @@ pata chale toh mujhe bhi bata dena pls
 🔗 Full courses:
 - []()
 
+---
 
-### 🌟 Linear Algebra:
+### 📌 Linear Algebra:
 🔗 Useful Youtube Playlists:
 
-- []()
+- [Linear Algebra by Gate Smashers](https://www.youtube.com/playlist?list=PLxCzCOWd7aiHnkPiCulMX5SIHMl2ZMmzL)
+- [Linear Algebra by Dr.Gajendra Purohit](https://www.youtube.com/playlist?list=PLU6SqdYcYsfI7Ebw_j-Vy8YKHdbHKP9am)
 
 🔗 Resources:
 - []() 
