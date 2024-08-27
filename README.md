@@ -9,16 +9,16 @@ Welcome FASTians! Here you can find relevant material for your first semester (B
 - [2nd Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-2)
 
 ### 🔗 Guide to get you started
-- [Useful tools you should know](#useful-tools-you-should-know)
+- [Useful tools you should know](#-useful-tools-you-should-know)
 
-- [Useful websites you should know!](#useful-websites-you-should-know)
+- [Useful websites you should know!](#-useful-websites-you-should-know)
 
-- [Useful repositories you should know!](#useful-repositories-you-should-know)
+- [Useful repositories you should know!](#-useful-repositories-you-should-know)
 
 ### 🔗 How to crack your third semester at FAST NUCES!
-- [Time management](#time-management)
+- [Time management](#-time-management)
 
-- [Course-wise guide](#course-wise-guide)
+- [Course-wise guide](#-course-wise-guide)
 
 .
 
@@ -125,9 +125,10 @@ pata chale toh mujhe bhi bata dena pls
 🔗 Useful Youtube Playlists:
 
 - [Discrete Structures by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOduWhQPbEwLN2ULKMqgQ44m)
+- [Discrete Mathematics by Digital Debug](https://youtube.com/playlist?list=PL0P7Vq6rO59oKchppOBiTjNBxA1tuZ3ui&si=4d37435ZXwRppto0)
 
 🔗 Resources:
-- []() 
+- [Discrete Class Notes](https://www.math.wichita.edu/discrete-book/discrete-class-notes.html) 
 
 - []() 
 
