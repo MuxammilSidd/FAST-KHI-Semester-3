@@ -1,7 +1,7 @@
 
 # FAST-KHI-Semester-3
 
-Welcome FASTians! Here you can find relevant material for your first semester (BSCS) at FAST NUCES Karachi. For any queries/improvement feel free to contact me on k232001@nu.edu.pk 
+Welcome FASTians! Here you can find relevant material for your third semester (BSCS) at FAST NUCES Karachi. For any queries/improvement feel free to contact me on k232001@nu.edu.pk 
 
 ### 🔗 Links to other semester repositories
 - [1st Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-1)
@@ -106,6 +106,8 @@ pata chale toh mujhe bhi bata dena pls
 ### 📌 Computer Organization & Assembly Language:
 🔗 Useful Youtube Playlists:
 
+- [COAL by recluze](https://youtube.com/playlist?list=PLnd7R4Mcw3rJCvAduQxyySvejtBIaPs0O&si=8PIzg2SE7REJyNGH)
+- [COAL Complete Course by Fakhar STEM Sphere](https://youtube.com/playlist?list=PLgWOIdHQBEz5t__8v6eZXxKLTV8SGj5kN&si=CN_yQIShOt-9zdXR)
 - [Computer Organization & Architecture by Neso Academy](https://www.youtube.com/watch?v=Ol8D69VKX2k&list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q&pp=iAQB)
 
 🔗 Resources:
