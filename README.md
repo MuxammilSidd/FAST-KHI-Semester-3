@@ -82,11 +82,13 @@ pata chale toh mujhe bhi bata dena pls
 ## 🔗 Course wise guide
 ### 📌 Data Structures & Algorithms:
 🔗 Useful Youtube Playlists:
-
+- [Strivers A2Z-DSA Course](https://youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz&si=eYBFDQhMYcf4-e_u)
 - [Data structures Illustrated by 'the roadmap'](https://youtube.com/playlist?list=PLkZYeFmDuaN2-KUIv-mvbjfKszIGJ4FaY&si=ux5N9jpJ18VHgMzB)
 - [Data Structures using C++ by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOfCp0uG9Bw8JVEreYcIl0H0)
 
 🔗 Resources:
+- [Algorithms Course 4th Ed.](https://sedgewick.io/courses/algorithms/) - All course material, including slides & lectures!
+
 - [The Algorithms](https://the-algorithms.com/) - GitHub's largest open-source algorithm library!
 
 - [Visualgo.net](https://visualgo.net/) - Learn DSA by visualization through animation!
@@ -108,6 +110,7 @@ pata chale toh mujhe bhi bata dena pls
 
 - [COAL by recluze](https://youtube.com/playlist?list=PLnd7R4Mcw3rJCvAduQxyySvejtBIaPs0O&si=8PIzg2SE7REJyNGH)
 - [COAL Complete Course by Fakhar STEM Sphere](https://youtube.com/playlist?list=PLgWOIdHQBEz5t__8v6eZXxKLTV8SGj5kN&si=CN_yQIShOt-9zdXR)
+- [COAL By Mr. Belal Muhammad Hashmi Virtual University of Pakistan](https://youtube.com/playlist?list=PLKyB9RYzaFRh9pYhDsTGXnDqRx0YZQFbn&si=PiutDcOAFl-QDBPU)
 - [Computer Organization & Architecture by Neso Academy](https://www.youtube.com/watch?v=Ol8D69VKX2k&list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q&pp=iAQB)
 
 🔗 Resources:
@@ -144,16 +147,17 @@ pata chale toh mujhe bhi bata dena pls
 
 ### 📌 Linear Algebra:
 🔗 Useful Youtube Playlists:
-
+- [Gilbert Strang Lectures on Linear Algebra (MIT)](https://youtube.com/playlist?list=PL49CF3715CB9EF31D&si=XyphM1QMSuAM_1TJ)
 - [Linear Algebra by Gate Smashers](https://www.youtube.com/playlist?list=PLxCzCOWd7aiHnkPiCulMX5SIHMl2ZMmzL)
 - [Linear Algebra by Dr.Gajendra Purohit](https://www.youtube.com/playlist?list=PLU6SqdYcYsfI7Ebw_j-Vy8YKHdbHKP9am)
 
 🔗 Resources:
-- []() 
+- [Elementary Linear Algebra 12th Ed. Solutions - Quizlet](https://quizlet.com/explanations/textbook-solutions/elementary-linear-algebra-12th-edition-9781119406778) 
 
 - []() 
 
 🔗 Google Drives:
+- [Linear Algebra Solution](https://drive.google.com/drive/folders/1Q4XYLAzjvr1DP5IR_XSOW065MuTz2VDp?usp=drive_link) - Book solutions, access with NU id.
 - [MATH222 LA](https://drive.google.com/drive/folders/1XaW7Vrsqrrd5WPFAZNU58LVHmRgCPl3m?usp=drive_link) - NUST Fall'21 Google Drive.
 
 🔗 Full courses:

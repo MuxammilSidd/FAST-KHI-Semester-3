@@ -1,0 +1,95 @@
+23K2001 - Muzammil
+
+---------------------Task02--------------------------
+Part 1:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+add edx, eax
+add edx, 2
+add edx, ebx
+sub edx, ecx
+add edx, 0Eh
+sub edx, 23o
+add edx, 63d
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+Part 2:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 6ABh
+sub eax, ebx
+add eax, 47o
+add eax, 55d
+sub eax, 110111b
+add eax, 130
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+Part 3:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ebx, 6BEh
+sub ebx, eax
+add ebx, 23d
+add ebx, 61o
+sub ebx, 11100101b
+add ebx, 6Ah
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+Part 4:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, 1100101101b
+add ecx, 25h
+sub ecx, 13o
+add ecx, ebx
+sub ecx, ecx
+add ecx, 5
+
+call DumpRegs
+exit
+main ENDP
+END main

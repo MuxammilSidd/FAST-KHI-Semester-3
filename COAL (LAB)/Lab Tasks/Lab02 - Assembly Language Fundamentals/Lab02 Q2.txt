@@ -1,0 +1,101 @@
+23K2001 - Muzammil
+
+---------------------Q2--------------------------
+Part 1:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 27
+mov ebx, 24
+mov ecx, 16
+add eax, 1
+add eax, ebx
+sub eax, ecx
+add eax, 0Ah
+sub eax, 65o
+add eax, 73d
+mov edx, eax
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+Part 2:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax,5ADh
+mov ebx, 24
+sub eax, ebx
+add eax, 65o
+add eax, 65d
+sub eax, 11110111b
+add eax, 150
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+Part 3:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax,24
+mov ebx, 5ADh
+sub ebx, eax
+add ebx, 65d
+add ebx,73o
+sub ebx, 11100101b
+add ebx, 7Bh
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+Part 4:
+
+TITLE My Second Lab Tasks (Lab02.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, 110010101101b
+mov ebx, 27
+add ecx, 45h
+sub ecx, 73o
+add ecx, ebx
+sub ecx,ecx
+add ecx,1
+
+call DumpRegs
+exit
+main ENDP
+END main
