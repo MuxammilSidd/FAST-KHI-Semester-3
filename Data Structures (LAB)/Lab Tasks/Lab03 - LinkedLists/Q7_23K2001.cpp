@@ -16,42 +16,52 @@ class node{
 		node* getNext(){return next;}
 		void setNext(node* update){next = update;}
 };
-class singleList{
+class circularList{
 	private:
 		node* head;
 		node* tail;
 	public:
-		singleList(){
+		circularList(){
 			head = nullptr;
 			tail = nullptr;
 		}
 		void display(){
-			node* temp =  head;
-			while(temp!=nullptr)
-			{
-				cout<<temp->getData()<<"\t";
-				temp=temp->getNext();
+			node* temp = head;
+			if(temp!=nullptr){
+				do{
+					cout<<temp->getData()<<"\t";
+					temp=temp->getNext();
+				} while(temp!=tail->getNext());
 			}
 			cout<<endl;
 		}
 		
 		void insertAtStart(int val)	
 		{
-			node* n = new node(val);
-			n->setNext(head);
-			head = n;
+            node* n = new node(val);
+            if(head==nullptr){
+                head = n;
+                tail = n;
+                tail->setNext(head);
+            } 
+			else{
+                n->setNext(head);
+                head = n;
+                tail->setNext(head);
+            }
 		}
 		void insertAtEnd(int val)
 		{
-			node* temp = head;
 			node* n = new node(val);
 			if(head == NULL){
 				head = n;
 				tail = n;
+                tail->setNext(head);
 			}
 			else{
 				tail->setNext(n);
-				tail = tail->getNext();
+				tail = n;
+                tail->setNext(head);
 			}
 		}
 		void insertAtIndex(int index,int val){
@@ -71,31 +81,42 @@ class singleList{
             return;
         	}
 
-        	if (head->getData()==val){
-            node* temp = head;
-            head = head->getNext();
-            delete temp;
-            return;
-        	}
+        	if(head->getData()==val){
+				node* temp = head;
+
+				if(head->getNext()==head){
+					head = nullptr;
+					tail = nullptr;
+				} 
+				else{
+					head = head->getNext();
+					tail->setNext(head);
+				}
+
+				delete temp;
+				return;
+			}
 
         node* before = nullptr;
         node* temp = head;
-        while(temp!=nullptr && temp->getData()!=val){
+        while(temp->getNext()!=head && temp->getData()!=val){
             before = temp;
             temp = temp->getNext();
         	}
 
-        if(temp==nullptr){
+        if(temp->getNext()==head && temp->getData()!=val){
             cout<<val<<" was not found in this list."<<endl;
             return;
         	}
 
         before->setNext(temp->getNext());
+		if(temp==tail)
+        	tail = before;
         delete temp;
-    }
+    	}
 };
 int main(){
-    singleList flex;
+    circularList flex;
     cout<<"How many elements: ";
     int e,v;
     cin>>e;
@@ -106,11 +127,23 @@ int main(){
     }
     cout<<endl<<"your List:"<<endl;
 	flex.display();
-    cout<<"Which element to delete? ";
-    cin>>e;
-    flex.deleteNode(e);
 
-    cout<<"After deletion:"<<endl;
-    flex.display();
+    cout<<endl<<"Adding 9 in end:"<<endl;
+	flex.insertAtEnd(9);
+	flex.display();
+	
+	cout<<endl<<"Adding 11 at pos 3:"<<endl;
+	flex.insertAtIndex(3,11);
+	flex.display();
+	
+	cout<<endl<<"Adding 4 at start:"<<endl;
+	flex.insertAtStart(4);
+	flex.display();
+	
+	cout<<endl<<"Deleting 1,2 & 9:"<<endl;
+	flex.deleteNode(1);
+	flex.deleteNode(2);
+	flex.deleteNode(9);
+	flex.display();
     return 0;
 }

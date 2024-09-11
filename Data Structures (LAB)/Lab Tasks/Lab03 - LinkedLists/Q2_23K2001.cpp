@@ -26,7 +26,7 @@ class singleList{
 			tail = nullptr;
 		}
 		void display(){
-			node* temp =  head;
+			node* temp = head;
 			while(temp!=nullptr)
 			{
 				cout<<temp->getData()<<"\t";
@@ -51,7 +51,7 @@ class singleList{
 			}
 			else{
 				tail->setNext(n);
-				tail = tail->getNext();
+				tail = n;
 			}
 		}
 		void insertAtIndex(int index,int val){
@@ -68,7 +68,6 @@ class singleList{
 		void deleteNode(int val){
 			node* before = nullptr;
 			node* temp = head;
-			int i=0;
 			while(temp->getData()!=val){
 				before = temp;
 				temp = temp->getNext();
@@ -88,25 +87,24 @@ class singleList{
             }
             
             e=e%n;
-            if(e==0){ return;}
+            if(e==0){ return; }
             
             temp=head;
-            for (int i=0; i<e; i++){
+            for (int i=0;i<e;i++){
                 before = temp;
                 temp = temp->getNext();
             }
 
-            node* newHead = temp;
+            node* start = temp;
             before->setNext(nullptr);
 
-            node* end = newHead;
+            node* end = start;
             while (end->getNext() != nullptr)
                 end = end->getNext();
 
             end->setNext(head);
-            head = newHead;
+            head = start;
         }
-
 };
 int main(){
     singleList flex;

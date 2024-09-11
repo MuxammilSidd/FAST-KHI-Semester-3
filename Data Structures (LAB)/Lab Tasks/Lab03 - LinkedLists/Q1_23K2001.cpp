@@ -26,7 +26,7 @@ class singleList{
 			tail = nullptr;
 		}
 		void display(){
-			node* temp =  head;
+			node* temp = head;
 			while(temp!=nullptr)
 			{
 				cout<<temp->getData()<<"\t";
@@ -51,7 +51,7 @@ class singleList{
 			}
 			else{
 				tail->setNext(n);
-				tail = tail->getNext();
+				tail = n;
 			}
 		}
 		void insertAtIndex(int index,int val){

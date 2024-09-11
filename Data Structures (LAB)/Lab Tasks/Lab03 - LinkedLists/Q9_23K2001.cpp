@@ -26,7 +26,7 @@ class singleList{
 			tail = nullptr;
 		}
 		void display(){
-			node* temp =  head;
+			node* temp = head;
 			while(temp!=nullptr)
 			{
 				cout<<temp->getData()<<"\t";
@@ -45,59 +45,54 @@ class singleList{
 		{
 			node* temp = head;
 			node* n = new node(val);
-			if(head == NULL){
+			if(head == nullptr){
 				head = n;
 				tail = n;
 			}
 			else{
 				tail->setNext(n);
-				tail = tail->getNext();
+				tail = n;
 			}
 		}
-		void insertAtIndex(int index,int val){
-			node* update = new node(val);
-			node* temp = head;
+        void deletenode(int val){
 			node* before = nullptr;
-			for(int i=0;i<index-1;i++){
+			node* temp = head;
+			while(temp->getData()!=val){
 				before = temp;
-				temp=temp->getNext();
+				temp = temp->getNext();
 			}
-			before->setNext(update);
-			update->setNext(temp);
+			before->setNext(temp->getNext());
+			delete temp;
 		}
-		void deleteNode(int val){
-			if(head==nullptr){
-			cout<<"The list is empty."<<endl;
-            return;
-        	}
+        void question9(){
+            if(head==nullptr || head->getNext()==nullptr || head->getNext()->getNext()==nullptr){
+                cout<<"Not enough nodes in the list."<<endl;
+                return;
+            }
+            node* ones = head;
+            node* twos = ones->getNext();
 
-        	if (head->getData()==val){
-            node* temp = head;
-            head = head->getNext();
-            delete temp;
-            return;
-        	}
+            ones->setNext(ones->getNext()->getNext());
+            ones = ones->getNext();
+            twos->setNext(nullptr);
 
-        node* before = nullptr;
-        node* temp = head;
-        while(temp!=nullptr && temp->getData()!=val){
-            before = temp;
-            temp = temp->getNext();
-        	}
+            while(ones->getNext()!=nullptr){
+                node* temp = ones->getNext()->getNext();
+                ones->getNext()->setNext(twos);
+                twos = ones->getNext();
+                ones->setNext(temp);
 
-        if(temp==nullptr){
-            cout<<val<<" was not found in this list."<<endl;
-            return;
-        	}
-
-        before->setNext(temp->getNext());
-        delete temp;
-    }
+                if(temp!=nullptr)
+                    ones = temp;
+            }
+            ones->setNext(twos);
+        }
 };
 int main(){
-    singleList flex;
+	singleList flex;
     cout<<"How many elements: ";
-    int e,v;
+    int e;
+	int v;
     cin>>e;
     cout<<"Enter "<<e<<" elements: ";
     for(int i=0;i<e;i++){
@@ -106,11 +101,8 @@ int main(){
     }
     cout<<endl<<"your List:"<<endl;
 	flex.display();
-    cout<<"Which element to delete? ";
-    cin>>e;
-    flex.deleteNode(e);
 
-    cout<<"After deletion:"<<endl;
+    cout<<"After applying q9 operations:"<<endl;
+    flex.question9();
     flex.display();
-    return 0;
 }

@@ -26,7 +26,7 @@ class singleList{
 			tail = nullptr;
 		}
 		void display(){
-			node* temp =  head;
+			node* temp = head;
 			while(temp!=nullptr)
 			{
 				cout<<temp->getData()<<"\t";
@@ -51,7 +51,7 @@ class singleList{
 			}
 			else{
 				tail->setNext(n);
-				tail = tail->getNext();
+				tail = n;
 			}
 		}
 		void insertAtIndex(int index,int val){
@@ -68,7 +68,6 @@ class singleList{
 		void deleteNode(int val){
 			node* before = nullptr;
 			node* temp = head;
-			int i=0;
 			while(temp->getData()!=val){
 				before = temp;
 				temp = temp->getNext();
@@ -76,4 +75,57 @@ class singleList{
 			before->setNext(temp->getNext());
 			delete temp;
 		}
+		void evenFirst(){
+			node* temp = head;
+			singleList evens;
+			singleList odds;
+			while(temp!=nullptr){
+				if(temp->getData()%2==0)
+					evens.insertAtEnd(temp->getData());
+				else
+					odds.insertAtEnd(temp->getData());
+				temp = temp->getNext();
+			}
+			temp = head;
+			while(temp!=nullptr){
+				node* next = temp->getNext();
+				delete temp;
+				temp = next;
+			}
+			head = nullptr;
+
+			if(evens.head==nullptr){
+				cout<<"No even elements were found!"<<endl;
+				head = odds.head;
+			}
+			else{
+				head = evens.head;
+				evens.tail->setNext(odds.head);
+			}
+
+			if(odds.tail==nullptr){
+				cout<<"No odd elements were found!"<<endl;
+				tail = evens.tail;
+			}
+			else
+				tail = odds.tail;
+		}
 };
+int main(){
+	singleList flex;
+    cout<<"How many elements: ";
+    int e,v;
+    cin>>e;
+    cout<<"Enter "<<e<<" elements: ";
+    for(int i=0;i<e;i++){
+        cin>>v;
+        flex.insertAtEnd(v);
+    }
+    cout<<endl<<"your List:"<<endl;
+	flex.display();
+
+	cout<<endl<<"After arranging even elements first:"<<endl;
+	flex.evenFirst();
+	flex.display();
+	return 0;
+}
