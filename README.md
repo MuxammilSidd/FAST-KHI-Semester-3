@@ -54,14 +54,18 @@ Welcome FASTians! Here you can find relevant material for your third semester (B
     <img src="https://www.keybr.com/cover.png" alt="Keybr" width="30" height="30" style="vertical-align:middle; margin-bottom: px; text-decoration:none; border:none; border-radius: 8px"> <span style="margin: 0;"> Keybr</span>
   </a> - Improve your typing speed and take it to the next level!
 
+- <a href="https://www.learncpp.com/" style="text-decoration:none; display:inline-block; margin-top: 12px;">
+    <img src="https://www.learncpp.com/blog/wp-content/uploads/learncpp.png" alt="learncpp.com" width="30" height="30" style="vertical-align:middle; margin-bottom: px; text-decoration:none; border:none; border-radius: 8px"> <span style="margin: 0;"> LearnCpp.com</span>
+  </a> - A free website devoted to teaching you how to program in modern C++!
+
 ## 🔗 Useful tools you should know!
 - <a href="https://solidpoint.ai/" >
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSeMd6S0X2XFnVQLDr-kTJsyKjMhDwPCwFg9Q&s" alt="SolidPoint" width="25" height="25" style="vertical-align:middle; margin-bottom: 0; text-decoration:none; border:none; border-radius: 8px"> Solidpoint.ai
-  </a> - Chat with your PDF documents — Extract information or answer questions from large PDF files like manuals, essays, books.!
+  </a> - An online free YouTube Summarizer that automatically generates concise summaries of any video, saving you valuable time and energy!
 
 - <a href="https://www.chatpdf.com/" style="text-decoration:none; display:inline-block; margin-top: 12px;">
     <img src="https://pipedream.com/s.v0/app_n5hv82/logo/orig" alt="Chatpdf" width="25" height="25" style="vertical-align:middle; margin-bottom: 0; text-decoration:none; border:none; border-radius: 8px"> Chatpdf.com
-  </a> - An online free YouTube Summarizer that automatically generates concise summaries of any video, saving you valuable time and energy!
+  </a> - Chat with your PDF documents — Extract information or answer questions from large PDF files like manuals, essays, books.!
 
 ## 🔗 Useful repositories you should know!
 - [Project Based Learning](https://github.com/practical-tutorials/project-based-learning) - Teaches you to code hands-on for free!
@@ -97,6 +101,12 @@ pata chale toh mujhe bhi bata dena pls
 
 - [Big O Cheatsheet](https://www.bigocheatsheet.com/) - Cheatsheet covering space and time Big-O complexities of common algorithms used in Computer Science.
 
+- [PythonTutor.com](https://pythontutor.com/) - Online Compiler, Visual Debugger, & AI Tutor for Python, Java, C, C++, & JavaScript. 
+
+- [Top 50 Problems on Recursion Algorithm asked in SDE Interviews](https://www.geeksforgeeks.org/top-50-interview-problems-on-recursion-algorithm/)
+
+- [Recursion Tree Visualizer](https://recursion.vercel.app/) - Visually conceptualize your recursive functions.
+
 🔗 Google Drives:
 - [CS250: DSA](https://drive.google.com/drive/folders/1Rvotax4W1Pl0MDpm17xJPkggkfIgusyK?usp=drive_link) - NUST Fall'21 Google Drive.
 
@@ -113,35 +123,19 @@ pata chale toh mujhe bhi bata dena pls
 - [COAL By Mr. Belal Muhammad Hashmi Virtual University of Pakistan](https://youtube.com/playlist?list=PLKyB9RYzaFRh9pYhDsTGXnDqRx0YZQFbn&si=PiutDcOAFl-QDBPU)
 - [Computer Organization & Architecture by Neso Academy](https://www.youtube.com/watch?v=Ol8D69VKX2k&list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q&pp=iAQB)
 
-🔗 Resources:
-- []() 
-
-- []() 
-
 🔗 Google Drives:
 - [CS235: COAL](https://drive.google.com/drive/folders/1cH61VF26g7fzMPLdawQy2WB3caSRHE3m?usp=drive_link) - NUST Fall'21 Google Drive.
-
-🔗 Full courses:
-- []() 
 
 ---
 
 ### 📌 Discrete Structures:
 🔗 Useful Youtube Playlists:
-
+- [Discrete Mathematics by Neso Academy](https://youtube.com/playlist?list=PLBlnK6fEyqRhqJPDXcvYlLfXPh37L89g3&si=Al3cARiQj0DoN0lT)
 - [Discrete Structures by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOduWhQPbEwLN2ULKMqgQ44m)
 - [Discrete Mathematics by Digital Debug](https://youtube.com/playlist?list=PL0P7Vq6rO59oKchppOBiTjNBxA1tuZ3ui&si=4d37435ZXwRppto0)
 
 🔗 Resources:
 - [Discrete Class Notes](https://www.math.wichita.edu/discrete-book/discrete-class-notes.html) 
-
-- []() 
-
-🔗 Google Drives:
-- []()
-
-🔗 Full courses:
-- []()
 
 ---
 
@@ -160,5 +154,8 @@ pata chale toh mujhe bhi bata dena pls
 - [Linear Algebra Solution](https://drive.google.com/drive/folders/1Q4XYLAzjvr1DP5IR_XSOW065MuTz2VDp?usp=drive_link) - Book solutions, access with NU id.
 - [MATH222 LA](https://drive.google.com/drive/folders/1XaW7Vrsqrrd5WPFAZNU58LVHmRgCPl3m?usp=drive_link) - NUST Fall'21 Google Drive.
 
-🔗 Full courses:
-- []()
+---
+
+### 📌 Principle of Economics:
+🔗 Resources:
+- [Economics Demand & Supply Detailed Concept (26:00)](https://youtu.be/PYJgt4rDNoY?si=eGNNGReGG1PZ3z1U)
