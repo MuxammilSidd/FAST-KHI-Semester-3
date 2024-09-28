@@ -1,0 +1,167 @@
+23K2001 - Muzammil
+
+---------------------Q2--------------------------
+
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 778590d ; M-77 U-85 Z-90
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+.data
+	varB BYTE +10
+	varW WORD -150
+	varD DWORD 600
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+movsx eax,varB
+movsx ebx,varW
+mov ecx,varD
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+		    (i)
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax,89
+add eax,75Fh
+sub eax,46o
+sub eax,28
+add eax,1101b
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+		    (ii)
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+.data
+	val1 DWORD 25h
+	val2 BYTE 36o
+	val3 WORD 20d
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax,val1
+movzx ebx,val2
+add eax,ebx
+sub eax,654h
+movzx ebx,val3
+add eax,ebx
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+.data
+	secondsInDay = 24*60*60
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax,secondsInDay
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+.data
+	A DWORD 0FF10h
+	B DWORD 0E10Bh
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax,A
+mov ebx,B
+xchg eax,ebx
+mov A,eax
+mov B,ebx
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Fourth Lab Tasks (Lab04.asm)
+INCLUDE Irvine32.inc
+.data
+	val1 BYTE 10h
+	val2 WORD 8000h
+	val3 DWORD 0FFFFh
+	val4 WORD 7FFFh
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+INC val2
+mov ax,val2
+
+sub ebx,val3
+
+mov cx,val2
+sub cx,val4
+call DumpRegs
+exit
+main ENDP
+END main
+
+

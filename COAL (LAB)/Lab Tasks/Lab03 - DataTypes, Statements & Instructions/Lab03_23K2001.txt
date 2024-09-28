@@ -1,0 +1,236 @@
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	varA SWORD ?
+	varB SBYTE -11d
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ax, varA
+mov bl, varB
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	var3 SDWORD -2147483648d
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, var3
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	varA WORD 17,27,37
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ax, varA
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	color BYTE "crimson",0
+	A WORD 12
+	B WORD 2
+	varC WORD 13
+	D WORD 8
+	E WORD 14
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	a BYTE 11h
+	b BYTE 10h
+	varC BYTE 30h
+	d BYTE 40h
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov bl, a
+add bl, b
+mov al, a
+sub al, b
+sub bl, al
+add bl, varC
+add bl, d
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	a BYTE 00010001b
+	b BYTE 00010000b
+	varC BYTE 00110000b
+	d BYTE 01000000b
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov bl, a
+add bl, b
+mov al, a
+sub al, b
+sub bl, al
+add bl, varC
+add bl, d
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	wArray WORD 4,2,0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q8--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	dArray DWORD 50 DUP(?)
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q9--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	var BYTE 500 DUP("TEST")
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q10--------------------------
+
+TITLE My Third Lab Tasks (Lab03.asm)
+INCLUDE Irvine32.inc
+
+.data
+	bArray1 BYTE 1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20
+	bArray2 BYTE 20 DUP(1)
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+

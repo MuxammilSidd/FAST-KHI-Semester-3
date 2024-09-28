@@ -141,6 +141,7 @@ pata chale toh mujhe bhi bata dena pls
 
 ### 📌 Linear Algebra:
 🔗 Useful Youtube Playlists:
+- [Linear Algebra by Mr.Mike Patino](https://youtube.com/playlist?list=PLdiObQyP1_m8mUzQVeAV_Hx-BoZ7Lyhih&si=9a_VbcracjThluhf) - Relevant to Mid01.
 - [Gilbert Strang Lectures on Linear Algebra (MIT)](https://youtube.com/playlist?list=PL49CF3715CB9EF31D&si=XyphM1QMSuAM_1TJ)
 - [Linear Algebra by Gate Smashers](https://www.youtube.com/playlist?list=PLxCzCOWd7aiHnkPiCulMX5SIHMl2ZMmzL)
 - [Linear Algebra by Dr.Gajendra Purohit](https://www.youtube.com/playlist?list=PLU6SqdYcYsfI7Ebw_j-Vy8YKHdbHKP9am)
