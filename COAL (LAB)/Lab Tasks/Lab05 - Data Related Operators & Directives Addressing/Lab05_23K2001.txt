@@ -1,0 +1,244 @@
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	var1 SDWORD 8000
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+add var1,1
+mov eax, var1
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	var1 SDWORD 8000
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ax,7FF0h		; CF=0  SF=0  ZF=1  OF=0
+add al,10h		; CF=1  SF=0  ZF=1  OF=0	
+add ah,1		; CF=0  SF=1  ZF=0  OF=1
+add ax,2		; CF=0  SF=1  ZF=0  OF=0
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	arr BYTE 61,43,11,52,25
+	arrTemp BYTE 5 DUP(?)
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov al, [arr+2]
+mov [arrTemp], al
+
+mov al, [arr+4]
+mov [arrTemp+1], al
+
+mov al, [arr+1]
+mov [arrTemp+2], al
+
+mov al, [arr+3]
+mov [arrTemp+3], al
+
+mov al, [arr+0]
+mov [arrTemp+4], al
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+; If the declared array was of WORD size, then while addressing each element
+; we will have to increment by 2 bytes accordingly. Eg: the third index can be accessed as
+; [wArray+4]
+
+; If the declared array was of DWORD size, then while addressing each element
+; we will have to increment by 4 bytes accordingly. Eg: the third index can be accessed as
+; [dArray+8]
+
+---------------------Q4--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	arrayB BYTE 10,20,30
+	arrayW WORD 150,250,350
+	arrayD DWORD 600,1200,1800
+	sum1 DWORD 0
+	sum2 DWORD 0
+	sum3 DWORD 0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+
+movzx eax, [arrayB]
+add ax, [arrayW]
+add eax, [arrayD]
+mov sum1, eax
+
+movzx eax, [arrayB+1]
+add ax, [arrayW+2]
+add eax, [arrayD+4]
+mov sum2, eax
+
+movzx eax, [arrayB+2]
+add ax, [arrayW+4]
+add eax, [arrayD+8]
+mov sum3, eax
+
+mov eax, sum1
+mov ebx, sum2
+mov ecx, sum3
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	array1 BYTE 10,20,30,40
+	array2 BYTE 4 DUP(?)
+    arrSize BYTE 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov esi, OFFSET array1
+add esi, 3
+mov al, [esi]
+mov edi, OFFSET array2
+mov [edi], al
+
+DEC esi
+mov al, [esi]
+INC edi 
+mov [edi], al
+
+DEC esi
+mov al, [esi]
+INC edi
+mov [edi], al
+
+DEC esi
+mov al, [esi]
+INC edi
+mov [edi], al
+
+mov al, [array2]
+mov bl, [array2+1]
+mov cl, [array2+2]
+mov dl, [array2+3]
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+    array DWORD 2001, 2005, 2024, 2077, 2100
+    res DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx, 0
+
+mov esi, OFFSET array
+mov eax, [esi]
+mov ebx, [esi+4]
+sub eax, ebx
+
+mov ebx, [esi+8]
+sub eax, ebx
+
+mov ebx, [esi+12]
+sub eax, ebx
+
+mov ebx, [esi+16]
+sub eax, ebx
+
+mov res, eax
+call DumpRegs           
+exit
+main ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+    arrayB BYTE 60, 70, 80
+    arrayW WORD 150, 250, 350
+    arrayD DWORD 600, 1200, 1800
+    first DWORD ?
+    last DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx, 0
+
+mov esi, 0
+mov al, arrayB[esi*TYPE arrayB]
+add ax, arrayW[esi*TYPE arrayW]
+add eax, arrayD[esi*TYPE arrayD]
+mov first, eax
+
+mov eax, 0
+mov esi, 2
+mov al, arrayB[esi*TYPE arrayB]
+add ax, arrayW[esi*TYPE arrayW]
+add eax, arrayD[esi*TYPE arrayD]
+mov last, eax
+
+mov eax, first
+mov ebx, last
+call DumpRegs           
+exit
+main ENDP
+END main
