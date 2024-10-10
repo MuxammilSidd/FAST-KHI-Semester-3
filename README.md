@@ -19,8 +19,13 @@ Welcome FASTians! Here you can find relevant material for your third semester (B
 - [Time management](#-time-management)
 
 - [Course-wise guide](#-course-wise-guide)
-
-.
+  <ul>
+  <li><a href="#-data-structures--algorithms">Data Structures & Algorithms (Theory+Lab)</li>
+  <li><a href="#-computer-organization--assembly-language">COAL (Theory+Lab)</li>
+  <li><a href="#-discrete-structures">Discrete Structures</li>
+  <li><a href="#-linear-algebra">Linear Algebra</li>
+  <li><a href="#-principles-of-economics">Principles of Economics (Elective)</li>
+  </ul>
 
 ## 🔗 Useful Websites you should know!
 
@@ -111,7 +116,7 @@ pata chale toh mujhe bhi bata dena pls
 - [CS250: DSA](https://drive.google.com/drive/folders/1Rvotax4W1Pl0MDpm17xJPkggkfIgusyK?usp=drive_link) - NUST Fall'21 Google Drive.
 
 🔗 Full courses:
-- [Mastering Data Structures & Algorithms using C and C++](https://theetay.com/courses/udemy-mastering-data-structures-algorithms-using-c-and-c-abdul-bari/) : By Abdul Bari, available for free on [theetay.com](https://theetay.com) - (signup required)
+- [Mastering Data Structures & Algorithms using C and C++](https://theetay.com/courses/udemy-mastering-data-structures-algorithms-using-c-and-c-abdul-bari/) : By Abdul Bari, available through PAID subscription on [theetay.com](https://theetay.com) - (signup required)
 
 ---
 
@@ -157,6 +162,6 @@ pata chale toh mujhe bhi bata dena pls
 
 ---
 
-### 📌 Principle of Economics:
+### 📌 Principles of Economics:
 🔗 Resources:
 - [Economics Demand & Supply Detailed Concept (26:00)](https://youtu.be/PYJgt4rDNoY?si=eGNNGReGG1PZ3z1U)
