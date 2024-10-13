@@ -1,39 +1,28 @@
 //23K2001 - Muzammil
 #include <iostream>
 using namespace std;
-void swap(int& a, int& b) {
-    int temp = a;
-    a = b;
-    b = temp;
-}
 
-void sort(int arr[], int size, int arr2[], int size2) {
-    int count = 0;
-    for (int i = 0; i < size2; i++) {
-        int val = arr2[i];
-        for (int j = 0; j < size; j++) {
-            if (val == arr[j]) {
-                swap(arr[count], arr[j]);
-                count++;
-            }
-        }
-    }
-}
+bool checkPrime(int x,int i=2){
+    if(x<2)
+        return false;
+    if(i*i>x)
+        return true;
+    if(x%i==0)
+        return false;
 
+    return checkPrime(x,i+1);
+}
+void composite_primes(int m, int n) {
+    if(m>n) return;
+    if(checkPrime(m))
+        cout<<m<<"(P)"<<endl;
+    else if(m>1)
+        cout<<m<<"(C)"<<endl;
+    else
+        cout<<m<<"(Neither)"<<endl;
+    composite_primes(m + 1, n);
+}
 int main() {
-    int arr[] = {3, 1, 4, 1, 5, 9, 2, 6};
-    int arr2[] = {1, 2, 3};
-
-    int size = sizeof(arr) / sizeof(arr[0]);
-    int size2 = sizeof(arr2) / sizeof(arr2[0]);
-
-    sort(arr, size, arr2, size2);
-
-    std::cout << "Sorted array based on arr2: ";
-    for (int i = 0; i < size; i++) {
-        std::cout << arr[i] << " ";
-    }
-    std::cout << std::endl;
-
+    composite_primes(0,15);
     return 0;
 }

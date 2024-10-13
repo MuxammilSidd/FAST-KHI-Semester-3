@@ -1,0 +1,503 @@
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	first BYTE 0
+	second BYTE 1
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+movzx eax, first
+call writedec
+call crlf
+movzx eax, second
+call writedec
+call crlf
+
+mov ecx, 8
+mov eax, 0
+fib:
+	mov bl, first
+	add bl, second
+	movzx eax , bl
+	call writedec
+	call crlf
+	mov al , second
+	mov first , al
+	mov second, bl
+loop fib
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+	       ----Part I----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	sym BYTE 1
+	i DWORD ?
+	j DWORD 1
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+outer:
+	mov i , ecx
+	mov ecx, j
+
+	inner:
+		movzx eax, sym
+		call writeDec
+	loop inner
+
+	inc j
+	mov ecx, i
+	call crlf
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part II----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	sym BYTE 1
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+outer:
+	mov i , ecx
+	mov ecx, j
+
+	inner:
+		movzx eax, sym
+		call writeDec
+	loop inner
+
+	dec j
+	mov ecx, i
+	call crlf
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part III----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+mov eax, 0
+
+outer:
+	mov i , ecx
+	mov ecx , j
+	mov eax , 4
+
+	inner:
+		call writedec
+		dec eax
+	loop inner
+
+	call crlf
+	dec j
+	mov ecx, i
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part IV----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+mov eax, 0
+
+outer:
+	mov i , ecx
+	mov ecx , j
+	mov eax , 1
+
+	inner:
+		call writedec
+		inc eax
+	loop inner
+
+	call crlf
+	dec j
+	mov ecx, i
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	req1 BYTE "Enter ID: ", 0
+	req2 BYTE "Enter Name: ", 0
+	req3 BYTE "Enter Year of Birth: ", 0
+	req4 BYTE "Enter Annual Salary: ", 0
+	wID BYTE "ID: ", 0
+	wName BYTE "Name: ", 0
+	wYear BYTE "Year of Birth: ", 0
+	wAnnual BYTE "Annual Salary: ", 0
+	wTotal BYTE "Total Salary: ", 0
+    heading BYTE "Employees Data: ",0
+	id DWORD 5 DUP(?)
+	names BYTE 5 DUP(30 DUP(?))
+	year DWORD 5 DUP(?)
+	salary DWORD 5 DUP(?)
+	index DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, 5
+mov esi, 0
+
+l1:
+    mov index, ecx  
+    mov edx, OFFSET req1
+    call WriteString
+    call ReadInt
+    mov id[esi*4], eax
+
+    mov edx, OFFSET req2
+    call WriteString
+    mov edi, esi
+    mov eax, 30
+    mul edi
+    mov edx, OFFSET names
+    add edx, eax
+    mov ecx, 30
+    call ReadString
+
+    mov edx, OFFSET req3
+    call WriteString
+    call ReadInt
+    mov year[esi*4], eax
+
+    mov edx, OFFSET req4
+    call WriteString
+    call ReadInt
+    mov salary[esi*4], eax
+    call crlf
+
+    inc esi
+    mov ecx, index
+loop l1
+
+mov ecx, 5
+mov esi, 0
+mov edx, OFFSET heading
+call WriteString
+call crlf
+call crlf
+
+l2:
+    mov index , ecx
+
+    mov edx, OFFSET wID
+    call WriteString
+    mov eax, id[esi*4]
+    call Writedec
+    call crlf
+    mov edx, OFFSET wName
+    call WriteString
+    mov edi, esi
+    mov eax, 30
+    mul edi
+    mov edx, OFFSET names
+    add edx, eax
+    call WriteString
+    call crlf
+    mov edx, OFFSET wYear
+    call WriteString
+    mov eax, year[esi*4]
+    call Writedec
+    call crlf
+    mov edx, OFFSET wAnnual
+    call WriteString
+    mov eax, salary[esi*4]
+    call Writedec
+    call crlf
+    call crlf
+    inc esi
+
+    mov ecx, index
+    dec ecx
+jnz l2
+
+mov edx, OFFSET wTotal
+call WriteString
+call crlf
+mov ecx, 5
+mov esi, 0
+mov eax,0
+
+l3:
+    add eax,salary[esi*4]
+    inc esi
+loop l3
+
+call writedec
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	source BYTE "0 1 2 3 4 5 6 7 8 9 ",0
+	target BYTE SIZEOF source DUP(?)
+	ws BYTE "Source:",0
+	wt BYTE "Target:",0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov esi, OFFSET source
+mov edi, OFFSET target
+l1:
+	mov al, BYTE PTR [esi]
+	mov BYTE PTR [edi], al
+	inc esi
+	inc edi
+	cmp al, 0
+jne l1
+
+mov edx, OFFSET ws
+call WriteString
+call crlf 
+mov edx, OFFSET source
+call WriteString
+call crlf
+mov edx, OFFSET wt
+call WriteString
+call crlf 
+mov edx, OFFSET target
+call WriteString
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	integers DWORD 10 DUP(?)
+	req BYTE "Enter 10 integers: ",0
+	wOriginal BYTE "Original: ",0
+	wReversed BYTE "Reversed: ",0
+	space BYTE " "
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, LENGTHOF integers
+mov esi, OFFSET integers
+mov edx, OFFSET req
+call WriteString
+call crlf
+
+read:
+	call readint
+	mov [esi], eax
+	add esi, TYPE integers
+loop read
+
+call crlf
+mov edx, OFFSET wOriginal
+call WriteString
+call crlf
+mov ebx, OFFSET integers
+mov ecx, LENGTHOF integers
+mov edx, OFFSET space
+
+printOriginal:
+	mov eax, [ebx]
+	call WriteDec
+	call WriteString
+	add ebx, TYPE integers
+loop printOriginal
+
+call crlf
+mov edi, OFFSET integers
+mov ecx, LENGTHOF integers/2
+mov esi, OFFSET integers
+add esi, TYPE integers * (LENGTHOF integers  - 1)
+
+reverse:        
+	mov eax, [edi]
+	mov ebx, [esi]
+	xchg eax, ebx
+
+	mov [edi], eax
+	mov [esi], ebx
+
+	add edi, TYPE integers
+	sub esi, TYPE integers
+loop reverse
+
+mov edx, OFFSET wReversed
+call WriteString
+call crlf
+mov ebx, OFFSET integers
+mov ecx, LENGTHOF integers
+mov edx, OFFSET space
+
+printReversed:
+	mov eax, [ebx]
+	call WriteDec
+	call WriteString
+	add ebx, TYPE integers
+loop printReversed
+
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	nums DWORD 8,5,6,1,2
+	i DWORD ?
+	j DWORD ?
+    space BYTE " ",0
+    before BYTE "Before sorting:",0
+    after BYTE "After sorting:",0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, LENGTHOF nums  
+mov i, eax           
+DEC i                
+mov ecx, eax
+mov edx, OFFSET before
+call WriteString
+call crlf
+mov esi, OFFSET nums     
+mov ecx, LENGTHOF nums   
+mov edx, OFFSET space
+
+original:
+    mov eax, [esi]            
+    call WriteDec             
+    call WriteString                 
+    add esi, TYPE DWORD    
+loop original 
+mov edx, OFFSET space
+
+outer:
+    mov esi, OFFSET nums    
+    mov ebx, i
+    mov j, ebx
+
+    inner:
+        mov eax, [esi]
+        mov ebx, [esi+4]    
+        cmp eax, ebx          
+        jbe skip           
+
+        mov [esi], ebx       
+        mov [esi+4], eax   
+
+        skip:
+        add esi, 4            
+        DEC j             
+    jnz inner                
+    DEC i                 
+jnz outer                   
+
+call crlf
+mov edx, OFFSET after
+call WriteString
+call crlf
+mov esi, OFFSET nums     
+mov ecx, LENGTHOF nums   
+mov edx, OFFSET space
+
+print:
+    mov eax, [esi]            
+    call WriteDec             
+    call WriteString                 
+    add esi, TYPE DWORD    
+loop print  
+
+call crlf
+exit
+main ENDP
+END main

@@ -1,93 +1,80 @@
 //23K2001 - Muzammil
 #include <iostream>
 using namespace std;
-class Stack
-{
-    int *arr;
-    int size;
-    int top;
 
-public:
-    Stack(int s)
-    {
-        size = s;
-        arr = new int[size];
-        top = -1;
-    }
+class stacks{
+    private:
+		int top,size;
+	public:
+		int *arr;
+		stacks():top(-1),size(0),arr(nullptr){}
+		stacks(int s):top(-1),size(s){
+			arr = new int[size];
+			for(int i=0;i<size;i++)
+				arr[i]=0;
+		}
+        int getSize(){ return size; }
+		void push(int e){
+			if(top>=(size-1)){
+				cout<<"Stack overflow occured!"<<endl;
+				return;
+			}
+			arr[++top] = e;
+		}
+		int pop(){
+			if(top<0){
+				cout<<"Stacks underflow occured!"<<endl;
+				return -1;
+			}
+			int last = arr[top--];
+			return last;
+		}
+		int peek(){
+			if(top < 0){
+				cout<<"Stack is Empty";
+				return 0;
+			} else{
+				int x = arr[top];
+				return x;
+			}
+		}
+        void display(){
+            if(isEmpty()){
+                cout<<"Stack is empty!"<<endl;
+                return;
+            }
+            for(int i=0;i<=top;i++)
+                cout<<arr[i]<<" ";
+            cout<<endl;
+        }
+		bool isEmpty(){ return (top<0); }
+		void deleteMiddle(int count=0){
+			if (count == (size)/2){
+				cout<<endl<<"Middle element: "<<pop()<<endl;
+				return;
+			}
+			int val = pop();
+			deleteMiddle(count + 1);
+			push(val);
+		}
 
-    void push(int val)
-    {
-        if (size - top > 1)
-        {
-            top++;
-            arr[top] = val;
-        }
-        else
-        {
-            cout << "Stack is FULL " << endl;
-        }
-    }
-    void pop()
-    {
-        if (top >= 0)
-        {
-            top--;
-        }
-        else
-        {
-            cout << "Stak undeflow" << endl;
-        }
-    }
-
-    int peek()
-    {
-        if (top >= 0 && top < size)
-        {
-            return arr[top];
-        }
-        else
-        {
-            cout << "Stack empty" << endl;
-            return -1;
-        }
-    }
-
-    bool empty()
-    {
-        return top < 0;
-    }
-
-    void deleteMiddle(int count, int size)
-    {
-        if (count == (size) / 2)
-        {
-            pop();
-            return;
-        }
-
-        int val = peek();
-        pop();
-
-        deleteMiddle(count + 1, size);
-        push(val);
-    }
+		~stacks(){ delete[] arr; }
 };
 
-int main()
-{
-    Stack s1(5);
-    s1.push(1);
-    s1.push(2);
-    s1.push(3);
-    s1.push(4);
-    s1.push(5);
-
-    s1.deleteMiddle(0, 5);
-    while (!s1.empty())
-    {
-        cout << s1.peek() << " ";
-        s1.pop();
-    }
-
-    return 0;
+int main(){
+    int s;
+	cout<<"Enter size of stack: ";
+	cin>>s;
+	stacks flex(s);
+	int e;
+	cout<<"Enter "<<s<<" elements:"<<endl;
+	for(int i=0;i<s;i++){
+		cin>>e;
+		flex.push(e);
+	}
+    cout<<"Elements in stack: "<<endl;
+    flex.display();
+    flex.deleteMiddle();
+    cout<<endl<<"After deleting middle element:"<<endl;
+    flex.display();
 }

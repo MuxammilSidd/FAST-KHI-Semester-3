@@ -36,7 +36,6 @@ class singleList{
 			}
 			cout<<endl;
 		}
-		
 		void insertAtStart(int val)	
 		{
 			node* n = new node(val);
@@ -82,43 +81,38 @@ class singleList{
 			size--;
 		}
 		void reverseMN(int m,int n){
-			if (head==nullptr || m < 1 || n > size || m >= n){
+			if(head==nullptr || m < 1 || n > size || m >= n){
 				cout<<"Error applying function!"<<endl;
             	return; 
 			} 
-        
-        node* current = head;
-        node* before = nullptr;
-        node* newTail = nullptr;
+			node* current = head;
+			node* before = nullptr;
+			node* newTail = nullptr;
 
-        for (int i = 1; i < m; i++) {
-            before = current;
-            current = current->getNext();
-        }
-
-        newTail = current;
-        node* next = nullptr; 
-        for (int i = m; i <= n; i++) {
-            next = current->getNext(); 
-            current->setNext(before); 
-            before = current;           
-            current = next;         
-        }
-
-        if (before != nullptr) {
-            if (m == 1)
-                head = before; 
-            else 
-			{
-                node* temp = head;
-                for (int i = 1; i < m - 1; i++)
-                    temp = temp->getNext();
-                
-                temp->setNext(before);
-            }
-        }
-
-        newTail->setNext(current);
+			for(int i = 1;i<m;i++){
+				before = current;
+				current = current->getNext();
+			}
+			newTail = current;
+			node* next = nullptr; 
+			for(int i = m;i<=n;i++){
+				next = current->getNext(); 
+				current->setNext(before); 
+				before = current;           
+				current = next;         
+			}
+			if(before!=nullptr){
+				if(m == 1)
+					head = before; 
+				else 
+				{
+					node* temp = head;
+					for (int i = 1; i < m - 1; i++)
+						temp = temp->getNext();
+					temp->setNext(before);
+				}
+			}
+			newTail->setNext(current);
 		}
 		
 };

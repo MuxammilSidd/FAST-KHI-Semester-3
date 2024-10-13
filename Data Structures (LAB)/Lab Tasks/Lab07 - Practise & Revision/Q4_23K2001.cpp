@@ -2,145 +2,129 @@
 #include <iostream>
 using namespace std;
 
-class Stack
-{
-    int *arr;
-    int size;
-    int top;
-
-public:
-    Stack(int s)
-    {
-        size = s;
-        arr = new int[size];
-        top = -1;
-    }
-
-    void push(int val)
-    {
-        if (size - top > 1)
-        {
-            top++;
-            arr[top] = val;
+class stacks{
+    private:
+		int top,size;
+	public:
+		int *arr;
+		stacks():top(-1),size(0),arr(nullptr){}
+		stacks(int s):top(-1),size(s){
+			arr = new int[size];
+			for(int i=0;i<size;i++)
+				arr[i]=0;
+		}
+        int getSize(){ return size; }
+		void push(int e){
+			if(top>=(size-1)){
+				cout<<"Stack overflow occured!"<<endl;
+				return;
+			}
+			arr[++top] = e;
+		}
+		int pop(){
+			if(top<0){
+				cout<<"Stacks underflow occured!"<<endl;
+				return -1;
+			}
+			int last = arr[top--];
+			return last;
+		}
+		int peek(){
+			if(top < 0){
+				cout<<"Stack is Empty";
+				return 0;
+			} else{
+				int x = arr[top];
+				return x;
+			}
+		}
+        void display(){
+            if(isEmpty()){
+                cout<<"Stack is empty!"<<endl;
+                return;
+            }
+            for(int i=0;i<=top;i++)
+                cout<<arr[i]<<" ";
+            cout<<endl;
         }
-        else
-        {
-            cout << "Stack is FULL " << endl;
-        }
-    }
-    void pop()
-    {
-        if (top >= 0)
-        {
-            top--;
-        }
-        else
-        {
-            cout << "Stak undeflow" << endl;
-        }
-    }
-
-    int peek()
-    {
-        if (top >= 0 && top < size)
-        {
-            return arr[top];
-        }
-        else
-        {
-            cout << "Stack empty" << endl;
-            return -1;
-        }
-    }
-
-    bool empty()
-    {
-        return top < 0;
-    }
+		bool isEmpty(){ return (top<0); }
+		~stacks(){ delete[] arr; }
 };
 
-class Queue
-{
-    int *qarr;
+class queue{
+    int *arr;
     int size;
     int rear;
     int front;
-
 public:
-    Queue(int s)
-    {
-        size = s;
-        qarr = new int[size];
-        rear = 0;
-        front = 0;
-    }
-
-    void enqueue(int val)
-    {
-        if (rear == size)
-        {
-            cout << "Queue FULL " << endl;
-        }
-        else
-        {
-            qarr[rear] = val;
-            rear++;
-        }
-    }
-
-    void dequeue()
-    {
-        if (rear == front)
-        {
-            cout << " Queuue Empty " << endl;
-        }
-        else
-        {
-            front++;
-            if (front == rear)
-            {
-                front = 0;
-                rear = 0;
+    queue():front(-1),rear(-1),size(0),arr(nullptr){}
+		queue(int s):front(-1),rear(-1),size(s){
+			arr = new int[size];
+			for(int i=0;i<size;i++)
+				arr[i]=-1;
+		}
+		void enqueue(int q){
+			if(isFull()){
+				cout<<"Queue is full!"<<endl;
+				return;
+			}
+            else if(isEmpty())
+                front = rear = 0;
+            else
+                rear++;
+			arr[rear]=q;
+		}
+		void dequeue(){
+			if(isEmpty()){
+                cout<<"Queue is empty!"<<endl;
+                return;
             }
+            else if(front == rear)
+                front = rear = -1;
+            else
+                front++;
+		}
+		bool isEmpty(){
+			if(front==-1 || front>rear)
+				return true;
+			return false;
+		}
+        bool isFull(){
+            if(rear==size-1)
+                return true;
+            return false;
         }
-    }
-
-    int top()
-    {
-        return qarr[front];
-    }
-
-    bool empty()
-    {
-        return front == rear;
-    }
+        int peek(){ return arr[front]; }
+        
+		~queue(){ delete[] arr; }
 };
+void reverseByQueue(stacks &s){
+    queue q(s.getSize());
+    while (!s.isEmpty()){
+        q.enqueue(s.peek());
+        s.pop();
+    }
 
+    while (!q.isEmpty()){
+        s.push(q.peek());
+        q.dequeue();
+    }
+}
 int main()
 {
-    Stack s1(4);
-    s1.push(40);
-    s1.push(30);
-    s1.push(20);
-    s1.push(10);
-    
-    Queue q1(4);
-
-    while (!s1.empty())
-    {
-        q1.enqueue(s1.peek());
-        s1.pop();
-    }
-
-    while (!q1.empty())
-    {
-        s1.push(q1.top());
-        q1.dequeue();
-    }
-
-    while (!s1.empty())
-    {
-        cout << s1.peek() << " ";
-        s1.pop();
-    }
+    int s;
+	cout<<"Enter size of stack: ";
+	cin>>s;
+	stacks flex(s);
+	int e;
+	cout<<"Enter "<<s<<" elements:"<<endl;
+	for(int i=0;i<s;i++){
+		cin>>e;
+		flex.push(e);
+	}
+    cout<<"Elements in stack: "<<endl;
+    flex.display();
+    reverseByQueue(flex);
+    cout<<endl<<"After reversing using queue:"<<endl;
+    flex.display();
 }
