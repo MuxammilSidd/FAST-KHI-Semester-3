@@ -1030,7 +1030,64 @@ void mergeSort(int a[], int beg, int end)   //Merge sort on array
         mergeSort(a, mid + 1, end);  
         merge(a, beg, mid, end);  
     }  
-}  
+}
+
+void bubbleSort(int arr[] , int size) {
+    for (int i=0;i<size;i++) {
+        for (int j=0;j<size-1-i;j++) {
+            if (arr[j]>arr[j+1]) {
+                //swap
+                int temp = arr[j];
+                arr[j] = arr[j + 1];
+                arr[j + 1] = temp;
+            }
+        }
+    }
+}
+void selectionSort(int arr[] , int size) {
+    for (int i=0;i<size-1;i++) {
+        int lowest=arr[i];
+        int lowest_index=i;
+        for (int j=i+1;j<size;j++) {
+            if (arr[j]<lowest) {
+                lowest =arr[j];
+                lowest_index=j;
+            }
+        }
+        // swap
+                int temp = arr[i];
+                arr[i] = arr[lowest_index];
+                arr[lowest_index] = temp;
+    }
+}
+void insertionSort(int arr[] , int size) {
+    for (int i=1;i<size;i++) {
+        int j = i-1;
+        int key=arr[i];
+        while (j>=0 && arr[j]>key)
+        {
+            arr[j+1]=arr[j];
+            j--;
+        }
+        arr[j+1]=key;
+    }
+}
+
+void shellSort(int myarr[], int n1) {
+    for (int gap = n1/2; gap > 0; gap /= 2) {
+        for(int j = gap;j<n1;j++){
+            int temp = myarr[j];
+            int res = j;
+
+            while(res>=gap && myarr[res-gap]>temp){
+                myarr[res] = myarr[res-gap];
+                res-=gap;
+            }
+            myarr[res] = temp;
+        }
+    }
+}
+
 //-----------------------------------------------------------------------------------------------------------//
 
 int main() {
