@@ -1,0 +1,1526 @@
+----------------------------------------------------------------------Lab06---
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	first BYTE 0
+	second BYTE 1
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+movzx eax, first
+call writedec
+call crlf
+movzx eax, second
+call writedec
+call crlf
+
+mov ecx, 8
+mov eax, 0
+fib:
+	mov bl, first
+	add bl, second
+	movzx eax , bl
+	call writedec
+	call crlf
+	mov al , second
+	mov first , al
+	mov second, bl
+loop fib
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+	       ----Part I----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	sym BYTE 1
+	i DWORD ?
+	j DWORD 1
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+outer:
+	mov i , ecx
+	mov ecx, j
+
+	inner:
+		movzx eax, sym
+		call writeDec
+	loop inner
+
+	inc j
+	mov ecx, i
+	call crlf
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part II----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	sym BYTE 1
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+outer:
+	mov i , ecx
+	mov ecx, j
+
+	inner:
+		movzx eax, sym
+		call writeDec
+	loop inner
+
+	dec j
+	mov ecx, i
+	call crlf
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part III----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+mov eax, 0
+
+outer:
+	mov i , ecx
+	mov ecx , j
+	mov eax , 4
+
+	inner:
+		call writedec
+		dec eax
+	loop inner
+
+	call crlf
+	dec j
+	mov ecx, i
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part IV----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+mov eax, 0
+
+outer:
+	mov i , ecx
+	mov ecx , j
+	mov eax , 1
+
+	inner:
+		call writedec
+		inc eax
+	loop inner
+
+	call crlf
+	dec j
+	mov ecx, i
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	req1 BYTE "Enter ID: ", 0
+	req2 BYTE "Enter Name: ", 0
+	req3 BYTE "Enter Year of Birth: ", 0
+	req4 BYTE "Enter Annual Salary: ", 0
+	wID BYTE "ID: ", 0
+	wName BYTE "Name: ", 0
+	wYear BYTE "Year of Birth: ", 0
+	wAnnual BYTE "Annual Salary: ", 0
+	wTotal BYTE "Total Salary: ", 0
+    heading BYTE "Employees Data: ",0
+	id DWORD 5 DUP(?)
+	names BYTE 5 DUP(30 DUP(?))
+	year DWORD 5 DUP(?)
+	salary DWORD 5 DUP(?)
+	index DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, 5
+mov esi, 0
+
+l1:
+    mov index, ecx  
+    mov edx, OFFSET req1
+    call WriteString
+    call ReadInt
+    mov id[esi*4], eax
+
+    mov edx, OFFSET req2
+    call WriteString
+    mov edi, esi
+    mov eax, 30
+    mul edi
+    mov edx, OFFSET names
+    add edx, eax
+    mov ecx, 30
+    call ReadString
+
+    mov edx, OFFSET req3
+    call WriteString
+    call ReadInt
+    mov year[esi*4], eax
+
+    mov edx, OFFSET req4
+    call WriteString
+    call ReadInt
+    mov salary[esi*4], eax
+    call crlf
+
+    inc esi
+    mov ecx, index
+loop l1
+
+mov ecx, 5
+mov esi, 0
+mov edx, OFFSET heading
+call WriteString
+call crlf
+call crlf
+
+l2:
+    mov index , ecx
+
+    mov edx, OFFSET wID
+    call WriteString
+    mov eax, id[esi*4]
+    call Writedec
+    call crlf
+    mov edx, OFFSET wName
+    call WriteString
+    mov edi, esi
+    mov eax, 30
+    mul edi
+    mov edx, OFFSET names
+    add edx, eax
+    call WriteString
+    call crlf
+    mov edx, OFFSET wYear
+    call WriteString
+    mov eax, year[esi*4]
+    call Writedec
+    call crlf
+    mov edx, OFFSET wAnnual
+    call WriteString
+    mov eax, salary[esi*4]
+    call Writedec
+    call crlf
+    call crlf
+    inc esi
+
+    mov ecx, index
+    dec ecx
+jnz l2
+
+mov edx, OFFSET wTotal
+call WriteString
+call crlf
+mov ecx, 5
+mov esi, 0
+mov eax,0
+
+l3:
+    add eax,salary[esi*4]
+    inc esi
+loop l3
+
+call writedec
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	source BYTE "0 1 2 3 4 5 6 7 8 9 ",0
+	target BYTE SIZEOF source DUP(?)
+	ws BYTE "Source:",0
+	wt BYTE "Target:",0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov esi, OFFSET source
+mov edi, OFFSET target
+l1:
+	mov al, BYTE PTR [esi]
+	mov BYTE PTR [edi], al
+	inc esi
+	inc edi
+	cmp al, 0
+jne l1
+
+mov edx, OFFSET ws
+call WriteString
+call crlf 
+mov edx, OFFSET source
+call WriteString
+call crlf
+mov edx, OFFSET wt
+call WriteString
+call crlf 
+mov edx, OFFSET target
+call WriteString
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	integers DWORD 10 DUP(?)
+	req BYTE "Enter 10 integers: ",0
+	wOriginal BYTE "Original: ",0
+	wReversed BYTE "Reversed: ",0
+	space BYTE " "
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, LENGTHOF integers
+mov esi, OFFSET integers
+mov edx, OFFSET req
+call WriteString
+call crlf
+
+read:
+	call readint
+	mov [esi], eax
+	add esi, TYPE integers
+loop read
+
+call crlf
+mov edx, OFFSET wOriginal
+call WriteString
+call crlf
+mov ebx, OFFSET integers
+mov ecx, LENGTHOF integers
+mov edx, OFFSET space
+
+printOriginal:
+	mov eax, [ebx]
+	call WriteDec
+	call WriteString
+	add ebx, TYPE integers
+loop printOriginal
+
+call crlf
+mov edi, OFFSET integers
+mov ecx, LENGTHOF integers/2
+mov esi, OFFSET integers
+add esi, TYPE integers * (LENGTHOF integers  - 1)
+
+reverse:        
+	mov eax, [edi]
+	mov ebx, [esi]
+	xchg eax, ebx
+
+	mov [edi], eax
+	mov [esi], ebx
+
+	add edi, TYPE integers
+	sub esi, TYPE integers
+loop reverse
+
+mov edx, OFFSET wReversed
+call WriteString
+call crlf
+mov ebx, OFFSET integers
+mov ecx, LENGTHOF integers
+mov edx, OFFSET space
+
+printReversed:
+	mov eax, [ebx]
+	call WriteDec
+	call WriteString
+	add ebx, TYPE integers
+loop printReversed
+
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	nums DWORD 8,5,6,1,2
+	i DWORD ?
+	j DWORD ?
+    space BYTE " ",0
+    before BYTE "Before sorting:",0
+    after BYTE "After sorting:",0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, LENGTHOF nums  
+mov i, eax           
+DEC i                
+mov ecx, eax
+mov edx, OFFSET before
+call WriteString
+call crlf
+mov esi, OFFSET nums     
+mov ecx, LENGTHOF nums   
+mov edx, OFFSET space
+
+original:
+    mov eax, [esi]            
+    call WriteDec             
+    call WriteString                 
+    add esi, TYPE DWORD    
+loop original 
+mov edx, OFFSET space
+
+outer:
+    mov esi, OFFSET nums    
+    mov ebx, i
+    mov j, ebx
+
+    inner:
+        mov eax, [esi]
+        mov ebx, [esi+4]    
+        cmp eax, ebx          
+        jbe skip           
+
+        mov [esi], ebx       
+        mov [esi+4], eax   
+
+        skip:
+        add esi, 4            
+        DEC j             
+    jnz inner                
+    DEC i                 
+jnz outer                   
+
+call crlf
+mov edx, OFFSET after
+call WriteString
+call crlf
+mov esi, OFFSET nums     
+mov ecx, LENGTHOF nums   
+mov edx, OFFSET space
+
+print:
+    mov eax, [esi]            
+    call WriteDec             
+    call WriteString                 
+    add esi, TYPE DWORD    
+loop print  
+
+call crlf
+exit
+main ENDP
+END main
+
+----------------------------------------------------------------------Patterns-------
+
+1)DIAMOND
+
+      *
+    *   *
+   *     *
+  *       *
+ *         *
+  *       *
+   *     *
+    *   *
+      *
+
+
+include irvine32.inc
+.data
+
+star BYTE "* ",0
+space BYTE " ",0
+OuterSpace DWORD 4
+innerSpace DWORD 2
+rows DWORD 4
+
+OutwardSpace DWORD 2
+inwardSpace DWORD 6
+
+downRows DWORD 3
+
+
+.code
+main PROC
+
+mov ecx,6
+Lfirst:  
+   mov edx, OFFSET Space
+   call writeString
+LOOP Lfirst
+
+mov edx, OFFSET star
+call writeString
+
+call crlf
+    
+
+mov ecx, 4
+L1:
+   
+  ;outer
+  mov ecx, OuterSpace
+  L2:
+    mov edx, OFFSET space
+    call writeString
+  LOOP L2
+
+  ;print
+  mov edx, OFFSET star
+  call writeString
+
+  ;inner Space
+  mov ecx, innerSpace 
+  L3:
+     mov edx, OFFSET space
+     call writeString
+  LOOP L3
+
+  ;print
+  mov edx, OFFSET star
+  call writeString
+
+  call crlf
+
+  DEC OuterSpace
+  add innerSpace, 2
+  mov ecx, rows
+  DEC rows
+
+LOOP L1
+
+
+mov ecx, 3
+L4:
+  
+  ;outward
+  mov ecx, OutwardSpace
+  L5:
+    mov edx, OFFSET space
+    call writeString
+    LOOP L5
+  
+  ;print
+  mov edx, OFFSET star
+  call writeString
+
+  ;inward
+  mov ecx, inwardSpace
+  L6:
+    mov edx, OFFSET space
+    call writeString
+    LOOP L6
+
+     ;print
+  mov edx, OFFSET star
+  call writeString
+   call crlf
+  INC OutwardSpace
+  sub inwardSpace , 2
+
+  mov ecx, downRows
+  dec downRows
+
+  LOOP L4
+
+
+
+  mov ecx,6
+Lsecond:  
+   mov edx, OFFSET Space
+   call writeString
+LOOP Lsecond
+
+mov edx, OFFSET star
+call writeString
+
+exit
+main ENDP
+END main
+
+
+
+2)
+
+* * * *
+  * * *
+    * *
+      *
+
+
+
+include irvine32.inc
+.data
+
+star BYTE "*",0
+space BYTE " ",0
+
+countSp DWORD 1
+countSt DWORD 4
+rows DWORD 4
+
+.code
+main PROC
+
+mov ecx, 4
+L1:
+  
+   ;space
+   mov ecx, countSp
+   L2:
+     mov edx, OFFSET space
+     call writeString
+   LOOP L2
+
+   ;stars
+   mov ecx, countSt
+   L3:
+     mov edx, OFFSET star
+     call writeString
+    LOOP L3
+    call crlf
+    inc countsp
+    dec countst
+
+    mov ecx, rows
+    dec rows
+LOOP L1
+
+     
+exit
+main ENDP
+END main
+
+
+
+3)
+
+* * * *
+*     *
+*     *
+* * * *
+
+
+include irvine32.inc
+.data
+
+countMiddle DWORD 2
+count DWORD 0
+counter DWORD 4
+space BYTE "  ",0
+star BYTE "* ",0
+
+.code
+main PROC
+
+mov ecx, 4
+L1:
+  
+  mov edx, OFFSET star
+  call writeString
+  LOOP L1
+  call crlf
+
+
+mov ecx, countMiddle
+
+L2:
+	mov edx, OFFSET star 
+	call writeString  
+
+	mov ecx, 2
+	L3:
+	  mov edx, OFFSET space
+	  call writeString
+
+	LOOP L3
+
+	  mov edx, OFFSET star
+	  call writeString
+	  
+	  call crlf
+	  mov ecx, countMiddle
+	  DEC countMiddle
+ 
+ LOOP L2
+
+
+ mov ecx, 4
+ L4:
+  mov edx, OFFSET star
+  call writeString
+  LOOP L4
+
+
+exit
+main ENDP
+END main 
+
+
+
+
+4)
+
+
+*
+* *
+* * *
+* * * *
+* * *
+* *
+*
+
+
+;Pattern
+
+Include irvine32.inc
+.data
+count DWORD 4
+star DWORD 1
+count1 DWORD 3
+star1 DWORD 3
+mystr BYTE "* ",0
+.code
+main PROC
+mov ecx, 4
+
+L1:
+   
+   mov ecx, star
+   mov edx, OFFSET mystr
+   L2:
+     call writeString
+     LOOP L2
+
+     mov ecx, count
+     DEC count
+     call crlf
+     inc star
+
+   LOOP  L1
+
+
+mov ecx, count1
+L3:
+   
+   mov ecx, star1
+   mov edx, OFFSET mystr
+
+   L4:
+     call writeString
+     LOOP L4
+  
+  call crlf
+  DEC star1
+
+  mov ecx, count1
+    DEC count1
+
+    LOOP L3
+
+
+   ex:
+exit
+main ENDP
+END main
+
+
+
+6) PYRAMID
+   
+    1
+   333
+  55555
+ 7777777
+
+include irvine32.inc
+.data
+count DWORD 4
+count1 DWORD 1
+mystr1 BYTE " ", 0
+
+.code
+main PROC
+    mov ecx, count   
+    mov ebx, count   
+
+L1:
+  
+    mov edx, OFFSET mystr1  
+    mov esi, ebx            
+
+L2:    ;Space
+    call writeString        
+    dec esi                 
+    cmp esi, 0              
+    jnz L2                  
+
+ 
+     ;numbers
+    mov eax, count1        
+    mov ecx, count1        
+
+L3:
+    call writeDec         
+    loop L3
+    
+    call crlf
+    sub ebx, 1              
+    cmp ebx, 0              
+    jle triangle            
+
+    add count1, 2           
+    mov ecx, count          
+
+    jmp L1                  
+
+triangle:
+exit      
+main ENDP
+END main
+
+
+7)
+DOWNWARD ARROW
+
+
+  8888
+  8888
+  8888
+  8888
+ 9999999
+  99999
+   999
+    9
+
+
+;6)  PATTERN     Arrow Downward
+   INCLUDE Irvine32.inc
+
+.data 
+count1 DWORD 4
+count DWORD 7
+mystr1 byte " ",0
+
+.code 
+main PROC
+
+mov ecx,4
+mov eax,8
+
+L1:
+
+call crlf
+mov edx,offset mystr1
+call writestring
+mov edx, OFFSET mystr1
+call writeString
+mov ebx,ecx
+mov ecx,count1
+
+L2:
+	call writedec            ;upper straight Part
+	loop L2
+	MOV ecx,ebx
+	LOOP L1   
+
+
+	mov eax,9                     
+	mov ecx,4                     
+	mov ebx,1
+
+	; lower triangle
+L3:
+	call crlf                     
+	mov edx,offset mystr1         
+	mov esi,ebx                   
+
+L4:
+	call writestring              
+	dec esi
+	cmp esi, 0
+	jg L4
+
+	mov edx,9                     
+	mov ecx,count                 
+L5:
+	call writedec                 
+	loop L5 
+	
+	add ebx,1                     
+	sub count,2                   
+	cmp count,0                   
+	jle triangle             
+	mov ecx,4 
+	
+  LOOP L3                       
+
+triangle:
+exit                          
+main ENDP 
+END main
+
+
+
+8)
+Right Traingel
+
+Include irvine32.inc
+.data
+
+msg BYTE '*',0
+loop1 DWORD ?
+X BYTE  ?
+count DWORD 1
+
+
+.code
+main PROC
+
+mov eax, 4  ;number of rows
+mov ecx, eax
+
+L1:
+
+  mov loop1 , ecx
+  mov ecx, count
+  
+  L2:
+   mov edx , OFFSET msg
+   call writestring
+   LOOP L2
+
+   inc count
+   mov ecx, loop1
+   call crlf
+
+   LOOP L1
+
+
+exit
+main ENDP
+END main
+
+
+-------------------------
+
+
+----------------------------------------------------------if else in assembly-----
+include irvine32.inc
+.data
+x sdword 4
+y sdword 3
+strr byte "wronginput", 0
+str1 byte "if in",0
+str2 byte "if outtttt",0
+.code
+main PROC
+
+ifout:
+mov eax,x
+cmp eax,y
+jl elseout
+
+jmp ifin
+
+ifin:
+cmp eax,x
+cmp eax,y
+jg elsein
+
+mov edx, OFFSET str1
+call WriteString
+jmp endd
+
+elsein:
+mov edx, OFFSET str2
+call WriteString
+jmp endd
+
+elseout:
+mov edx, OFFSET strr
+call WriteString
+jmp endd
+
+endd:
+exit
+main ENDP
+END main
+---------------------------------------------------------------------
+
+------------------------------------------------------------Lab05---------------------------------------------------------
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	var1 SDWORD 8000
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+add var1,1
+mov eax, var1
+call DumpRegs
+
+exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	var1 SDWORD 8000
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ax,7FF0h		; CF=0  SF=0  ZF=1  OF=0
+add al,10h		; CF=1  SF=0  ZF=1  OF=0	
+add ah,1		; CF=0  SF=1  ZF=0  OF=1
+add ax,2		; CF=0  SF=1  ZF=0  OF=0
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	arr BYTE 61,43,11,52,25
+	arrTemp BYTE 5 DUP(?)
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov al, [arr+2]
+mov [arrTemp], al
+
+mov al, [arr+4]
+mov [arrTemp+1], al
+
+mov al, [arr+1]
+mov [arrTemp+2], al
+
+mov al, [arr+3]
+mov [arrTemp+3], al
+
+mov al, [arr+0]
+mov [arrTemp+4], al
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+; If the declared array was of WORD size, then while addressing each element
+; we will have to increment by 2 bytes accordingly. Eg: the third index can be accessed as
+; [wArray+4]
+
+; If the declared array was of DWORD size, then while addressing each element
+; we will have to increment by 4 bytes accordingly. Eg: the third index can be accessed as
+; [dArray+8]
+
+---------------------Q4--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	arrayB BYTE 10,20,30
+	arrayW WORD 150,250,350
+	arrayD DWORD 600,1200,1800
+	sum1 DWORD 0
+	sum2 DWORD 0
+	sum3 DWORD 0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+
+movzx eax, [arrayB]
+add ax, [arrayW]
+add eax, [arrayD]
+mov sum1, eax
+
+movzx eax, [arrayB+1]
+add ax, [arrayW+2]
+add eax, [arrayD+4]
+mov sum2, eax
+
+movzx eax, [arrayB+2]
+add ax, [arrayW+4]
+add eax, [arrayD+8]
+mov sum3, eax
+
+mov eax, sum1
+mov ebx, sum2
+mov ecx, sum3
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+	array1 BYTE 10,20,30,40
+	array2 BYTE 4 DUP(?)
+    arrSize BYTE 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov esi, OFFSET array1
+add esi, 3
+mov al, [esi]
+mov edi, OFFSET array2
+mov [edi], al
+
+DEC esi
+mov al, [esi]
+INC edi 
+mov [edi], al
+
+DEC esi
+mov al, [esi]
+INC edi
+mov [edi], al
+
+DEC esi
+mov al, [esi]
+INC edi
+mov [edi], al
+
+mov al, [array2]
+mov bl, [array2+1]
+mov cl, [array2+2]
+mov dl, [array2+3]
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+    array DWORD 2001, 2005, 2024, 2077, 2100
+    res DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx, 0
+
+mov esi, OFFSET array
+mov eax, [esi]
+mov ebx, [esi+4]
+sub eax, ebx
+
+mov ebx, [esi+8]
+sub eax, ebx
+
+mov ebx, [esi+12]
+sub eax, ebx
+
+mov ebx, [esi+16]
+sub eax, ebx
+
+mov res, eax
+call DumpRegs           
+exit
+main ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Fifth Lab Tasks (Lab05.asm)
+INCLUDE Irvine32.inc
+.data
+    arrayB BYTE 60, 70, 80
+    arrayW WORD 150, 250, 350
+    arrayD DWORD 600, 1200, 1800
+    first DWORD ?
+    last DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx, 0
+
+mov esi, 0
+mov al, arrayB[esi*TYPE arrayB]
+add ax, arrayW[esi*TYPE arrayW]
+add eax, arrayD[esi*TYPE arrayD]
+mov first, eax
+
+mov eax, 0
+mov esi, 2
+mov al, arrayB[esi*TYPE arrayB]
+add ax, arrayW[esi*TYPE arrayW]
+add eax, arrayD[esi*TYPE arrayD]
+mov last, eax
+
+mov eax, first
+mov ebx, last
+call DumpRegs           
+exit
+main ENDP
+END main
+----------------------------------------------------------------------------------------
+
+------------------------------------Fibonacci-------------------------------------------------------
+INCLUDE Irvine32.inc
+
+.data 
+fibo Byte 10 DUP(0)
+
+.code
+main PROC
+mov esi,0
+mov ecx,10
+L1:
+cmp esi,0
+je ONE
+cmp esi,1
+je ONE
+mov bl,fibo[esi-1]
+add bl,fibo[esi-2]
+mov fibo[esi],bl
+movsx eax,bl
+call Writeint
+call crlf
+inc esi
+loop L1
+jmp ENDD
+ONE:
+mov fibo[esi],1
+inc esi
+mov eax,1
+dec ecx
+call Writeint
+call crlf
+jmp L1
+ENDD:
+exit
+main ENDP
+end main
+-----------------------------------------------------------------------------
+
+-----------------------------------------------------Right arrow---------------------------------------------------------
+INCLUDE Irvine32.inc
+
+.data 
+Star byte '*'
+EmptySpace byte "    ",0
+LineOfStar byte "****",0
+temp Dword ?
+temp2 Dword ?
+
+.code
+main PROC
+mov bl,0
+mov bh,1
+mov dl,0
+
+mov ecx,7
+Func:
+call First
+Back1:
+call Second
+Back2:
+call crlf
+Loop Func
+jmp Endd
+
+
+
+
+
+Second:
+MOV temp,ecx
+movzx ecx,bh
+PrintStar:
+mov al,Star
+call WriteChar
+Loop PrintStar
+mov ecx,temp
+inc dl
+cmp dl , 3
+jle VarInc
+jmp VarDec
+
+VarInc:
+inc bh
+jmp Back2
+VarDec:
+dec bh
+jmp Back2
+
+
+
+
+
+First:
+cmp bl,7
+je Back1
+cmp bl,1
+jle Empty
+cmp bl,4
+jg	Empty
+jmp Line
+
+Line:
+mov temp2,edx
+mov edx,offset LineOfStar
+inc bl
+call WriteString
+mov edx,temp2
+jmp Back1
+
+Empty:
+mov temp2,edx
+mov edx,offset EmptySpace
+inc bl
+call WriteString
+mov edx,temp2
+jmp Back1
+
+
+EnDD:
+exit
+main ENDP
+end main
+------------------------------------------------------------------------------------
+
+-------------------------------------------Hollow diamond---------------------------------------------------
+INCLUDE Irvine32.inc
+
+.data 
+Empty Byte " ",0
+OutterEmptySpace Dword 6
+InnerEmptySpace Dword 3
+Count Byte 0
+Temp Dword 0
+.code
+main PROC
+mov ecx,9
+Func:
+call PrintLine
+Back:
+call crlf
+Loop Func
+jmp ENdd
+
+
+
+PrintLine:
+cmp OutterEmptySpace,5
+je lab2
+Back2:
+mov temp,ecx
+add Count,1
+mov ecx, OutterEmptySpace
+mov edx,offset Empty
+PrintLine1:call WriteString
+Loop PrintLine1
+mov al,'*'
+call WriteChar
+cmp OutterEmptySpace,6
+je lab
+cmp count,5
+jge valInc
+sub OutterEmptySpace,1
+mov ecx,InnerEmptySpace
+PrintLine2:call WriteString
+Loop PrintLine2
+add InnerEmptySpace,2
+call WriteChar
+mov ecx,temp
+jmp Back
+
+valInc:
+add OutterEmptySpace,1
+mov ecx,InnerEmptySpace
+PrintLine3:call WriteString
+Loop PrintLine3
+sub InnerEmptySpace,2
+call WriteChar
+mov ecx,temp
+jmp Back
+
+lab:
+sub OutterEmptySpace,2
+mov ecx,temp
+jmp Back
+
+lab2:
+mov OutterEmptySpace,6
+jmp Back2
+
+EnDD:
+exit
+main ENDP
+end main
+------------------------------------------------------------------------------------------
+
+--------------------------------------------Lower triangle right 1s---------------------------------------------------------------
+INCLUDE Irvine32.inc
+
+.data 
+Star Byte "*",0
+Empty Byte " ",0
+StarCount Dword 4
+EmptyCount Dword 0
+temp Byte 4
+.code
+main PROC
+
+
+Func:
+mov ecx,EmptyCount
+cmp ecx,0
+je second
+mov al,Empty
+PrintEmpty:
+call WriteChar
+Loop PrintEmpty
+
+Second:
+mov ecx,StarCount
+cmp ecx,0
+je endd
+mov al,Star
+PrintStar:
+call WriteChar
+Loop PrintStar
+dec StarCount
+inc EmptyCount
+call crlf
+movzx ecx,temp
+loop Func
+
+EnDD:
+exit
+main ENDP
+end main
+-------------------------------------------------------------------------------------------------
