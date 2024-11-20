@@ -1,0 +1,268 @@
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+	original WORD 10h,20h,30h,40h,50h,60h,70h,80h,90h,100h
+	copied WORD 10 DUP(?)
+	msg BYTE "Copied Array: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov ecx, (LENGTHOF original)-1
+	mov esi, OFFSET original
+	mov edi, OFFSET copied
+
+L1:
+	push [esi]
+	add esi, TYPE original
+	pop [edi]
+	add edi, TYPE copied
+loop L1
+
+	mov edx, OFFSET msg
+	call writestring
+	call crlf
+	mov ecx, LENGTHOF copied
+	mov esi, OFFSET copied
+
+L2:
+	mov ax, [esi]
+	call writehex
+	call crlf
+	add esi, TYPE copied
+loop L2
+
+	exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+	input BYTE "Enter a number for addition: ",0
+	ans DWORD 0
+	result BYTE "Sum : ",0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov ecx, 3
+L1:
+  mov edx, OFFSET input
+  call writeString
+  call readint
+  PUSH eax
+LOOP L1
+
+mov ecx, 3
+L2:
+  pop eax
+  add ans, eax
+LOOP L2
+
+call crlf
+mov eax, ans
+mov edx, OFFSET result
+call writeString
+call writedec
+
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+	array1 DWORD 1h,2h,3h,4h,5h
+    array2 DWORD 6h,7h,8h,9h,0Ah
+    result DWORD ?
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov ecx, LENGTHOF array1     
+    mov esi, OFFSET array1       
+    mov edi, OFFSET array2        
+    call sum1                     
+    mov eax, result                
+    call writeint            
+exit                          
+main ENDP
+
+sum1 PROC
+    PUSH edi                       
+    PUSH ecx
+    mov eax, 0                     
+L1:
+    add eax, [esi]                 
+    add esi, TYPE array1           
+LOOP L1                        
+
+    POP ecx                       
+    POP edi
+    call sum2                    
+    ret
+sum1 ENDP
+
+sum2 PROC
+    mov ebx, 0                     
+L2:
+    add ebx, [edi]                
+    add edi, TYPE array2          
+LOOP L2                        
+
+    call sum3                     
+    ret
+sum2 ENDP
+
+sum3 PROC
+    add eax, ebx                  
+    mov result, eax               
+    ret
+sum3 ENDP
+
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+    col DWORD ?
+    input BYTE "Enter number of coloumns: ",0
+    space BYTE " ", 0
+    star BYTE "*", 0
+    count DWORD 1
+    counter DWORD ?
+.code
+main PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    mov col, eax  
+    mov eax, col
+    mov counter, eax
+    call pattern                
+
+exit
+main ENDP
+
+pattern PROC
+    mov ecx, col
+L1:
+    mov eax, counter            
+    L2:
+        mov edx, OFFSET space
+        call writeString
+        dec eax
+        jnz L2                      
+        mov eax, count              
+    L3:
+        mov edx, OFFSET star
+        call writeString
+        dec eax
+        jnz L3                      
+
+        call crlf                   
+        inc count                   
+        dec counter                 
+loop L1                     
+
+    ret
+pattern ENDP
+
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+    col DWORD ?
+    input BYTE "Enter number of coloumns: ",0
+	alphabets DWORD 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    count DWORD 1
+.code
+main PROC
+call Pattern
+exit
+main ENDP
+
+Pattern PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    mov col, eax
+    mov esi, 0
+
+    mov ecx, col
+    L1:
+      PUSH ecx
+      mov ecx, count
+      L2: 
+         mov eax, alphabets[esi]
+         call writechar
+         add esi, 4
+      LOOP L2
+
+       inc count
+       call crlf
+       POP ecx
+    LOOP L1
+
+    ret
+Pattern ENDP
+
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+    count DWORD 1
+    input BYTE "Enter n: ",0
+    result BYTE "Sum of elements 1 to n = ",0
+.code
+main PROC
+call sumToN
+
+exit
+main ENDP
+
+sumToN PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    mov ecx, eax
+    mov eax, 0
+    L1:
+       add eax, count
+       inc count
+    LOOP L1
+
+    call crlf
+    mov edx, offset result
+    call writestring
+    call writedec
+    ret
+sumToN ENDP
+
+END main

@@ -135,12 +135,15 @@ pata chale toh mujhe bhi bata dena pls
 
 ### 📌 Discrete Structures:
 🔗 Useful Youtube Playlists:
+- [Discrete Math I by Kimberly Brehm](https://www.youtube.com/playlist?list=PLl-gb0E4MII28GykmtuBXNUNoej-vY5Rz) - Chapter#01-10 (Following Discrete Mathematics & its Applications Rosen 8th Ed.)
+- [Discrete Math II by Kimberly Brehm](https://www.youtube.com/playlist?list=PLl-gb0E4MII0sGLCJeqDB3y63HZ6lM5LJ) - Chapter#05,06,08,10,11 (Following Discrete Mathematics & its Applications Rosen 8th Ed.)
 - [Discrete Mathematics by Neso Academy](https://youtube.com/playlist?list=PLBlnK6fEyqRhqJPDXcvYlLfXPh37L89g3&si=Al3cARiQj0DoN0lT)
 - [Discrete Structures by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOduWhQPbEwLN2ULKMqgQ44m)
 - [Discrete Mathematics by Digital Debug](https://youtube.com/playlist?list=PL0P7Vq6rO59oKchppOBiTjNBxA1tuZ3ui&si=4d37435ZXwRppto0)
 
 🔗 Resources:
-- [Discrete Class Notes](https://www.math.wichita.edu/discrete-book/discrete-class-notes.html) 
+- [Discrete Class Notes](https://www.math.wichita.edu/discrete-book/discrete-class-notes.html)
+- [Discrete Full Course Slides & Problem Sets by Imdad Ullah Khan](https://web.lums.edu.pk/~imdad/cs210.html) - Topic wise slides by Sir Imdad Ullah Khan (LUMS)
 
 ---
 

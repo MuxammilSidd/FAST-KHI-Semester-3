@@ -1,0 +1,424 @@
+23K2001 - Muzammil
+
+---------------------Q1--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	Num1 DWORD ?
+	Num2 DWORD ?
+	Num3 DWORD ?
+	Num4 DWORD ?
+	input BYTE "Enter a number: ", 0
+	equalmsg BYTE "All four numbers are equal.", 0
+	inequalmsg BYTE "These numbers are not equal.", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num1, eax
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num2, eax
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num3, eax
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num4, eax
+
+	mov eax, Num1
+	cmp eax, Num2
+	jne NotEqual
+	cmp eax, Num3
+	jne NotEqual
+	cmp eax, Num4
+	jne NotEqual
+
+	call Crlf
+	mov edx, OFFSET equalmsg
+	call WriteString
+	jmp done
+
+	NotEqual:
+		mov edx, OFFSET inequalmsg
+		call WriteString
+		call Crlf
+
+	done:
+	exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	intArr SWORD 0, 0, 0, 150, 120, 35, -12, 66, 4, 0
+	nonzero SWORD 0
+	msg BYTE "First non zero value in the given array is: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov esi, OFFSET intArr
+	mov ecx, LENGTHOF intArr
+find:
+	cmp WORD ptr[esi], 0
+	jne first
+	add esi, TYPE intArr
+
+	loop find
+	jmp done
+
+first:
+	mov ax, WORD ptr[esi]
+	mov nonzero, ax
+
+	mov edx, OFFSET msg
+	call WriteString
+	movzx eax, WORD ptr[nonzero]
+	call WriteInt
+
+done:
+exit
+
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	var DWORD ?
+	x DWORD ?
+	msg BYTE "x = ",0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+	mov var, 5
+	mov edx, var+1
+	mov ecx, 10
+
+	cmp var, ecx
+	jae elsego
+	cmp ecx, edx
+	jb elsego
+	mov x, 0
+	jmp done
+
+	elsego:
+		mov x, 1
+
+	done:
+		mov edx, offset msg
+		call writestring
+		mov eax, x
+		call writedec
+		call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	var DWORD ?
+	msg1 BYTE "Hello", 0
+	msg2 BYTE "World", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+	mov var, 0
+
+whileLoop:
+	cmp var, 10
+	ja done 
+
+	cmp var, 5
+	jae elsego
+	mov edx, OFFSET msg1
+	call WriteString
+	call Crlf
+	jmp iterate
+
+	elsego:
+		mov edx, OFFSET msg2
+		call WriteString
+		Call Crlf
+iterate:	
+		inc var
+		jmp whileLoop
+
+done:
+
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	arr WORD 10, 4, 7, 14, 299, 156, 3, 19, 29, 300, 20
+	n WORD ?
+	input BYTE "Enter a number to search: ", 0
+	present BYTE "Number is present in the array!", 0
+	absent BYTE "Number is not present in the array.", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov WORD Ptr[n], ax
+
+	mov esi, OFFSET arr
+	mov ecx, LENGTHOF arr
+
+search:
+	mov ax, n
+	cmp [esi], ax
+	je found
+	add esi, TYPE arr
+
+	loop search
+	jmp notFound
+
+found:
+	mov edx, OFFSET present
+	call WriteString
+	call Crlf
+	jmp done
+
+notFound:
+	mov edx, OFFSET absent
+	call WriteString
+	call Crlf
+
+done:
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	arr DWORD 10, 4, 7, 14, 299, 156, 3, 19, 29, 300, 20
+	unsorted BYTE "Original Array: ", 0
+	sorted BYTE "Sorted Array: ", 0
+	space BYTE " ", 0
+	temp DWORD ?
+	count DWORD ?
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET unsorted
+	call WriteString
+	mov ecx, LENGTHOF arr
+	mov esi, OFFSET arr
+
+	call displayArr
+
+	mov eax, LENGTHOF arr
+	mov count, eax
+	dec count
+	mov ecx, LENGTHOF arr - 1
+outer:
+	mov esi, OFFSET arr
+	mov edx, count
+	mov temp, edx
+
+	inner:
+		mov eax, [esi]
+		mov ebx, [esi+4]
+
+		cmp eax, ebx
+		jbe skip
+
+		mov [esi], ebx
+		mov [esi+4], eax
+
+		skip:
+			add esi, 4
+			dec temp
+			jnz inner
+	dec count
+	jnz outer
+
+	call Crlf
+	mov edx, OFFSET sorted
+	call WriteString
+	mov ecx, LENGTHOF arr
+	mov esi, OFFSET arr
+
+	call displayArr
+exit
+main ENDP
+
+displayArr PROC
+	L1:
+		mov eax, [esi]
+		call WriteDec
+		mov edx, OFFSET space
+		call WriteString
+		add esi, 4
+	loop L1
+	ret
+displayArr ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	WeekDays BYTE "Monday", 0, "Tuesday", 0, "Wednesday", 0, "Thursday", 0, "Friday", 0, "Saturday", 0, "Sunday", 0
+	n DWORD ?
+	input BYTE "Enter a number (1-7): ", 0
+	found BYTE "Equivalent weekday: ", 0
+	error BYTE "Invalid!", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+    call WriteString
+    call ReadInt
+    mov n, eax                 
+
+    cmp n, 1
+    jl Invalid                  
+    cmp n, 7
+    jg Invalid                   
+
+    dec n                      
+    mov ecx, n                 
+    mov esi, OFFSET WeekDays     
+
+search:
+    cmp ecx, 0
+    je print          
+    
+    next:
+        cmp BYTE PTR [esi], 0        
+        je skip
+        inc esi                      
+        jmp next
+    skip:
+        inc esi                      
+        dec ecx                     
+        jmp search
+
+    print:
+        mov edx, OFFSET found
+        call WriteString
+        mov edx, esi                
+        call WriteString
+        call Crlf
+        jmp done
+
+    Invalid:
+        mov edx, OFFSET error
+        call WriteString
+        call Crlf
+
+done:
+exit
+main ENDP
+END main
+
+---------------------Q8--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	Character BYTE ?
+	input BYTE "Enter a Character: ", 0
+	yes BYTE " : is an alphabet!", 0
+	no BYTE " : is not an alphabet.", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+	call WriteString
+	call ReadChar
+	call WriteChar
+	mov Character, al
+	call ReadChar
+	mov dl, Character
+	call WriteChar
+	call Crlf
+
+LowerCase:
+	mov al, Character
+	cmp al, 'a'
+	jl UpperCase
+	cmp al, 'z'
+	jle IsAlpha
+
+UpperCase:
+	cmp al, 'A'
+	jl NotAlpha
+	cmp al, 'Z'
+	jle IsAlpha
+
+NotAlpha:
+	mov dl, Character
+	call WriteChar
+	mov edx, OFFSET no
+	call WriteString
+	call Crlf
+	jmp done
+
+IsAlpha:
+	mov dl, Character
+	call WriteChar
+	mov edx, OFFSET yes
+	call WriteString
+	call Crlf
+
+done:
+exit
+main ENDP
+END main
