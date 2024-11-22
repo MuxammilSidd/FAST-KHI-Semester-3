@@ -2,423 +2,344 @@
 
 ---------------------Q1--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Nineth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	Num1 DWORD ?
-	Num2 DWORD ?
-	Num3 DWORD ?
-	Num4 DWORD ?
+.data
 	input BYTE "Enter a number: ", 0
-	equalmsg BYTE "All four numbers are equal.", 0
-	inequalmsg BYTE "These numbers are not equal.", 0
+	res BYTE "Product of inputted number with 25: ", 0
 .code
 	main PROC
 	mov eax, 0
-	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
-
-	mov edx, OFFSET input
-	call WriteString
-	call ReadInt
-	mov Num1, eax
-	mov edx, OFFSET input
-	call WriteString
-	call ReadInt
-	mov Num2, eax
-	mov edx, OFFSET input
-	call WriteString
-	call ReadInt
-	mov Num3, eax
-	mov edx, OFFSET input
-	call WriteString
-	call ReadInt
-	mov Num4, eax
-
-	mov eax, Num1
-	cmp eax, Num2
-	jne NotEqual
-	cmp eax, Num3
-	jne NotEqual
-	cmp eax, Num4
-	jne NotEqual
-
-	call Crlf
-	mov edx, OFFSET equalmsg
-	call WriteString
-	jmp done
-
-	NotEqual:
-		mov edx, OFFSET inequalmsg
-		call WriteString
-		call Crlf
-
-	done:
+	mov edx, offset input
+	call writestring
+	call readint
+	mov ecx, eax
+	shl eax, 4
+	mov edx, ecx
+	shl edx, 3
+	add eax,edx
+	add eax, ecx
+	call crlf
+	mov edx, offset res
+	call writestring
+	call writedec
+	call crlf
 	exit
 main ENDP
 END main
 
 ---------------------Q2--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Nineth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	intArr SWORD 0, 0, 0, 150, 120, 35, -12, 66, 4, 0
-	nonzero SWORD 0
-	msg BYTE "First non zero value in the given array is: ", 0
+.data
+	res BYTE "After expanding EBX: ", 0
 .code
 	main PROC
 	mov eax, 0
 	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
+	mov bx, -128
+	mov ax, bx 
+	cwd
 
-	mov esi, OFFSET intArr
-	mov ecx, LENGTHOF intArr
-find:
-	cmp WORD ptr[esi], 0
-	jne first
-	add esi, TYPE intArr
-
-	loop find
-	jmp done
-
-first:
-	mov ax, WORD ptr[esi]
-	mov nonzero, ax
-
-	mov edx, OFFSET msg
-	call WriteString
-	movzx eax, WORD ptr[nonzero]
-	call WriteInt
-
-done:
-exit
-
+	shl edx, 16
+	mov ebx, eax
+	call dumpregs
+	mov edx, offset res
+	call writestring
+	call writedec
+	call crlf
+	exit
 main ENDP
 END main
 
 ---------------------Q3--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Nineth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	var DWORD ?
-	x DWORD ?
-	msg BYTE "x = ",0
+.data
+	res BYTE "bMinutes = ", 0
+	bMinutes BYTE ?
 .code
 	main PROC
 	mov eax, 0
 	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
-	mov var, 5
-	mov edx, var+1
-	mov ecx, 10
+	mov ax, 0ABCDh
+	shr ax, 5
 
-	cmp var, ecx
-	jae elsego
-	cmp ecx, edx
-	jb elsego
-	mov x, 0
-	jmp done
-
-	elsego:
-		mov x, 1
-
-	done:
-		mov edx, offset msg
-		call writestring
-		mov eax, x
-		call writedec
-		call DumpRegs
-exit
+	and ax, 3Fh
+	mov bMinutes, al
+	mov edx, offset res
+	call writestring
+	movzx eax, bMinutes
+	call writedec
+	call crlf
+	exit
 main ENDP
 END main
 
 ---------------------Q4--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Nineth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	var DWORD ?
-	msg1 BYTE "Hello", 0
-	msg2 BYTE "World", 0
+.data
+	with byte "with SHRD: ", 0
+	without byte "without SHRD: ", 0
 .code
 	main PROC
 	mov eax, 0
 	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
-	mov var, 0
+	mov edx, offset without
+	call writestring
+	call crlf
+	mov ax, 10h
+	mov bx, 20h
 
-whileLoop:
-	cmp var, 10
-	ja done 
+	shr ax, 1
+	and bx, 7FFFh
+	rcr bx, 1  
+	call dumpregs
 
-	cmp var, 5
-	jae elsego
-	mov edx, OFFSET msg1
-	call WriteString
-	call Crlf
-	jmp iterate
-
-	elsego:
-		mov edx, OFFSET msg2
-		call WriteString
-		Call Crlf
-iterate:	
-		inc var
-		jmp whileLoop
-
-done:
-
-exit
+	mov edx, offset with
+	call writestring
+	call crlf
+	mov ax, 10h
+	mov bx, 20h
+	SHRD bx, ax ,1
+	call dumpregs
+	exit
 main ENDP
 END main
 
 ---------------------Q5--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Nineth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	arr WORD 10, 4, 7, 14, 299, 156, 3, 19, 29, 300, 20
-	n WORD ?
-	input BYTE "Enter a number to search: ", 0
-	present BYTE "Number is present in the array!", 0
-	absent BYTE "Number is not present in the array.", 0
+.data
+	val1 DWORD ?
+	val2 DWORD ?
+	val3 DWORD ?
+	input byte "Enter a number: ", 0
+	res byte "Ans = ", 0
 .code
 	main PROC
 	mov eax, 0
 	mov ebx, 0
-	mov ecx, 0
+
+	mov edx, offset input
+	call writestring
+	call readint
+	mov val1 , eax
+	mov edx, offset input
+	call writestring
+	call readint
+	mov val2 , eax
+	mov edx, offset input
+	call writestring
+	call readint
+	mov val3 , eax
+
+	mov eax, val2
 	mov edx, 0
+	IDIV val3
+	PUSH eax
 
-	mov edx, OFFSET input
-	call WriteString
-	call ReadInt
-	mov WORD Ptr[n], ax
+	mov eax, val1
+	mov edx, 0
+	IDIV val2
 
-	mov esi, OFFSET arr
-	mov ecx, LENGTHOF arr
-
-search:
-	mov ax, n
-	cmp [esi], ax
-	je found
-	add esi, TYPE arr
-
-	loop search
-	jmp notFound
-
-found:
-	mov edx, OFFSET present
-	call WriteString
-	call Crlf
-	jmp done
-
-notFound:
-	mov edx, OFFSET absent
-	call WriteString
-	call Crlf
-
-done:
-exit
+	POP ebx
+	mul ebx
+	mov val1 , eax
+	call crlf
+	mov edx, offset res
+	call writestring
+	call writedec
+	exit
 main ENDP
 END main
 
 ---------------------Q6--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Nineth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	arr DWORD 10, 4, 7, 14, 299, 156, 3, 19, 29, 300, 20
-	unsorted BYTE "Original Array: ", 0
-	sorted BYTE "Sorted Array: ", 0
-	space BYTE " ", 0
-	temp DWORD ?
-	count DWORD ?
+.data
+	num1 QWORD 1234567890123456h
+    num2 QWORD 6543219876543210h
+    ans QWORD 0
+    res byte "Ans = ", 0
 .code
 	main PROC
-	mov eax, 0
-	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
+	mov eax, DWORD PTR num1
+    mov ebx, DWORD PTR num1 + 4
+    mov ecx, DWORD PTR num2
+    mov edx, DWORD PTR num2 + 4
 
-	mov edx, OFFSET unsorted
-	call WriteString
-	mov ecx, LENGTHOF arr
-	mov esi, OFFSET arr
+    call Extended_Add
+    mov DWORD PTR ans, eax
+    mov DWORD PTR ans + 4, ebx
 
-	call displayArr
-
-	mov eax, LENGTHOF arr
-	mov count, eax
-	dec count
-	mov ecx, LENGTHOF arr - 1
-outer:
-	mov esi, OFFSET arr
-	mov edx, count
-	mov temp, edx
-
-	inner:
-		mov eax, [esi]
-		mov ebx, [esi+4]
-
-		cmp eax, ebx
-		jbe skip
-
-		mov [esi], ebx
-		mov [esi+4], eax
-
-		skip:
-			add esi, 4
-			dec temp
-			jnz inner
-	dec count
-	jnz outer
-
-	call Crlf
-	mov edx, OFFSET sorted
-	call WriteString
-	mov ecx, LENGTHOF arr
-	mov esi, OFFSET arr
-
-	call displayArr
-exit
+    mov edx, offset res
+    call writestring
+    mov eax, DWORD PTR ans + 4
+    call writehex
+    mov eax, DWORD PTR ans
+    call writehex
+    call crlf
+    exit
 main ENDP
 
-displayArr PROC
-	L1:
-		mov eax, [esi]
-		call WriteDec
-		mov edx, OFFSET space
-		call WriteString
-		add esi, 4
-	loop L1
-	ret
-displayArr ENDP
+Extended_Add PROC
+    add eax, ecx
+    mov ebx, eax                      
+    adc ebx, edx 
+
+    ret
+Extended_Add ENDP
 END main
 
 ---------------------Q7--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Ninth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	WeekDays BYTE "Monday", 0, "Tuesday", 0, "Wednesday", 0, "Thursday", 0, "Friday", 0, "Saturday", 0, "Sunday", 0
-	n DWORD ?
-	input BYTE "Enter a number (1-7): ", 0
-	found BYTE "Equivalent weekday: ", 0
-	error BYTE "Invalid!", 0
+.data
+    no BYTE "Non-prime number. ", 0
+    yes BYTE "Prime number! ", 0
+    input BYTE "Enter a number to check Prime: ", 0
+    i DWORD 2
 .code
-	main PROC
-	mov eax, 0
-	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
+main PROC
+L1:
+    mov edx, offset input
+    call writestring
+    call readint
+    cmp eax, 1
+    je exit_main
 
-	mov edx, OFFSET input
-    call WriteString
-    call ReadInt
-    mov n, eax                 
+    cmp eax, 2
+    je prime_num
 
-    cmp n, 1
-    jl Invalid                  
-    cmp n, 7
-    jg Invalid                   
+    call isPrime
+    call crlf
+    jmp L1
 
-    dec n                      
-    mov ecx, n                 
-    mov esi, OFFSET WeekDays     
+not_prime:
+    mov edx, offset no
+    call writestring
+    call crlf
+    jmp L1
 
-search:
-    cmp ecx, 0
-    je print          
-    
-    next:
-        cmp BYTE PTR [esi], 0        
-        je skip
-        inc esi                      
-        jmp next
-    skip:
-        inc esi                      
-        dec ecx                     
-        jmp search
+prime_num:
+    mov edx, offset yes
+    call writestring
+    call crlf
+    call crlf
+    jmp L1
 
-    print:
-        mov edx, OFFSET found
-        call WriteString
-        mov edx, esi                
-        call WriteString
-        call Crlf
-        jmp done
-
-    Invalid:
-        mov edx, OFFSET error
-        call WriteString
-        call Crlf
-
-done:
-exit
+exit_main:
+    exit
 main ENDP
+
+isPrime PROC
+    push eax
+    mov ecx, 2
+
+L2:
+    mov eax, [esp]
+    cdq
+    div ecx
+    cmp edx, 0
+    je not_prime_back
+
+    inc ecx
+    mov eax, [esp]
+    cmp ecx, eax
+    jl L2
+
+    jmp prime_num_back
+
+not_prime_back:
+    mov edx, offset no
+    call writestring
+    call crlf
+    jmp cleanup
+
+prime_num_back:
+    mov edx, offset yes
+    call writestring
+    call crlf
+
+cleanup:
+    pop eax
+    ret
+isPrime ENDP
 END main
 
 ---------------------Q8--------------------------
 
-TITLE My Eight Lab Tasks (Lab08.asm)
+TITLE My Ninth Lab Tasks (Lab09.asm)
 INCLUDE Irvine32.inc
-.data	
-	Character BYTE ?
-	input BYTE "Enter a Character: ", 0
-	yes BYTE " : is an alphabet!", 0
-	no BYTE " : is not an alphabet.", 0
+.data
+    key BYTE 2, 4, 1, 0, 3, 5, 2, 4, 4, 6
+    original BYTE "Muhammad Muzammil Siddiqui", 0
+    encryptedMessage BYTE 50 DUP(0)
+    before BYTE "Original text: ", 0
+    after BYTE "After encryption: ", 0
 .code
-	main PROC
-	mov eax, 0
-	mov ebx, 0
-	mov ecx, 0
-	mov edx, 0
+main PROC
+    mov edx, offset before
+    call writeString
+    mov edx, offset original 
+    call writeString
+    mov esi, OFFSET original
+    mov edi, OFFSET encryptedMessage
 
-	mov edx, OFFSET input
-	call WriteString
-	call ReadChar
-	call WriteChar
-	mov Character, al
-	call ReadChar
-	mov dl, Character
-	call WriteChar
-	call Crlf
+    mov ecx, 50
+    mov ebx, 0
+encryptionLoop:
+    mov al, byte ptr [esi]
+    cmp al, 0
+    je done
 
-LowerCase:
-	mov al, Character
-	cmp al, 'a'
-	jl UpperCase
-	cmp al, 'z'
-	jle IsAlpha
+    mov dl, byte ptr [key + ebx]
+    call rotateByte
+    mov [edi], al
+    inc esi
+    inc edi
+    inc ebx
+    cmp ebx, 10
+    jl encryptionLoop
 
-UpperCase:
-	cmp al, 'A'
-	jl NotAlpha
-	cmp al, 'Z'
-	jle IsAlpha
-
-NotAlpha:
-	mov dl, Character
-	call WriteChar
-	mov edx, OFFSET no
-	call WriteString
-	call Crlf
-	jmp done
-
-IsAlpha:
-	mov dl, Character
-	call WriteChar
-	mov edx, OFFSET yes
-	call WriteString
-	call Crlf
-
+    mov ebx, 0
+    loop encryptionLoop
 done:
-exit
+    call crlf
+    call crlf
+    mov edx, offset after
+    call writeString
+    mov edx, OFFSET encryptedMessage
+    call WriteString
+    call crlf
+    exit
 main ENDP
+
+rotateByte PROC
+    mov cl, dl
+    cmp dl, 0
+    jge rotateRight
+    neg dl
+
+    mov cl, dl
+    shl al, cl
+    rol al, cl
+    ret
+
+rotateRight:
+    mov cl, dl
+    mov dl, cl
+    shr al, cl
+    mov cl, dl
+    rol al, cl
+    ret
+rotateByte ENDP
 END main
