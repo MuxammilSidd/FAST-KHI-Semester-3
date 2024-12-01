@@ -1,7 +1,10 @@
 
 # FAST-KHI-Semester-3
 
-Welcome FASTians! Here you can find relevant material for your third semester (BSCS) at FAST NUCES Karachi. For any queries/improvement feel free to contact me on k232001@nu.edu.pk 
+Welcome FASTians! Here you can find relevant material for your third semester (BSCS) at FAST NUCES Karachi. A little effort by my side to boost your academic journey. ✨
+Don't forget to star this repo if you find it useful! ⭐ 
+
+For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For contributions kindly look [here](./CONTRIBUTING.md).
 
 ### 🔗 Links to other semester repositories
 - [1st Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-1)
