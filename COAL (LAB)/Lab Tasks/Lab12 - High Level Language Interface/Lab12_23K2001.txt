@@ -1,330 +1,114 @@
 23K2001 - Muzammil
 
 ---------------------Q1--------------------------
+C++ implementation:
 
-TITLE My Eleventh Lab Tasks (Lab11.asm)
-INCLUDE Irvine32.inc
-.data
-Str1 BYTE "127&j~3#^&*#*45^",0
-key BYTE "#", 0
-res BYTE "'#' found at index: ", 0
-index SDWORD 0
+#include <iostream>
+using namespace std;
 
-.code
-main PROC
-	mov al, key
-	mov edi, offset Str1
-	mov ecx, lengthof Str1
-	call scan_string
-exit
-main ENDP
+extern "C" void ThreeProd();
 
-scan_string PROC
-    cld
-    repne scasb
-    jnz notfound
-    sub edi, offset Str1
-    dec edi
-    mov index, edi
-    jmp done
-notfound:
-    mov index, -1
-done:
-    mov edx, offset res
-    call writestring
-    mov eax, index
-    call writeint
-    call crlf
+int main() {
+    ThreeProd();
+    int x, y, z, product;
+    cout << "Input three numbers: ";
+    cin >> x >> y >> z;
+
+    _asm {
+        MOV EAX, x
+        MOV EBX, y
+        MOV ECX, z
+        IMUL EBX
+        IMUL ECX
+        MOV product, EAX
+    }
+
+    cout << "The product of the numbers is: " << product << endl;
+    return 0;
+}
+
+Assembly implementation:
+
+TITLE My Twelveth Lab Tasks (Lab12.asm)
+.686
+.MODEL FLAT, C
+.STACK 2048
+.DATA
+
+num1 dword ?
+num2 dword ?
+num3 dword ?
+result dword ?
+.CODE
+ThreeProd PROC
+    mov eax, num1
+    imul num2
+    imul num3
+    mov result, eax
     ret
-scan_string ENDP
-
-END main
+ThreeProd ENDP
+END
 
 ---------------------Q2--------------------------
+C++ implementation:
 
-TITLE My Eleventh Lab Tasks (Lab11.asm)
-INCLUDE Irvine32.inc
-.data
-Str1 BYTE "127&j~3#^&*#*45^", 0
-key BYTE "#", 0
-res BYTE "'#' found at index: ", 0
-index SDWORD 0
+#include <iostream>
+using namespace std;
 
-.code
-main PROC
-    mov eax, 0
-    mov al, key
-    mov esi, offset Str1
-    push esi
-    push eax
-    call scan_string
-exit
-main ENDP
+extern "C" void GCD();
 
-scan_string PROC
-    mov edi, [esp+8]
-    mov al, [esp+4]
-    mov ecx, lengthof Str1
-    
-    cld
-    repne scasb
-    jnz notfound
+int main() {
+    GCD();
+    int a, b, gcd;
+    cout << "Input two integers: ";
+    cin >> a >> b;
 
-    sub edi, [esp+8]
-    dec edi
-    mov index, edi
-    jmp done
-notfound:
-    mov index, -1
-done:
-    mov edx, offset res
-    call writestring
-    mov eax, index
-    call writeint
-    call crlf
-    ret 8
-scan_string ENDP
+    _asm {
+        MOV EAX, a
+        MOV EBX, b
+    LoopStart:
+        CMP EBX, 0
+        JE Exit
+        XOR EDX, EDX
+        DIV EBX
+        MOV EAX, EBX
+        MOV EBX, EDX
+        JMP LoopStart
+    Exit:
+        MOV gcd, EAX
+    }
 
-END main
-
----------------------Q3--------------------------
-
-TITLE My Eleventh Lab Tasks (Lab11.asm)
-INCLUDE Irvine32.inc
-.data
-
-s1 BYTE 10 dup (?)
-s2 BYTE 10 dup (?)
-equal byte "Strings are equal!",0
-inequal byte "Not Equal.",0
-input byte "Input string (10 length max): ",0
-
-.code
-main proc
-	push offset s1
-	push offset s2
-	
-	mov edx, offset input
-	call writestring
-	mov edx, offset s1
-	mov ecx, 10
-	call readstring
-
-	push eax
-	call crlf
-
-	mov edx, offset input
-	call writestring
-	mov edx,offset s2
-	mov ecx, 10
-	call readstring
-	call crlf
-
-	call isCompare
-	call crlf
-
-exit
-main endp
-
-isCompare proc
-	push ebp
-	mov ebp,esp
-
-	mov ecx, [ebp + 8]
-	mov edi, [ebp + 12]
-	mov esi, [ebp + 16]
-
-	cld
-	repz cmpsb
-	jz areEqual
-
-	mov edx, offset inequal
-	call writestring
-
-	done:
-	pop ebp
-	ret 12
-
-	areEqual:
-		mov edx, offset equal
-		call writestring
-		jmp done
-isCompare endp
-
-end main
-
----------------------Q4--------------------------
-
-TITLE My Eleventh Lab Tasks (Lab11.asm)
-INCLUDE Irvine32.inc
-.data
-s1 BYTE 10 dup (?)
-s2 BYTE 10 dup (?)
-equal byte "Strings are equal!",0
-inequal byte "Not Equal.",0
-input byte "Input string (10 length max): ",0
-
-.code
-main proc
-	push offset s1
-	push offset s2
-	
-	mov edx, offset input
-	call writestring
-	mov edx, offset s1
-	mov ecx, 10
-	call readstring
-	call crlf
-	push eax
-
-	call str_reverse
-	mov edx,offset s2
-	call writestring
-	call crlf
-exit
-main endp
-
-str_reverse proc
-	push ebp
-	mov ebp, esp
-
-	mov ecx, [ebp + 8]
-	mov edi, [ebp + 12]
-	mov esi, [ebp + 16]
-	add esi, ecx
-	dec esi
-
-	L1:
-		std
-		lodsb
-		cld
-		stosb
-	loop l1
-
-	mov byte ptr [edi], 0
-	pop ebp
-	ret 12
-str_reverse endp
-
-end main
-
----------------------Q5--------------------------
-
-TITLE My Eleventh Lab Tasks (Lab11.asm)
-INCLUDE Irvine32.inc
-.data
-    arr DWORD 1, 2, 3, 4, 5
-    input byte "Input a number to multiply with: ",0
-.code
-main PROC
-    push offset arr
-    push lengthof arr
-    
-    mov edx, offset input
-    call writestring
-
-    call readint
-    push eax
-    call crlf
-    call load
-
-    mov ecx, 0
-    mov edi,offset arr
-    loop2:
-        mov eax,[edi+ecx]
-        call writedec
-        mov eax,' '
-        call writechar
-        add ecx,4
-    cmp ecx,sizeof arr
-    jnz loop2
-exit
-main endp
-
-load proc
-    push ebp
-    mov ebp,esp
-
-    mov edi,[ebp+16]
-    mov esi,edi
-    mov ecx,[ebp+12]
-    mov ebx,[ebp+8]
-    cld
-    loop1:
-        lodsd
-        imul ebx
-        stosd
-        dec ecx
-    cmp ecx,0
-    jnz loop1
-
-    pop ebp
-    ret 8
-load endp
-
-END main
-
----------------------Q6--------------------------
-
-TITLE My Eleventh Lab Tasks (Lab11.asm)
-INCLUDE Irvine32.inc
-.data
-    getFrequency proto a1:ptr byte, a2:ptr DWORD
-    target BYTE "AAEBDCFBBC",0
-    freqTable DWORD 256 DUP(0)
-    arrow byte " => ",0
-.code
-main PROC
-    mov eax, offset freqtable
-    invoke getFrequency, ADDR target, addr freqTable
-
-    mov ecx,0
-    mov esi, offset freqtable
-    loop2:
-        mov eax, DWORD ptr [esi+ecx*4]
-        cmp eax,0
-        jz skip
-
-        push eax
-        mov eax,ecx
-        call writechar
-        pop eax
-
-        mov edx,offset arrow
-        call writestring
-
-        call writedec
-        call crlf
-        skip:
-            inc ecx
-    cmp ecx, 256
-    jnz loop2
-exit
-main endp
-
-getFrequency proc a1:ptr byte, a2:ptr DWORD
-    push ebp
-    mov ebp,esp
-
-    mov edi, [ebp+16]
-    mov esi, [ebp+12]
-
-    l1:
-        mov eax,0
-        lodsb
-
-        cmp al,0
-        jz retjmp
-
-        inc dword ptr [edi+(eax*4)]
-        inc ecx
-    jmp l1
-    
-    retjmp:
-    pop ebp
-    ret 8
-getFrequency endp
-
-END main
+    cout << "The GCD of the numbers is: " << gcd << endl;
+    return 0;
+}
 
 
+Assembly implementation:
+
+TITLE My Twelveth Lab Tasks (Lab12.asm)
+.686
+.MODEL FLAT, C
+.STACK 2048
+.DATA
+
+numA dword ?
+numB dword ?
+
+.CODE
+GCD PROC
+    mov eax, numA
+    mov ebx, numB
+
+StartLoop:
+    cmp ebx, 0
+    je Done
+    xor edx, edx
+    div ebx
+    mov eax, ebx
+    mov ebx, edx
+    jmp StartLoop
+Done:
+    mov numA, eax
+    ret
+GCD ENDP
+END
