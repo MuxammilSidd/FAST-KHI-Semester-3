@@ -1087,6 +1087,80 @@ void shellSort(int myarr[], int n1) {
         }
     }
 }
+//normal count sort
+void CountSort(int arr[] ,int size) {
+    //find the highest value in the arr
+    int highest =0;
+    for (int i=0;i<size;i++) {
+        if (arr[i] > highest) {
+            highest = arr[i];
+        }
+    }    
+    //we will count the number of distant elements in the arr
+    int* countarray=new int[highest+1];
+    // setting the counting array to zero
+    for (int i=0;i<highest+1;i++) {
+        countarray[i]=0;
+    }
+    //counting the elements
+    for (int i=0;i<size;i++) {
+        countarray[arr[i]]++;
+    }
+    //doing a cummulative sum on the count array this will give us the index+1 of each elements 
+    for (int i=1;i<highest+1;i++) {
+        countarray[i] += countarray[i-1];
+    }
+    //creating a new array of the orginal size and putting values into the correct index
+    int* outputarray =new int [size];
+    for (int i=0;i<size;i++) {
+        outputarray[countarray[arr[i]]-1] =arr[i];
+        countarray[arr[i]]--;
+    }
+    //copying the new arr into the old one
+    for (int i = 0; i < size; i++) {
+        arr[i] = outputarray[i];
+    }
+
+    delete[] countarray;  // Free dynamically allocated memory
+    delete[] outputarray; // Free dynamically allocated memory
+
+
+}
+//count sort to use in radix
+void CountSortExp(int arr[],int size,int exp) {
+    int countarray[10] {0};
+    for (int i=0;i<size;i++) {
+        int val = (arr[i] /exp) % 10;
+        countarray[val]++;  
+    }
+    for (int i=1;i<10;i++) {
+        countarray[i] += countarray[i-1];
+    }
+    int* outputarray = new int[size];
+    for (int i=size-1;i>=0;i--) {
+        int val =(arr[i]/exp)% 10;
+        outputarray[countarray[val]-1] = arr[i];
+        countarray[val]--;
+    }
+    for (int i=0;i<size;i++) {
+        arr[i]=outputarray[i];
+    }
+    delete outputarray;
+
+}
+//radix sort using CountSortExp
+void RedixSort(int arr[],int n) {
+    int max {0};
+    for (int i=0;i<n;i++) {
+        if (arr[i]>max) {
+            max = arr[i];
+        }
+    }
+
+    for (int exp=1;max/exp>0;exp *=10) {
+        CountSortExp(arr,n,exp);
+    }
+}
 
 int binSearchAsc(int *arr,int n,int key){      //When sorted ascending
     int left = 0;
@@ -1232,7 +1306,7 @@ class BST{
 		    inOrder(r->right);
 		}
 
-        int greatestLeft(node* root){   //Helper for checking if tree is BST
+        int greatestLeft(BSTnode* root){   //Helper for checking if tree is BST
             if(root == nullptr)
                 return -2147483648;
             while(root->right)
@@ -1240,7 +1314,7 @@ class BST{
             
             return root->data;
         }
-        int lowestRight(node* root){   //Helper for checking if tree is BST
+        int lowestRight(BSTnode* root){   //Helper for checking if tree is BST
             if(root == nullptr)
                 return 2147483647;
             while(root->left)
@@ -1258,7 +1332,7 @@ class BST{
             flex->right->left = new node(9);
             flex->right->right = new node(14);
         */
-        bool checkBST(node* root){      //To check if given tree is a BST
+        bool checkBST(BSTnode* root){      //To check if given tree is a BST
             if(root == nullptr)
                 return true;
             
@@ -1645,9 +1719,161 @@ class BTree{
 
 //-----------------------------------------------------------------------------------------------------------//
 
-//--------------------------------------------HEAP---------------------------------------------------//
+//--------------------------------------------HEAP - priority queue in lab11 q2---------------------------------------------------//
+
+#include<iostream> 
+using namespace std;
+
+class heap{
+    public:
+    int arr[100];
+    int size;
+
+    heap(){
+        size=0;
+    }
+
+    void insert(int val){
+        arr[size]=val;
+        int index= size;
+        size++;
+
+        while(index>0){
+            int parent= (index-1)/2;
+            if(arr[parent]< arr[index]){          //max heap
+                swap(arr[parent],arr[index]);
+                index=parent;
+            }
+            else{
+                return;
+            } 
+        }
+    }
+
+    void deletefromhead(){
+        if(size==0){
+            cout<<"No tree exist"<<endl;
+            return;
+        }
+
+       arr[0]=arr[size];
+       size--;
+       
+       int i=0;
+       while(i<size){
+            int leftindex= i*2+1;
+            int rightindex=i*2+2;
+              
+              if(leftindex<size && arr[i]<arr[leftindex]){
+                swap(arr[i],arr[leftindex]);
+                i=leftindex;
+              }
+              else if(rightindex<size && arr[i]<arr[rightindex]){
+                swap(arr[i],arr[rightindex]);
+                i=rightindex;
+            }
+            else{
+                return;
+            }
+       }
+    }
+
+    void print(){
+        for(int i=0; i<size; i++){
+            cout<<" "<<arr[i];
+        }
+        cout<<endl;
+    }
+
+};
 
 
+//use this before heapify
+int arr[5]={54,53,55,52,50};
+    int n=5;
+    for(int i=n/2-1; i>=0;i--){
+       maxheapify(arr,n,i);
+    }
+void maxheapify(int *arr, int size, int i){
+         
+         int largest= i;
+         int left= 2*i+1;
+         int right= 2*i+2;
+
+         if(left<size && arr[largest]<arr[left]){
+                 largest=left;
+         }
+         
+         if(right<size && arr[largest]<arr[right]){
+            largest=right;
+         }
+            if(largest!=i){
+            swap(arr[i],arr[largest]);
+              maxheapify(arr,size,largest); 
+            }
+     }
+     
+     
+   void minheapify(int *arr, int size, int i){
+        int smallest=i;
+        int left= 2*i+1;
+        int right= 2*i+2;
+
+        if(left<size && arr[smallest]> arr[left]){
+            smallest=left;
+        }
+        if(right<size && arr[smallest]> arr[right]){
+            smallest=right;
+        }
+        
+        if(smallest!=i){
+            swap(arr[i],arr[smallest]);
+            minheapify(arr,size,smallest);
+                    }
+        
+   }
+
+   void heapsort(int *arr, int size){
+    
+    int n= size;
+    while(n>0){
+        swap(arr[0],arr[n-1]);
+        n--;
+        minheapify(arr,n,0);
+    }
+   }
+
+// int main(){
+//     //heap h;
+//     // h.deletefromhead();
+//     // h.insert(55);
+//     // h.insert(35);
+//     // h.insert(50);
+//     // h.insert(45);
+//     // h.insert(59);
+//     // h.print();
+    
+//     int arr[5]={54,53,55,52,50};
+//     int n=5;
+//     for(int i=n/2-1; i>=0;i--){
+//        maxheapify(arr,n,i);
+//     }
+    
+//     cout<<"printing array now"<<endl;
+//     //printing array
+//     for(int i=0; i<n;i++){
+//     cout<<" "<<arr[i];
+//     }cout<<endl;
+
+//     // heapsort(arr,n);
+
+//     //  cout<<"printing sorted array now"<<endl;
+//     // //printing array
+//     // for(int i=0; i<n;i++){
+//     // cout<<" "<<arr[i];
+//     // }
+
+// }
 
 //-----------------------------------------------------------------------------------------------------------//
 
