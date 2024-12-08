@@ -1,0 +1,2403 @@
+Lab06 - JMP, LOOP & Builtin Procedures
+
+---------------------Q1--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	first BYTE 0
+	second BYTE 1
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+movzx eax, first
+call writedec
+call crlf
+movzx eax, second
+call writedec
+call crlf
+
+mov ecx, 8
+mov eax, 0
+fib:
+	mov bl, first
+	add bl, second
+	movzx eax , bl
+	call writedec
+	call crlf
+	mov al , second
+	mov first , al
+	mov second, bl
+loop fib
+
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+	       ----Part I----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	sym BYTE 1
+	i DWORD ?
+	j DWORD 1
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+outer:
+	mov i , ecx
+	mov ecx, j
+
+	inner:
+		movzx eax, sym
+		call writeDec
+	loop inner
+
+	inc j
+	mov ecx, i
+	call crlf
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part II----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	sym BYTE 1
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+outer:
+	mov i , ecx
+	mov ecx, j
+
+	inner:
+		movzx eax, sym
+		call writeDec
+	loop inner
+
+	dec j
+	mov ecx, i
+	call crlf
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part III----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+mov eax, 0
+
+outer:
+	mov i , ecx
+	mov ecx , j
+	mov eax , 4
+
+	inner:
+		call writedec
+		dec eax
+	loop inner
+
+	call crlf
+	dec j
+	mov ecx, i
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+	       ----Part IV----
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	i DWORD ?
+	j DWORD 4
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, 4
+mov ecx, eax
+mov eax, 0
+
+outer:
+	mov i , ecx
+	mov ecx , j
+	mov eax , 1
+
+	inner:
+		call writedec
+		inc eax
+	loop inner
+
+	call crlf
+	dec j
+	mov ecx, i
+loop outer
+call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	req1 BYTE "Enter ID: ", 0
+	req2 BYTE "Enter Name: ", 0
+	req3 BYTE "Enter Year of Birth: ", 0
+	req4 BYTE "Enter Annual Salary: ", 0
+	wID BYTE "ID: ", 0
+	wName BYTE "Name: ", 0
+	wYear BYTE "Year of Birth: ", 0
+	wAnnual BYTE "Annual Salary: ", 0
+	wTotal BYTE "Total Salary: ", 0
+    heading BYTE "Employees Data: ",0
+	id DWORD 5 DUP(?)
+	names BYTE 5 DUP(30 DUP(?))
+	year DWORD 5 DUP(?)
+	salary DWORD 5 DUP(?)
+	index DWORD ?
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, 5
+mov esi, 0
+
+l1:
+    mov index, ecx  
+    mov edx, OFFSET req1
+    call WriteString
+    call ReadInt
+    mov id[esi*4], eax
+
+    mov edx, OFFSET req2
+    call WriteString
+    mov edi, esi
+    mov eax, 30
+    mul edi
+    mov edx, OFFSET names
+    add edx, eax
+    mov ecx, 30
+    call ReadString
+
+    mov edx, OFFSET req3
+    call WriteString
+    call ReadInt
+    mov year[esi*4], eax
+
+    mov edx, OFFSET req4
+    call WriteString
+    call ReadInt
+    mov salary[esi*4], eax
+    call crlf
+
+    inc esi
+    mov ecx, index
+loop l1
+
+mov ecx, 5
+mov esi, 0
+mov edx, OFFSET heading
+call WriteString
+call crlf
+call crlf
+
+l2:
+    mov index , ecx
+
+    mov edx, OFFSET wID
+    call WriteString
+    mov eax, id[esi*4]
+    call Writedec
+    call crlf
+    mov edx, OFFSET wName
+    call WriteString
+    mov edi, esi
+    mov eax, 30
+    mul edi
+    mov edx, OFFSET names
+    add edx, eax
+    call WriteString
+    call crlf
+    mov edx, OFFSET wYear
+    call WriteString
+    mov eax, year[esi*4]
+    call Writedec
+    call crlf
+    mov edx, OFFSET wAnnual
+    call WriteString
+    mov eax, salary[esi*4]
+    call Writedec
+    call crlf
+    call crlf
+    inc esi
+
+    mov ecx, index
+    dec ecx
+jnz l2
+
+mov edx, OFFSET wTotal
+call WriteString
+call crlf
+mov ecx, 5
+mov esi, 0
+mov eax,0
+
+l3:
+    add eax,salary[esi*4]
+    inc esi
+loop l3
+
+call writedec
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	source BYTE "0 1 2 3 4 5 6 7 8 9 ",0
+	target BYTE SIZEOF source DUP(?)
+	ws BYTE "Source:",0
+	wt BYTE "Target:",0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov esi, OFFSET source
+mov edi, OFFSET target
+l1:
+	mov al, BYTE PTR [esi]
+	mov BYTE PTR [edi], al
+	inc esi
+	inc edi
+	cmp al, 0
+jne l1
+
+mov edx, OFFSET ws
+call WriteString
+call crlf 
+mov edx, OFFSET source
+call WriteString
+call crlf
+mov edx, OFFSET wt
+call WriteString
+call crlf 
+mov edx, OFFSET target
+call WriteString
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	integers DWORD 10 DUP(?)
+	req BYTE "Enter 10 integers: ",0
+	wOriginal BYTE "Original: ",0
+	wReversed BYTE "Reversed: ",0
+	space BYTE " "
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov ecx, LENGTHOF integers
+mov esi, OFFSET integers
+mov edx, OFFSET req
+call WriteString
+call crlf
+
+read:
+	call readint
+	mov [esi], eax
+	add esi, TYPE integers
+loop read
+
+call crlf
+mov edx, OFFSET wOriginal
+call WriteString
+call crlf
+mov ebx, OFFSET integers
+mov ecx, LENGTHOF integers
+mov edx, OFFSET space
+
+printOriginal:
+	mov eax, [ebx]
+	call WriteDec
+	call WriteString
+	add ebx, TYPE integers
+loop printOriginal
+
+call crlf
+mov edi, OFFSET integers
+mov ecx, LENGTHOF integers/2
+mov esi, OFFSET integers
+add esi, TYPE integers * (LENGTHOF integers  - 1)
+
+reverse:        
+	mov eax, [edi]
+	mov ebx, [esi]
+	xchg eax, ebx
+
+	mov [edi], eax
+	mov [esi], ebx
+
+	add edi, TYPE integers
+	sub esi, TYPE integers
+loop reverse
+
+mov edx, OFFSET wReversed
+call WriteString
+call crlf
+mov ebx, OFFSET integers
+mov ecx, LENGTHOF integers
+mov edx, OFFSET space
+
+printReversed:
+	mov eax, [ebx]
+	call WriteDec
+	call WriteString
+	add ebx, TYPE integers
+loop printReversed
+
+call crlf
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Sixth Lab Tasks (Lab06.asm)
+INCLUDE Irvine32.inc
+.data	
+	nums DWORD 8,5,6,1,2
+	i DWORD ?
+	j DWORD ?
+    space BYTE " ",0
+    before BYTE "Before sorting:",0
+    after BYTE "After sorting:",0
+.code
+main PROC
+mov eax, 0
+mov ebx, 0
+mov ecx, 0
+mov edx,0
+
+mov eax, LENGTHOF nums  
+mov i, eax           
+DEC i                
+mov ecx, eax
+mov edx, OFFSET before
+call WriteString
+call crlf
+mov esi, OFFSET nums     
+mov ecx, LENGTHOF nums   
+mov edx, OFFSET space
+
+original:
+    mov eax, [esi]            
+    call WriteDec             
+    call WriteString                 
+    add esi, TYPE DWORD    
+loop original 
+mov edx, OFFSET space
+
+outer:
+    mov esi, OFFSET nums    
+    mov ebx, i
+    mov j, ebx
+
+    inner:
+        mov eax, [esi]
+        mov ebx, [esi+4]    
+        cmp eax, ebx          
+        jbe skip           
+
+        mov [esi], ebx       
+        mov [esi+4], eax   
+
+        skip:
+        add esi, 4            
+        DEC j             
+    jnz inner                
+    DEC i                 
+jnz outer                   
+
+call crlf
+mov edx, OFFSET after
+call WriteString
+call crlf
+mov esi, OFFSET nums     
+mov ecx, LENGTHOF nums   
+mov edx, OFFSET space
+
+print:
+    mov eax, [esi]            
+    call WriteDec             
+    call WriteString                 
+    add esi, TYPE DWORD    
+loop print  
+
+call crlf
+exit
+main ENDP
+END main
+
+---------------------------------------------------------------------------------------------------
+
+Lab07 - Stacks operation & procedures
+
+---------------------Q1--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+	original WORD 10h,20h,30h,40h,50h,60h,70h,80h,90h,100h
+	copied WORD 10 DUP(?)
+	msg BYTE "Copied Array: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov ecx, (LENGTHOF original)-1
+	mov esi, OFFSET original
+	mov edi, OFFSET copied
+
+L1:
+	push [esi]
+	add esi, TYPE original
+	pop [edi]
+	add edi, TYPE copied
+loop L1
+
+	mov edx, OFFSET msg
+	call writestring
+	call crlf
+	mov ecx, LENGTHOF copied
+	mov esi, OFFSET copied
+
+L2:
+	mov ax, [esi]
+	call writehex
+	call crlf
+	add esi, TYPE copied
+loop L2
+
+	exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+	input BYTE "Enter a number for addition: ",0
+	ans DWORD 0
+	result BYTE "Sum : ",0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov ecx, 3
+L1:
+  mov edx, OFFSET input
+  call writeString
+  call readint
+  PUSH eax
+LOOP L1
+
+mov ecx, 3
+L2:
+  pop eax
+  add ans, eax
+LOOP L2
+
+call crlf
+mov eax, ans
+mov edx, OFFSET result
+call writeString
+call writedec
+
+exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+	array1 DWORD 1h,2h,3h,4h,5h
+    array2 DWORD 6h,7h,8h,9h,0Ah
+    result DWORD ?
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov ecx, LENGTHOF array1     
+    mov esi, OFFSET array1       
+    mov edi, OFFSET array2        
+    call sum1                     
+    mov eax, result                
+    call writeint            
+exit                          
+main ENDP
+
+sum1 PROC
+    PUSH edi                       
+    PUSH ecx
+    mov eax, 0                     
+L1:
+    add eax, [esi]                 
+    add esi, TYPE array1           
+LOOP L1                        
+
+    POP ecx                       
+    POP edi
+    call sum2                    
+    ret
+sum1 ENDP
+
+sum2 PROC
+    mov ebx, 0                     
+L2:
+    add ebx, [edi]                
+    add edi, TYPE array2          
+LOOP L2                        
+
+    call sum3                     
+    ret
+sum2 ENDP
+
+sum3 PROC
+    add eax, ebx                  
+    mov result, eax               
+    ret
+sum3 ENDP
+
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+    col DWORD ?
+    input BYTE "Enter number of coloumns: ",0
+    space BYTE " ", 0
+    star BYTE "*", 0
+    count DWORD 1
+    counter DWORD ?
+.code
+main PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    mov col, eax  
+    mov eax, col
+    mov counter, eax
+    call pattern                
+
+exit
+main ENDP
+
+pattern PROC
+    mov ecx, col
+L1:
+    mov eax, counter            
+    L2:
+        mov edx, OFFSET space
+        call writeString
+        dec eax
+        jnz L2                      
+        mov eax, count              
+    L3:
+        mov edx, OFFSET star
+        call writeString
+        dec eax
+        jnz L3                      
+
+        call crlf                   
+        inc count                   
+        dec counter                 
+loop L1                     
+
+    ret
+pattern ENDP
+
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+    col DWORD ?
+    input BYTE "Enter number of coloumns: ",0
+	alphabets DWORD 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'
+    count DWORD 1
+.code
+main PROC
+call Pattern
+exit
+main ENDP
+
+Pattern PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    mov col, eax
+    mov esi, 0
+
+    mov ecx, col
+    L1:
+      PUSH ecx
+      mov ecx, count
+      L2: 
+         mov eax, alphabets[esi]
+         call writechar
+         add esi, 4
+      LOOP L2
+
+       inc count
+       call crlf
+       POP ecx
+    LOOP L1
+
+    ret
+Pattern ENDP
+
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Seventh Lab Tasks (Lab07.asm)
+INCLUDE Irvine32.inc
+.data	
+    count DWORD 1
+    input BYTE "Enter n: ",0
+    result BYTE "Sum of elements 1 to n = ",0
+.code
+main PROC
+call sumToN
+
+exit
+main ENDP
+
+sumToN PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    mov ecx, eax
+    mov eax, 0
+    L1:
+       add eax, count
+       inc count
+    LOOP L1
+
+    call crlf
+    mov edx, offset result
+    call writestring
+    call writedec
+    ret
+sumToN ENDP
+
+END main
+
+---------------------------------------------------------------------------------------------------
+
+Lab08 - Conditional Processing
+
+---------------------Q1--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	Num1 DWORD ?
+	Num2 DWORD ?
+	Num3 DWORD ?
+	Num4 DWORD ?
+	input BYTE "Enter a number: ", 0
+	equalmsg BYTE "All four numbers are equal.", 0
+	inequalmsg BYTE "These numbers are not equal.", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num1, eax
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num2, eax
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num3, eax
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov Num4, eax
+
+	mov eax, Num1
+	cmp eax, Num2
+	jne NotEqual
+	cmp eax, Num3
+	jne NotEqual
+	cmp eax, Num4
+	jne NotEqual
+
+	call Crlf
+	mov edx, OFFSET equalmsg
+	call WriteString
+	jmp done
+
+	NotEqual:
+		mov edx, OFFSET inequalmsg
+		call WriteString
+		call Crlf
+
+	done:
+	exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	intArr SWORD 0, 0, 0, 150, 120, 35, -12, 66, 4, 0
+	nonzero SWORD 0
+	msg BYTE "First non zero value in the given array is: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov esi, OFFSET intArr
+	mov ecx, LENGTHOF intArr
+find:
+	cmp WORD ptr[esi], 0
+	jne first
+	add esi, TYPE intArr
+
+	loop find
+	jmp done
+
+first:
+	mov ax, WORD ptr[esi]
+	mov nonzero, ax
+
+	mov edx, OFFSET msg
+	call WriteString
+	movzx eax, WORD ptr[nonzero]
+	call WriteInt
+
+done:
+exit
+
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	var DWORD ?
+	x DWORD ?
+	msg BYTE "x = ",0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+	mov var, 5
+	mov edx, var+1
+	mov ecx, 10
+
+	cmp var, ecx
+	jae elsego
+	cmp ecx, edx
+	jb elsego
+	mov x, 0
+	jmp done
+
+	elsego:
+		mov x, 1
+
+	done:
+		mov edx, offset msg
+		call writestring
+		mov eax, x
+		call writedec
+		call DumpRegs
+exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	var DWORD ?
+	msg1 BYTE "Hello", 0
+	msg2 BYTE "World", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+	mov var, 0
+
+whileLoop:
+	cmp var, 10
+	ja done 
+
+	cmp var, 5
+	jae elsego
+	mov edx, OFFSET msg1
+	call WriteString
+	call Crlf
+	jmp iterate
+
+	elsego:
+		mov edx, OFFSET msg2
+		call WriteString
+		Call Crlf
+iterate:	
+		inc var
+		jmp whileLoop
+
+done:
+
+exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	arr WORD 10, 4, 7, 14, 299, 156, 3, 19, 29, 300, 20
+	n WORD ?
+	input BYTE "Enter a number to search: ", 0
+	present BYTE "Number is present in the array!", 0
+	absent BYTE "Number is not present in the array.", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+	call WriteString
+	call ReadInt
+	mov WORD Ptr[n], ax
+
+	mov esi, OFFSET arr
+	mov ecx, LENGTHOF arr
+
+search:
+	mov ax, n
+	cmp [esi], ax
+	je found
+	add esi, TYPE arr
+
+	loop search
+	jmp notFound
+
+found:
+	mov edx, OFFSET present
+	call WriteString
+	call Crlf
+	jmp done
+
+notFound:
+	mov edx, OFFSET absent
+	call WriteString
+	call Crlf
+
+done:
+exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	arr DWORD 10, 4, 7, 14, 299, 156, 3, 19, 29, 300, 20
+	unsorted BYTE "Original Array: ", 0
+	sorted BYTE "Sorted Array: ", 0
+	space BYTE " ", 0
+	temp DWORD ?
+	count DWORD ?
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET unsorted
+	call WriteString
+	mov ecx, LENGTHOF arr
+	mov esi, OFFSET arr
+
+	call displayArr
+
+	mov eax, LENGTHOF arr
+	mov count, eax
+	dec count
+	mov ecx, LENGTHOF arr - 1
+outer:
+	mov esi, OFFSET arr
+	mov edx, count
+	mov temp, edx
+
+	inner:
+		mov eax, [esi]
+		mov ebx, [esi+4]
+
+		cmp eax, ebx
+		jbe skip
+
+		mov [esi], ebx
+		mov [esi+4], eax
+
+		skip:
+			add esi, 4
+			dec temp
+			jnz inner
+	dec count
+	jnz outer
+
+	call Crlf
+	mov edx, OFFSET sorted
+	call WriteString
+	mov ecx, LENGTHOF arr
+	mov esi, OFFSET arr
+
+	call displayArr
+exit
+main ENDP
+
+displayArr PROC
+	L1:
+		mov eax, [esi]
+		call WriteDec
+		mov edx, OFFSET space
+		call WriteString
+		add esi, 4
+	loop L1
+	ret
+displayArr ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	WeekDays BYTE "Monday", 0, "Tuesday", 0, "Wednesday", 0, "Thursday", 0, "Friday", 0, "Saturday", 0, "Sunday", 0
+	n DWORD ?
+	input BYTE "Enter a number (1-7): ", 0
+	found BYTE "Equivalent weekday: ", 0
+	error BYTE "Invalid!", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+    call WriteString
+    call ReadInt
+    mov n, eax                 
+
+    cmp n, 1
+    jl Invalid                  
+    cmp n, 7
+    jg Invalid                   
+
+    dec n                      
+    mov ecx, n                 
+    mov esi, OFFSET WeekDays     
+
+search:
+    cmp ecx, 0
+    je print          
+    
+    next:
+        cmp BYTE PTR [esi], 0        
+        je skip
+        inc esi                      
+        jmp next
+    skip:
+        inc esi                      
+        dec ecx                     
+        jmp search
+
+    print:
+        mov edx, OFFSET found
+        call WriteString
+        mov edx, esi                
+        call WriteString
+        call Crlf
+        jmp done
+
+    Invalid:
+        mov edx, OFFSET error
+        call WriteString
+        call Crlf
+
+done:
+exit
+main ENDP
+END main
+
+---------------------Q8--------------------------
+
+TITLE My Eight Lab Tasks (Lab08.asm)
+INCLUDE Irvine32.inc
+.data	
+	Character BYTE ?
+	input BYTE "Enter a Character: ", 0
+	yes BYTE " : is an alphabet!", 0
+	no BYTE " : is not an alphabet.", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+
+	mov edx, OFFSET input
+	call WriteString
+	call ReadChar
+	call WriteChar
+	mov Character, al
+	call ReadChar
+	mov dl, Character
+	call WriteChar
+	call Crlf
+
+LowerCase:
+	mov al, Character
+	cmp al, 'a'
+	jl UpperCase
+	cmp al, 'z'
+	jle IsAlpha
+
+UpperCase:
+	cmp al, 'A'
+	jl NotAlpha
+	cmp al, 'Z'
+	jle IsAlpha
+
+NotAlpha:
+	mov dl, Character
+	call WriteChar
+	mov edx, OFFSET no
+	call WriteString
+	call Crlf
+	jmp done
+
+IsAlpha:
+	mov dl, Character
+	call WriteChar
+	mov edx, OFFSET yes
+	call WriteString
+	call Crlf
+
+done:
+exit
+main ENDP
+END main
+
+
+---------------------------------------------------------------------------------------------------
+
+Lab09 - Integer Arithmetic
+
+---------------------Q1--------------------------
+
+TITLE My Nineth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+	input BYTE "Enter a number: ", 0
+	res BYTE "Product of inputted number with 25: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov edx, offset input
+	call writestring
+	call readint
+	mov ecx, eax
+	shl eax, 4
+	mov edx, ecx
+	shl edx, 3
+	add eax,edx
+	add eax, ecx
+	call crlf
+	mov edx, offset res
+	call writestring
+	call writedec
+	call crlf
+	exit
+main ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Nineth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+	res BYTE "After expanding EBX: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov bx, -128
+	mov ax, bx 
+	cwd
+
+	shl edx, 16
+	mov ebx, eax
+	call dumpregs
+	mov edx, offset res
+	call writestring
+	call writedec
+	call crlf
+	exit
+main ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Nineth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+	res BYTE "bMinutes = ", 0
+	bMinutes BYTE ?
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ax, 0ABCDh
+	shr ax, 5
+
+	and ax, 3Fh
+	mov bMinutes, al
+	mov edx, offset res
+	call writestring
+	movzx eax, bMinutes
+	call writedec
+	call crlf
+	exit
+main ENDP
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Nineth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+	with byte "with SHRD: ", 0
+	without byte "without SHRD: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov edx, offset without
+	call writestring
+	call crlf
+	mov ax, 10h
+	mov bx, 20h
+
+	shr ax, 1
+	and bx, 7FFFh
+	rcr bx, 1  
+	call dumpregs
+
+	mov edx, offset with
+	call writestring
+	call crlf
+	mov ax, 10h
+	mov bx, 20h
+	SHRD bx, ax ,1
+	call dumpregs
+	exit
+main ENDP
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Nineth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+	val1 DWORD ?
+	val2 DWORD ?
+	val3 DWORD ?
+	input byte "Enter a number: ", 0
+	res byte "Ans = ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+
+	mov edx, offset input
+	call writestring
+	call readint
+	mov val1 , eax
+	mov edx, offset input
+	call writestring
+	call readint
+	mov val2 , eax
+	mov edx, offset input
+	call writestring
+	call readint
+	mov val3 , eax
+
+	mov eax, val2
+	mov edx, 0
+	IDIV val3
+	PUSH eax
+
+	mov eax, val1
+	mov edx, 0
+	IDIV val2
+
+	POP ebx
+	mul ebx
+	mov val1 , eax
+	call crlf
+	mov edx, offset res
+	call writestring
+	call writedec
+	exit
+main ENDP
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Nineth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+	num1 QWORD 1234567890123456h
+    num2 QWORD 6543219876543210h
+    ans QWORD 0
+    res byte "Ans = ", 0
+.code
+	main PROC
+	mov eax, DWORD PTR num1
+    mov ebx, DWORD PTR num1 + 4
+    mov ecx, DWORD PTR num2
+    mov edx, DWORD PTR num2 + 4
+
+    call Extended_Add
+    mov DWORD PTR ans, eax
+    mov DWORD PTR ans + 4, ebx
+
+    mov edx, offset res
+    call writestring
+    mov eax, DWORD PTR ans + 4
+    call writehex
+    mov eax, DWORD PTR ans
+    call writehex
+    call crlf
+    exit
+main ENDP
+
+Extended_Add PROC
+    add eax, ecx
+    mov ebx, eax                      
+    adc ebx, edx 
+
+    ret
+Extended_Add ENDP
+END main
+
+---------------------Q7--------------------------
+
+TITLE My Ninth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+    no BYTE "Non-prime number. ", 0
+    yes BYTE "Prime number! ", 0
+    input BYTE "Enter a number to check Prime: ", 0
+    i DWORD 2
+.code
+main PROC
+L1:
+    mov edx, offset input
+    call writestring
+    call readint
+    cmp eax, 1
+    je exit_main
+
+    cmp eax, 2
+    je prime_num
+
+    call isPrime
+    call crlf
+    jmp L1
+
+not_prime:
+    mov edx, offset no
+    call writestring
+    call crlf
+    jmp L1
+
+prime_num:
+    mov edx, offset yes
+    call writestring
+    call crlf
+    call crlf
+    jmp L1
+
+exit_main:
+    exit
+main ENDP
+
+isPrime PROC
+    push eax
+    mov ecx, 2
+
+L2:
+    mov eax, [esp]
+    cdq
+    div ecx
+    cmp edx, 0
+    je not_prime_back
+
+    inc ecx
+    mov eax, [esp]
+    cmp ecx, eax
+    jl L2
+
+    jmp prime_num_back
+
+not_prime_back:
+    mov edx, offset no
+    call writestring
+    call crlf
+    jmp cleanup
+
+prime_num_back:
+    mov edx, offset yes
+    call writestring
+    call crlf
+
+cleanup:
+    pop eax
+    ret
+isPrime ENDP
+END main
+
+---------------------Q8--------------------------
+
+TITLE My Ninth Lab Tasks (Lab09.asm)
+INCLUDE Irvine32.inc
+.data
+    key BYTE 2, 4, 1, 0, 3, 5, 2, 4, 4, 6
+    original BYTE "Muhammad Muzammil Siddiqui", 0
+    encryptedMessage BYTE 50 DUP(0)
+    before BYTE "Original text: ", 0
+    after BYTE "After encryption: ", 0
+.code
+main PROC
+    mov edx, offset before
+    call writeString
+    mov edx, offset original 
+    call writeString
+    mov esi, OFFSET original
+    mov edi, OFFSET encryptedMessage
+
+    mov ecx, 50
+    mov ebx, 0
+encryptionLoop:
+    mov al, byte ptr [esi]
+    cmp al, 0
+    je done
+
+    mov dl, byte ptr [key + ebx]
+    call rotateByte
+    mov [edi], al
+    inc esi
+    inc edi
+    inc ebx
+    cmp ebx, 10
+    jl encryptionLoop
+
+    mov ebx, 0
+    loop encryptionLoop
+done:
+    call crlf
+    call crlf
+    mov edx, offset after
+    call writeString
+    mov edx, OFFSET encryptedMessage
+    call WriteString
+    call crlf
+    exit
+main ENDP
+
+rotateByte PROC
+    mov cl, dl
+    cmp dl, 0
+    jge rotateRight
+    neg dl
+
+    mov cl, dl
+    shl al, cl
+    rol al, cl
+    ret
+
+rotateRight:
+    mov cl, dl
+    mov dl, cl
+    shr al, cl
+    mov cl, dl
+    rol al, cl
+    ret
+rotateByte ENDP
+END main
+
+
+---------------------------------------------------------------------------------------------------
+
+Lab10 - Advanced Procedures
+
+---------------------Q1--------------------------
+
+TITLE My Tenth Lab Tasks (Lab10.asm)
+INCLUDE Irvine32.inc
+.data	
+	input BYTE "Enter 3 numbers: ", 0
+	res BYTE "Sum of inputted 3 numbers: ", 0
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+	
+   mov edx, offset input
+   call writestring
+   call crlf
+   call readint
+   PUSH eax
+   call readint
+   PUSH eax
+   call readint
+   PUSH eax
+   mov eax, 0
+   call SumThree
+   
+   call crlf
+   mov edx, offset res
+   call writestring
+   call writedec
+   call crlf
+   exit
+main ENDP
+
+SumThree PROC
+  PUSH ebp
+  mov ebp, esp
+
+  mov ecx, 3
+  mov esi, 8
+  L1:
+      add eax, [ebp + esi]
+      add esi, 4
+  LOOP L1
+
+  pop ebp
+  ret 12
+SumThree ENDP
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Tenth Lab Tasks (Lab10.asm)
+INCLUDE Irvine32.inc
+.data	
+	res BYTE "Average of array: ", 0
+	array DWORD 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15
+	avg DWORD ?
+.code
+	main PROC
+	mov eax, 0
+	mov ebx, 0
+	mov ecx, 0
+	mov edx, 0
+	PUSH OFFSET array
+    PUSH LENGTHOF array
+    call ArrayAvg
+
+    mov eax, avg
+    mov edx, offset res
+    call writestring
+    call writedec
+    call crlf
+
+    exit
+main ENDP
+
+ArrayAvg PROC
+    PUSH ebp
+    mov ebp, esp
+
+    mov ecx, [ebp + 8]
+    mov esi, [ebp + 12]
+    xor eax, eax
+L1:
+    add eax, [esi]
+    add esi, TYPE array
+loop L1
+    mov ebx, [ebp + 8]
+    xor edx, edx
+    div ebx
+
+    mov avg, eax
+    pop ebp
+
+    ret 8
+ArrayAvg ENDP
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Tenth Lab Tasks (Lab10.asm)
+INCLUDE Irvine32.inc
+
+.data
+    input BYTE "Enter a number: ", 0
+    res BYTE "Cube: ", 0
+.code
+main PROC
+    mov edx, offset input
+    call writestring
+    call readint
+    call LocalCube
+    exit
+main ENDP
+
+LocalCube PROC
+    enter 4, 0
+    mov [ebp - 4], eax
+    mov eax, [ebp - 4]
+    mov ebx, eax
+    mul ebx
+    mul ebx
+    mov edx, offset res
+    call writestring
+    call writedec
+    call crlf
+    leave
+    ret
+LocalCube ENDP
+
+END main
+
+---------------------Q4--------------------------
+
+TITLE My Tenth Lab Tasks (Lab10.asm)
+INCLUDE Irvine32.inc
+.data
+    input BYTE "Enter 5 numbers: ", 0
+    array DWORD 5 DUP(?)
+    uneven BYTE "Not all numbers are even.", 0
+    smallest BYTE "Smallest even number: ", 0
+    x DWORD 2
+.code
+main PROC
+    mov edx, offset input
+    call writestring
+    call crlf
+    mov ecx, LENGTHOF array
+    mov esi, OFFSET array
+L1:
+    call readint
+    mov [esi], eax
+    add esi, TYPE array
+LOOP L1
+
+    PUSH OFFSET array
+    PUSH LENGTHOF array
+    call checkEven
+    call crlf
+    exit
+main ENDP
+
+checkEven PROC
+    PUSH ebp
+    mov ebp, esp
+
+    mov ecx, [ebp + 8]
+    mov esi, [ebp + 12]
+L2:
+    mov eax, [esi]
+    cdq
+    div x
+    cmp edx, 0
+    jnz allNotEven
+
+    add esi, TYPE array
+LOOP L2
+
+    PUSH OFFSET array
+    PUSH LENGTHOF array
+    call smallestEven
+    jmp done
+
+allNotEven:
+    mov edx, OFFSET uneven
+    call writestring
+
+done:
+    pop ebp
+    ret
+checkEven ENDP
+
+smallestEven PROC
+    PUSH ebp
+    mov ebp, esp
+
+    mov ecx, [ebp + 8]
+    mov esi, [ebp + 12]
+
+    mov eax, [esi]
+    add esi, TYPE array
+    dec ecx
+
+L3:
+    cmp [esi], eax
+    jge increment
+    mov eax, [esi]
+
+    increment:
+        add esi, TYPE array
+LOOP L3
+
+    mov edx, OFFSET smallest
+    call writestring
+    call writedec
+    pop ebp
+    ret
+smallestEven ENDP
+
+END main
+
+---------------------Q5--------------------------
+
+TITLE My Tenth Lab Tasks (Lab10.asm)
+INCLUDE Irvine32.inc
+.data
+    array DWORD 72, 12, 29, 18, 50, 31, 82 
+    before BYTE "Original array: ", 0
+    after BYTE "Sorted array: ", 0
+    space BYTE " ", 0
+.code
+main PROC
+    mov edx, OFFSET before         
+    call writeString            
+    call crlf
+    mov ecx, LENGTHOF array     
+    mov esi, OFFSET array   
+original:
+    mov eax, [esi]              
+    call writedec              
+    mov edx, offset space
+    call writestring
+    add esi, TYPE array        
+LOOP original 
+
+    call crlf
+    PUSH OFFSET array           
+    PUSH LENGTHOF array         
+    call BubbleSort            
+
+    mov edx, OFFSET after         
+    call writeString            
+    call crlf
+    mov ecx, LENGTHOF array     
+    mov esi, OFFSET array       
+L1:
+    mov eax, [esi]              
+    call writedec              
+    mov edx, offset space
+    call writestring
+    add esi, TYPE array        
+LOOP L1                     
+    call crlf
+    exit
+main ENDP
+
+BubbleSort PROC
+    PUSH ebp
+    mov ebp, esp
+
+    mov ecx, [ebp + 8]          
+    dec ecx                     
+    mov esi, [ebp + 12]         
+
+outer:
+    mov edx, ecx                
+    mov edi, esi                
+
+    inner:
+        mov eax, [edi]              
+        mov ebx, [edi + TYPE array] 
+
+        cmp eax, ebx                
+        jle skip                  
+
+        mov [edi], ebx              
+        mov [edi + TYPE array], eax
+skip:
+    add edi, TYPE array         
+    dec edx                   
+    jnz inner              
+
+    dec ecx                     
+    jnz outer             
+
+    pop ebp
+    ret
+BubbleSort ENDP
+
+END main
+
+
+---------------------------------------------------------------------------------------------------
+
+Lab11 - Advanced Procedures
+
+---------------------Q1--------------------------
+
+TITLE My Eleventh Lab Tasks (Lab11.asm)
+INCLUDE Irvine32.inc
+.data
+Str1 BYTE "127&j~3#^&*#*45^",0
+key BYTE "#", 0
+res BYTE "'#' found at index: ", 0
+index SDWORD 0
+
+.code
+main PROC
+	mov al, key
+	mov edi, offset Str1
+	mov ecx, lengthof Str1
+	call scan_string
+exit
+main ENDP
+
+scan_string PROC
+    cld
+    repne scasb
+    jnz notfound
+    sub edi, offset Str1
+    dec edi
+    mov index, edi
+    jmp done
+notfound:
+    mov index, -1
+done:
+    mov edx, offset res
+    call writestring
+    mov eax, index
+    call writeint
+    call crlf
+    ret
+scan_string ENDP
+
+END main
+
+---------------------Q2--------------------------
+
+TITLE My Eleventh Lab Tasks (Lab11.asm)
+INCLUDE Irvine32.inc
+.data
+Str1 BYTE "127&j~3#^&*#*45^", 0
+key BYTE "#", 0
+res BYTE "'#' found at index: ", 0
+index SDWORD 0
+
+.code
+main PROC
+    mov eax, 0
+    mov al, key
+    mov esi, offset Str1
+    push esi
+    push eax
+    call scan_string
+exit
+main ENDP
+
+scan_string PROC
+    mov edi, [esp+8]
+    mov al, [esp+4]
+    mov ecx, lengthof Str1
+    
+    cld
+    repne scasb
+    jnz notfound
+
+    sub edi, [esp+8]
+    dec edi
+    mov index, edi
+    jmp done
+notfound:
+    mov index, -1
+done:
+    mov edx, offset res
+    call writestring
+    mov eax, index
+    call writeint
+    call crlf
+    ret 8
+scan_string ENDP
+
+END main
+
+---------------------Q3--------------------------
+
+TITLE My Eleventh Lab Tasks (Lab11.asm)
+INCLUDE Irvine32.inc
+.data
+
+s1 BYTE 10 dup (?)
+s2 BYTE 10 dup (?)
+equal byte "Strings are equal!",0
+inequal byte "Not Equal.",0
+input byte "Input string (10 length max): ",0
+
+.code
+main proc
+	push offset s1
+	push offset s2
+	
+	mov edx, offset input
+	call writestring
+	mov edx, offset s1
+	mov ecx, 10
+	call readstring
+
+	push eax
+	call crlf
+
+	mov edx, offset input
+	call writestring
+	mov edx,offset s2
+	mov ecx, 10
+	call readstring
+	call crlf
+
+	call isCompare
+	call crlf
+
+exit
+main endp
+
+isCompare proc
+	push ebp
+	mov ebp,esp
+
+	mov ecx, [ebp + 8]
+	mov edi, [ebp + 12]
+	mov esi, [ebp + 16]
+
+	cld
+	repz cmpsb
+	jz areEqual
+
+	mov edx, offset inequal
+	call writestring
+
+	done:
+	pop ebp
+	ret 12
+
+	areEqual:
+		mov edx, offset equal
+		call writestring
+		jmp done
+isCompare endp
+
+end main
+
+---------------------Q4--------------------------
+
+TITLE My Eleventh Lab Tasks (Lab11.asm)
+INCLUDE Irvine32.inc
+.data
+s1 BYTE 10 dup (?)
+s2 BYTE 10 dup (?)
+equal byte "Strings are equal!",0
+inequal byte "Not Equal.",0
+input byte "Input string (10 length max): ",0
+
+.code
+main proc
+	push offset s1
+	push offset s2
+	
+	mov edx, offset input
+	call writestring
+	mov edx, offset s1
+	mov ecx, 10
+	call readstring
+	call crlf
+	push eax
+
+	call str_reverse
+	mov edx,offset s2
+	call writestring
+	call crlf
+exit
+main endp
+
+str_reverse proc
+	push ebp
+	mov ebp, esp
+
+	mov ecx, [ebp + 8]
+	mov edi, [ebp + 12]
+	mov esi, [ebp + 16]
+	add esi, ecx
+	dec esi
+
+	L1:
+		std
+		lodsb
+		cld
+		stosb
+	loop l1
+
+	mov byte ptr [edi], 0
+	pop ebp
+	ret 12
+str_reverse endp
+
+end main
+
+---------------------Q5--------------------------
+
+TITLE My Eleventh Lab Tasks (Lab11.asm)
+INCLUDE Irvine32.inc
+.data
+    arr DWORD 1, 2, 3, 4, 5
+    input byte "Input a number to multiply with: ",0
+.code
+main PROC
+    push offset arr
+    push lengthof arr
+    
+    mov edx, offset input
+    call writestring
+
+    call readint
+    push eax
+    call crlf
+    call load
+
+    mov ecx, 0
+    mov edi,offset arr
+    loop2:
+        mov eax,[edi+ecx]
+        call writedec
+        mov eax,' '
+        call writechar
+        add ecx,4
+    cmp ecx,sizeof arr
+    jnz loop2
+exit
+main endp
+
+load proc
+    push ebp
+    mov ebp,esp
+
+    mov edi,[ebp+16]
+    mov esi,edi
+    mov ecx,[ebp+12]
+    mov ebx,[ebp+8]
+    cld
+    loop1:
+        lodsd
+        imul ebx
+        stosd
+        dec ecx
+    cmp ecx,0
+    jnz loop1
+
+    pop ebp
+    ret 8
+load endp
+
+END main
+
+---------------------Q6--------------------------
+
+TITLE My Eleventh Lab Tasks (Lab11.asm)
+INCLUDE Irvine32.inc
+.data
+    getFrequency proto a1:ptr byte, a2:ptr DWORD
+    target BYTE "AAEBDCFBBC",0
+    freqTable DWORD 256 DUP(0)
+    arrow byte " => ",0
+.code
+main PROC
+    mov eax, offset freqtable
+    invoke getFrequency, ADDR target, addr freqTable
+
+    mov ecx,0
+    mov esi, offset freqtable
+    loop2:
+        mov eax, DWORD ptr [esi+ecx*4]
+        cmp eax,0
+        jz skip
+
+        push eax
+        mov eax,ecx
+        call writechar
+        pop eax
+
+        mov edx,offset arrow
+        call writestring
+
+        call writedec
+        call crlf
+        skip:
+            inc ecx
+    cmp ecx, 256
+    jnz loop2
+exit
+main endp
+
+getFrequency proc a1:ptr byte, a2:ptr DWORD
+    push ebp
+    mov ebp,esp
+
+    mov edi, [ebp+16]
+    mov esi, [ebp+12]
+
+    l1:
+        mov eax,0
+        lodsb
+
+        cmp al,0
+        jz retjmp
+
+        inc dword ptr [edi+(eax*4)]
+        inc ecx
+    jmp l1
+    
+    retjmp:
+    pop ebp
+    ret 8
+getFrequency endp
+
+END main
+
+
+---------------------------------------------------------------------------------------------------
+
+Lab12 - Highlevel language interface
+
+---------------------Q1--------------------------
+C++ implementation:
+
+#include <iostream>
+using namespace std;
+
+extern "C" void ThreeProd();
+
+int main() {
+    ThreeProd();
+    int x, y, z, product;
+    cout << "Input three numbers: ";
+    cin >> x >> y >> z;
+
+    _asm {
+        MOV EAX, x
+        MOV EBX, y
+        MOV ECX, z
+        IMUL EBX
+        IMUL ECX
+        MOV product, EAX
+    }
+
+    cout << "The product of the numbers is: " << product << endl;
+    return 0;
+}
+
+Assembly implementation:
+
+TITLE My Twelveth Lab Tasks (Lab12.asm)
+.686
+.MODEL FLAT, C
+.STACK 2048
+.DATA
+
+num1 dword ?
+num2 dword ?
+num3 dword ?
+result dword ?
+.CODE
+ThreeProd PROC
+    mov eax, num1
+    imul num2
+    imul num3
+    mov result, eax
+    ret
+ThreeProd ENDP
+END
+
+---------------------Q2--------------------------
+C++ implementation:
+
+#include <iostream>
+using namespace std;
+
+extern "C" void GCD();
+
+int main() {
+    GCD();
+    int a, b, gcd;
+    cout << "Input two integers: ";
+    cin >> a >> b;
+
+    _asm {
+        MOV EAX, a
+        MOV EBX, b
+    LoopStart:
+        CMP EBX, 0
+        JE Exit
+        XOR EDX, EDX
+        DIV EBX
+        MOV EAX, EBX
+        MOV EBX, EDX
+        JMP LoopStart
+    Exit:
+        MOV gcd, EAX
+    }
+
+    cout << "The GCD of the numbers is: " << gcd << endl;
+    return 0;
+}
+
+
+Assembly implementation:
+
+TITLE My Twelveth Lab Tasks (Lab12.asm)
+.686
+.MODEL FLAT, C
+.STACK 2048
+.DATA
+
+numA dword ?
+numB dword ?
+
+.CODE
+GCD PROC
+    mov eax, numA
+    mov ebx, numB
+
+StartLoop:
+    cmp ebx, 0
+    je Done
+    xor edx, edx
+    div ebx
+    mov eax, ebx
+    mov ebx, edx
+    jmp StartLoop
+Done:
+    mov numA, eax
+    ret
+GCD ENDP
+END
+
+
+---------------------------------------------------------------------------------------------------
+To find the largest number through a stack
+INCLUDE Irvine32.inc
+.data
+
+.code
+main PROC
+
+	PUSH 5
+	PUSH 7
+	PUSH 3
+	PUSH 2
+	MOV eax, 0 ;eax is the largest
+	MOV ecx, 4
+	L1:
+	POP edx
+	CMP edx, eax
+	JL SET
+	MOV eax, edx
+	SET:
+	LOOP L1
+
+	call writedec
+
+exit
+main ENDP
+END main
+
+------------------------------------Fibonacci-------------------------------------------------------
+INCLUDE Irvine32.inc
+
+.data 
+fibo Byte 10 DUP(0)
+
+.code
+main PROC
+mov esi,0
+mov ecx,10
+L1:
+cmp esi,0
+je ONE
+cmp esi,1
+je ONE
+mov bl,fibo[esi-1]
+add bl,fibo[esi-2]
+mov fibo[esi],bl
+movsx eax,bl
+call Writeint
+call crlf
+inc esi
+loop L1
+jmp ENDD
+ONE:
+mov fibo[esi],1
+inc esi
+mov eax,1
+dec ecx
+call Writeint
+call crlf
+jmp L1
+ENDD:
+exit
+main ENDP
+end main
+
+-----------------------------------------------Bubble Sort------------------------------------------------------
+
+mov eax, LENGTHOF arr
+	mov count, eax
+	dec count
+	mov ecx, LENGTHOF arr - 1
+outer:
+	mov esi, OFFSET arr
+	mov edx, count
+	mov temp, edx
+
+	inner:
+		mov eax, [esi]
+		mov ebx, [esi+4]
+
+		cmp eax, ebx
+		jbe skip
+
+		mov [esi], ebx
+		mov [esi+4], eax
+
+		skip:
+			add esi, 4
+			dec temp
+			jnz inner
+	dec count
+	jnz outer
+
+-----------------------------------------------------------------------------------------------------
