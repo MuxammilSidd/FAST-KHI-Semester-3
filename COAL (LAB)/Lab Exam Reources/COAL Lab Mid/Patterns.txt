@@ -1,0 +1,491 @@
+
+1)DIAMOND
+
+      *
+    *   *
+   *     *
+  *       *
+ *         *
+  *       *
+   *     *
+    *   *
+      *
+
+
+include irvine32.inc
+.data
+
+star BYTE "* ",0
+space BYTE " ",0
+OuterSpace DWORD 4
+innerSpace DWORD 2
+rows DWORD 4
+
+OutwardSpace DWORD 2
+inwardSpace DWORD 6
+
+downRows DWORD 3
+
+
+.code
+main PROC
+
+mov ecx,6
+Lfirst:  
+   mov edx, OFFSET Space
+   call writeString
+LOOP Lfirst
+
+mov edx, OFFSET star
+call writeString
+
+call crlf
+    
+
+mov ecx, 4
+L1:
+   
+  ;outer
+  mov ecx, OuterSpace
+  L2:
+    mov edx, OFFSET space
+    call writeString
+  LOOP L2
+
+  ;print
+  mov edx, OFFSET star
+  call writeString
+
+  ;inner Space
+  mov ecx, innerSpace 
+  L3:
+     mov edx, OFFSET space
+     call writeString
+  LOOP L3
+
+  ;print
+  mov edx, OFFSET star
+  call writeString
+
+  call crlf
+
+  DEC OuterSpace
+  add innerSpace, 2
+  mov ecx, rows
+  DEC rows
+
+LOOP L1
+
+
+mov ecx, 3
+L4:
+  
+  ;outward
+  mov ecx, OutwardSpace
+  L5:
+    mov edx, OFFSET space
+    call writeString
+    LOOP L5
+  
+  ;print
+  mov edx, OFFSET star
+  call writeString
+
+  ;inward
+  mov ecx, inwardSpace
+  L6:
+    mov edx, OFFSET space
+    call writeString
+    LOOP L6
+
+     ;print
+  mov edx, OFFSET star
+  call writeString
+   call crlf
+  INC OutwardSpace
+  sub inwardSpace , 2
+
+  mov ecx, downRows
+  dec downRows
+
+  LOOP L4
+
+
+
+  mov ecx,6
+Lsecond:  
+   mov edx, OFFSET Space
+   call writeString
+LOOP Lsecond
+
+mov edx, OFFSET star
+call writeString
+
+exit
+main ENDP
+END main
+
+
+
+2)
+
+* * * *
+  * * *
+    * *
+      *
+
+
+
+include irvine32.inc
+.data
+
+star BYTE "*",0
+space BYTE " ",0
+
+countSp DWORD 1
+countSt DWORD 4
+rows DWORD 4
+
+.code
+main PROC
+
+mov ecx, 4
+L1:
+  
+   ;space
+   mov ecx, countSp
+   L2:
+     mov edx, OFFSET space
+     call writeString
+   LOOP L2
+
+   ;stars
+   mov ecx, countSt
+   L3:
+     mov edx, OFFSET star
+     call writeString
+    LOOP L3
+    call crlf
+    inc countsp
+    dec countst
+
+    mov ecx, rows
+    dec rows
+LOOP L1
+
+     
+exit
+main ENDP
+END main
+
+
+
+3)
+
+* * * *
+*     *
+*     *
+* * * *
+
+
+include irvine32.inc
+.data
+
+countMiddle DWORD 2
+count DWORD 0
+counter DWORD 4
+space BYTE "  ",0
+star BYTE "* ",0
+
+.code
+main PROC
+
+mov ecx, 4
+L1:
+  
+  mov edx, OFFSET star
+  call writeString
+  LOOP L1
+  call crlf
+
+
+mov ecx, countMiddle
+
+L2:
+	mov edx, OFFSET star 
+	call writeString  
+
+	mov ecx, 2
+	L3:
+	  mov edx, OFFSET space
+	  call writeString
+
+	LOOP L3
+
+	  mov edx, OFFSET star
+	  call writeString
+	  
+	  call crlf
+	  mov ecx, countMiddle
+	  DEC countMiddle
+ 
+ LOOP L2
+
+
+ mov ecx, 4
+ L4:
+  mov edx, OFFSET star
+  call writeString
+  LOOP L4
+
+
+exit
+main ENDP
+END main 
+
+
+
+
+4)
+
+
+*
+* *
+* * *
+* * * *
+* * *
+* *
+*
+
+
+;Pattern
+
+Include irvine32.inc
+.data
+count DWORD 4
+star DWORD 1
+count1 DWORD 3
+star1 DWORD 3
+mystr BYTE "* ",0
+.code
+main PROC
+mov ecx, 4
+
+L1:
+   
+   mov ecx, star
+   mov edx, OFFSET mystr
+   L2:
+     call writeString
+     LOOP L2
+
+     mov ecx, count
+     DEC count
+     call crlf
+     inc star
+
+   LOOP  L1
+
+
+mov ecx, count1
+L3:
+   
+   mov ecx, star1
+   mov edx, OFFSET mystr
+
+   L4:
+     call writeString
+     LOOP L4
+  
+  call crlf
+  DEC star1
+
+  mov ecx, count1
+    DEC count1
+
+    LOOP L3
+
+
+   ex:
+exit
+main ENDP
+END main
+
+
+
+6) PYRAMID
+   
+    1
+   333
+  55555
+ 7777777
+
+include irvine32.inc
+.data
+count DWORD 4
+count1 DWORD 1
+mystr1 BYTE " ", 0
+
+.code
+main PROC
+    mov ecx, count   
+    mov ebx, count   
+
+L1:
+  
+    mov edx, OFFSET mystr1  
+    mov esi, ebx            
+
+L2:    ;Space
+    call writeString        
+    dec esi                 
+    cmp esi, 0              
+    jnz L2                  
+
+ 
+     ;numbers
+    mov eax, count1        
+    mov ecx, count1        
+
+L3:
+    call writeDec         
+    loop L3
+    
+    call crlf
+    sub ebx, 1              
+    cmp ebx, 0              
+    jle triangle            
+
+    add count1, 2           
+    mov ecx, count          
+
+    jmp L1                  
+
+triangle:
+exit      
+main ENDP
+END main
+
+
+7)
+DOWNWARD ARROW
+
+
+  8888
+  8888
+  8888
+  8888
+ 9999999
+  99999
+   999
+    9
+
+
+;6)  PATTERN     Arrow Downward
+   INCLUDE Irvine32.inc
+
+.data 
+count1 DWORD 4
+count DWORD 7
+mystr1 byte " ",0
+
+.code 
+main PROC
+
+mov ecx,4
+mov eax,8
+
+L1:
+
+call crlf
+mov edx,offset mystr1
+call writestring
+mov edx, OFFSET mystr1
+call writeString
+mov ebx,ecx
+mov ecx,count1
+
+L2:
+	call writedec            ;upper straight Part
+	loop L2
+	MOV ecx,ebx
+	LOOP L1   
+
+
+	mov eax,9                     
+	mov ecx,4                     
+	mov ebx,1
+
+	; lower triangle
+L3:
+	call crlf                     
+	mov edx,offset mystr1         
+	mov esi,ebx                   
+
+L4:
+	call writestring              
+	dec esi
+	cmp esi, 0
+	jg L4
+
+	mov edx,9                     
+	mov ecx,count                 
+L5:
+	call writedec                 
+	loop L5 
+	
+	add ebx,1                     
+	sub count,2                   
+	cmp count,0                   
+	jle triangle             
+	mov ecx,4 
+	
+  LOOP L3                       
+
+triangle:
+exit                          
+main ENDP 
+END main
+
+
+
+8)
+Right Traingel
+
+Include irvine32.inc
+.data
+
+msg BYTE '*',0
+loop1 DWORD ?
+X BYTE  ?
+count DWORD 1
+
+
+.code
+main PROC
+
+mov eax, 4  ;number of rows
+mov ecx, eax
+
+L1:
+
+  mov loop1 , ecx
+  mov ecx, count
+  
+  L2:
+   mov edx , OFFSET msg
+   call writestring
+   LOOP L2
+
+   inc count
+   mov ecx, loop1
+   call crlf
+
+   LOOP L1
+
+
+exit
+main ENDP
+END main
+
+
