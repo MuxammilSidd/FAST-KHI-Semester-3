@@ -99,6 +99,10 @@ pata chale toh mujhe bhi bata dena pls
 - [Data Structures using C++ by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOfCp0uG9Bw8JVEreYcIl0H0)
 
 🔗 Resources:
+- [Data Structures Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) - Visualize important DSA concepts with customizable input!
+
+- [Advanced Algorithms & Data Structures Lecture Notes](https://www.cs.emory.edu/~cheung/Courses/253/Syllabus/syl.html#CURRENT) - an excellent web-based resource by [Dr. Shun Yan Cheung](https://www.cs.emory.edu/~cheung/Courses/).
+
 - [Algorithms Course 4th Ed.](https://sedgewick.io/courses/algorithms/) - All course material, including slides & lectures!
 
 - [The Algorithms](https://the-algorithms.com/) - GitHub's largest open-source algorithm library!
@@ -115,6 +119,13 @@ pata chale toh mujhe bhi bata dena pls
 
 - [Recursion Tree Visualizer](https://recursion.vercel.app/) - Visually conceptualize your recursive functions.
 
+- [2-3 Trees Insertion & Deletion](https://youtu.be/Qd5IFVZCS5U?si=AiSxOzkmiCRHZy_0) - Dry run techniques with explanation.
+
+- [Understanding B-Trees](https://youtu.be/K1a2Bk8NrYQ?si=4aJivurNWbHp4b6s) - by Spanning Tree (YT)
+
+- [Topological Sorting GeeksForGeeks](https://www.geeksforgeeks.org/topological-sorting/)
+
+- [Kruskal’s Minimum Spanning Tree (MST) Algorithm GeeksForGeeks](https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/)
 🔗 Google Drives:
 - [CS250: DSA](https://drive.google.com/drive/folders/1Rvotax4W1Pl0MDpm17xJPkggkfIgusyK?usp=drive_link) - NUST Fall'21 Google Drive.
 
