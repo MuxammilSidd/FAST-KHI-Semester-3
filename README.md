@@ -20,6 +20,8 @@ For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For 
 
 - [Useful repositories you should know!](#-useful-repositories-you-should-know)
 
+- [Additional Resources](#-additional-resources)
+
 ### 🔗 How to crack your third semester at FAST NUCES!
 - [Time management](#-time-management)
 
@@ -217,6 +219,13 @@ pata chale toh mujhe bhi bata dena pls
 - [Normative and positive statements](https://youtu.be/YtX6SGw7E3c?si=RSNe9wETTH3sYN44)
 - [Important Formulas in Macroeconomics](https://www.geeksforgeeks.org/important-formulas-in-macroeconomics-class-12/)
 
+---
+<h1 style="text-align: center;">Can't find a course?</h2>
+
+### Check out other semester's repositories [here](#-links-to-other-semester-repositories)!
+
+---
+
 ## 🔗 Additional Resources
 Feeling this repository isn't enough? 😩 Here are all links to repositories and drives I found: ⬇️
 
@@ -226,20 +235,6 @@ Feeling this repository isn't enough? 😩 Here are all links to repositories an
 - [3rd-Semester-Material-FAST-NUCES](https://github.com/Mubin987/3rd-Semester-Material-FAST-NUCES) - by Mubin Farid
 - [BS-CS-Semester-3](https://github.com/umarwaseeem/BS-CS-Semester-3) - by Umar Waseem
 
----
-<h1 style="text-align: center;">Can't find a course?</h2>
-
-### Check out other semester's repositories [here](#-links-to-other-semester-repositories)!
-
----
-## 🔗 Additional Resources
-Feeling this repository isn't enough? 😩 Here are all links to repositories and drives I found: ⬇️
-
-### 📌 Github Repositories:
-
-### 📌 Google Drives:
-
-Note: All relevant material to FAST NU KHI Campus has been added already from these archives.
 
 ## 🔗 Mistakes I made in my 3rd-Semester!
 Here is a bunch of blunders I wish I hadn't made in my third semester at FAST KHI.
