@@ -11,6 +11,8 @@ For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For 
 
 - [2nd Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-2)
 
+- [4th Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-4)
+
 ### 🔗 Guide to get you started
 - [Useful tools you should know](#-useful-tools-you-should-know)
 
@@ -76,6 +78,8 @@ For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For 
   </a> - Chat with your PDF documents — Extract information or answer questions from large PDF files like manuals, essays, books.!
 
 ## 🔗 Useful repositories you should know!
+- [Computer Science Notes](https://github.com/ishmahafeez/Computer-Science-Notes) - Well-maintained PDF notes of all computing courses at FAST by [Ishma Hafeez](https://github.com/ishmahafeez)
+
 - [Project Based Learning](https://github.com/practical-tutorials/project-based-learning) - Teaches you to code hands-on for free!
 
 - [Build-your-own-x](https://github.com/codecrafters-io/build-your-own-x) - Coding projects and tutorials that might get you hired!
@@ -98,6 +102,9 @@ pata chale toh mujhe bhi bata dena pls
 - [Data structures Illustrated by 'the roadmap'](https://youtube.com/playlist?list=PLkZYeFmDuaN2-KUIv-mvbjfKszIGJ4FaY&si=ux5N9jpJ18VHgMzB)
 - [Data Structures using C++ by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOfCp0uG9Bw8JVEreYcIl0H0)
 
+🔗 Projects:
+- [Race Car Game Project](https://github.com/shuja609/Data-Structures-Game-Project) - Console Based Data Structures Project in C++ (Fall'23) by Mohammad Shuja Uddin.
+
 🔗 Resources:
 - [Data Structures Visualizations](https://www.cs.usfca.edu/~galles/visualization/Algorithms.html) - Visualize important DSA concepts with customizable input!
 
@@ -105,7 +112,11 @@ pata chale toh mujhe bhi bata dena pls
 
 - [Algorithms Course 4th Ed.](https://sedgewick.io/courses/algorithms/) - All course material, including slides & lectures!
 
+- [Data Structures by Ayushi Sharma](https://github.com/Ayu-99/Data-Structures) - Practice questions & implementations repository on Github.
+
 - [The Algorithms](https://the-algorithms.com/) - GitHub's largest open-source algorithm library!
+
+- [CS2001-Data_Structure](https://github.com/codewith-usama/CS2001-Data_Structure) - Course repository by Mohammad Usama
 
 - [Visualgo.net](https://visualgo.net/) - Learn DSA by visualization through animation!
 
@@ -127,6 +138,10 @@ pata chale toh mujhe bhi bata dena pls
 
 - [Kruskal’s Minimum Spanning Tree (MST) Algorithm GeeksForGeeks](https://www.geeksforgeeks.org/kruskals-minimum-spanning-tree-algorithm-greedy-algo-2/)
 
+- [Data Structure Labs](https://github.com/SRAABIA/Data-Structures-Labs) - Lab tasks repository by k214553.
+
+- [Data-Structures in C](https://github.com/Sheham30/Data-Structures) - Data Structures repository by Syed Sheham Hassan.
+
 🔗 Google Drives:
 - [CS250: DSA](https://drive.google.com/drive/folders/1Rvotax4W1Pl0MDpm17xJPkggkfIgusyK?usp=drive_link) - NUST Fall'21 Google Drive.
 
@@ -142,6 +157,14 @@ pata chale toh mujhe bhi bata dena pls
 - [COAL Complete Course by Fakhar STEM Sphere](https://youtube.com/playlist?list=PLgWOIdHQBEz5t__8v6eZXxKLTV8SGj5kN&si=CN_yQIShOt-9zdXR)
 - [COAL By Mr. Belal Muhammad Hashmi Virtual University of Pakistan](https://youtube.com/playlist?list=PLKyB9RYzaFRh9pYhDsTGXnDqRx0YZQFbn&si=PiutDcOAFl-QDBPU)
 - [Computer Organization & Architecture by Neso Academy](https://www.youtube.com/watch?v=Ol8D69VKX2k&list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q&pp=iAQB)
+
+🔗 Projects:
+- [Brick Breaker Game](https://github.com/chussboi96/COAL-Project-Brick-breaker-game) - COAL Project by Hammad Javaid.
+- [Quiz Game in Assembly Language](https://github.com/eebrahimjoy/Quiz-Game-In-Assembly-Language) - by Ebrahim Joy
+
+🔗 Resources:
+- [Assembly Language Course by recluze](https://github.com/recluze/assembly-lang-course) - COAL Repository by Sir Nauman (recluze).
+- [Assembly-Language-COAL](https://github.com/sufiyaanusmani/Assembly-Language-COAL) - Fall'22 COAL Repository by Sufiyaan Usmani
 
 🔗 Google Drives:
 - [CS235: COAL](https://drive.google.com/drive/folders/1cH61VF26g7fzMPLdawQy2WB3caSRHE3m?usp=drive_link) - NUST Fall'21 Google Drive.
@@ -172,8 +195,6 @@ pata chale toh mujhe bhi bata dena pls
 🔗 Resources:
 - [Elementary Linear Algebra 12th Ed. Solutions - Quizlet](https://quizlet.com/explanations/textbook-solutions/elementary-linear-algebra-12th-edition-9781119406778) 
 
-- []() 
-
 🔗 Google Drives:
 - [Linear Algebra Solution](https://drive.google.com/drive/folders/1Q4XYLAzjvr1DP5IR_XSOW065MuTz2VDp?usp=drive_link) - Book solutions, access with NU id.
 - [MATH222 LA](https://drive.google.com/drive/folders/1XaW7Vrsqrrd5WPFAZNU58LVHmRgCPl3m?usp=drive_link) - NUST Fall'21 Google Drive.
@@ -181,5 +202,45 @@ pata chale toh mujhe bhi bata dena pls
 ---
 
 ### 📌 Principles of Economics:
+🔗 Useful Youtube Playlists:
+- [MICRO ECONOMICS URDU / HINDI Lectures](https://youtube.com/playlist?list=PLNjIVEeLR7n5fqysiqJoPv7hdqBCCYq-u&si=i1qbpkL3HPJncQOY)
+
 🔗 Resources:
+- ⭐ [Jacob Clifford](https://www.youtube.com/@JacobAClifford/playlists) - best Youtube channel for all economics concepts!
+- [How The Economic Machine Works by Ray Dalio](https://youtu.be/PHe0bXAIuk0?si=2mKgrs1Oj4AaYaGr)
 - [Economics Demand & Supply Detailed Concept (26:00)](https://youtu.be/PYJgt4rDNoY?si=eGNNGReGG1PZ3z1U)
+- [Supply and demand in 8 minutes](https://youtu.be/kIFBaaPJUO0?si=X2lhSUZOFRcuXOf9)
+- [Change in Demand vs. Change in Quantity Demanded](https://youtu.be/9jLlOPqHxLs?si=9KBbf_hbm-s4Uii3)
+- [Derivation Of Demand Curve For Giffen Goods](https://youtu.be/y4rorn6xPKE?si=PjPjepdIL4CgqKd3)
+- [Elasticity of Demand](https://youtu.be/HHcblIxiAAk?si=xUv9u6zgILUo3iuo)
+- [Calculating the Elasticity of Demand](https://youtu.be/lrGiZ7aTlQo?si=FgkCeZnDlF0yn2nV)
+- [Normative and positive statements](https://youtu.be/YtX6SGw7E3c?si=RSNe9wETTH3sYN44)
+- [Important Formulas in Macroeconomics](https://www.geeksforgeeks.org/important-formulas-in-macroeconomics-class-12/)
+
+## 🔗 Additional Resources
+Feeling this repository isn't enough? 😩 Here are all links to repositories and drives I found: ⬇️
+
+### 📌 Github Repositories:
+- [3rd-Semester](https://github.com/BilalAhmed-358/3rd-Semester) - by Bilal Ahmed
+- [SEMESTER-3-BCS-FAST-NUCES](https://github.com/moeezali2375/SEMESTER-3-BCS-FAST-NUCES) - by Moeez Ali
+- [3rd-Semester-Material-FAST-NUCES](https://github.com/Mubin987/3rd-Semester-Material-FAST-NUCES) - by Mubin Farid
+- [BS-CS-Semester-3](https://github.com/umarwaseeem/BS-CS-Semester-3) - by Umar Waseem
+
+---
+<h1 style="text-align: center;">Can't find a course?</h2>
+
+### Check out other semester's repositories [here](#-links-to-other-semester-repositories)!
+
+---
+## 🔗 Additional Resources
+Feeling this repository isn't enough? 😩 Here are all links to repositories and drives I found: ⬇️
+
+### 📌 Github Repositories:
+
+### 📌 Google Drives:
+
+Note: All relevant material to FAST NU KHI Campus has been added already from these archives.
+
+## 🔗 Mistakes I made in my 3rd-Semester!
+Here is a bunch of blunders I wish I hadn't made in my third semester at FAST KHI.
+(Hopefully not again)(that's what I said since two semesters)
