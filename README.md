@@ -14,9 +14,9 @@ For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For 
 - [4th Semester KHI](https://github.com/MuxammilSidd/FAST-KHI-Semester-4)
 
 ### 🔗 Guide to get you started
-- [Useful tools you should know](#-useful-tools-you-should-know)
-
 - [Useful websites you should know!](#-useful-websites-you-should-know)
+
+- [Useful tools you should know](#-useful-tools-you-should-know)
 
 - [Useful repositories you should know!](#-useful-repositories-you-should-know)
 
@@ -101,7 +101,10 @@ pata chale toh mujhe bhi bata dena pls
 ### 📌 Data Structures & Algorithms:
 🔗 Useful Youtube Playlists:
 - [Strivers A2Z-DSA Course](https://youtube.com/playlist?list=PLgUwDviBIf0oF6QL8m22w1hIDC1vJ_BHz&si=eYBFDQhMYcf4-e_u)
+- [Data Structures & Algorithms Course by CodeWithHarry](https://youtube.com/playlist?list=PLu0W_9lII9ahIappRPN0MCAgtOu3lQjQi&si=N57K-GiX5cv0mon_)
+- [Complete C++ Placement DSA Course by CodeHelp - by Babbar](https://youtube.com/playlist?list=PLDzeHZWIZsTryvtXdMr6rPh4IDexB5NIA&si=qfGXARVSxw3esFXD)
 - [Data structures Illustrated by 'the roadmap'](https://youtube.com/playlist?list=PLkZYeFmDuaN2-KUIv-mvbjfKszIGJ4FaY&si=ux5N9jpJ18VHgMzB)
+- [Data Structures & Algorithms by Bro Code](https://youtube.com/playlist?list=PLZPZq0r_RZON1eaqfafTnEexRzuHbfZX8&si=rhdt_D85Wzoa5dPk)
 - [Data Structures using C++ by Fahad Hussain](https://www.youtube.com/playlist?list=PLtCBuHKmdxOfCp0uG9Bw8JVEreYcIl0H0)
 
 🔗 Projects:
@@ -153,16 +156,18 @@ pata chale toh mujhe bhi bata dena pls
 ---
 
 ### 📌 Computer Organization & Assembly Language:
-🔗 Useful Youtube Playlists:
 
+🔗 Useful Youtube Playlists:
 - [COAL by recluze](https://youtube.com/playlist?list=PLnd7R4Mcw3rJCvAduQxyySvejtBIaPs0O&si=8PIzg2SE7REJyNGH)
 - [COAL Complete Course by Fakhar STEM Sphere](https://youtube.com/playlist?list=PLgWOIdHQBEz5t__8v6eZXxKLTV8SGj5kN&si=CN_yQIShOt-9zdXR)
-- [COAL By Mr. Belal Muhammad Hashmi Virtual University of Pakistan](https://youtube.com/playlist?list=PLKyB9RYzaFRh9pYhDsTGXnDqRx0YZQFbn&si=PiutDcOAFl-QDBPU)
+- [COAL by Mr. Belal Muhammad Hashmi Virtual University of Pakistan](https://youtube.com/playlist?list=PLKyB9RYzaFRh9pYhDsTGXnDqRx0YZQFbn&si=PiutDcOAFl-QDBPU)
+- [COAL Course with Irvine32 by Abbas Ghouri](https://youtube.com/playlist?list=PLR2MgrOODq0lLBzIQzsTBoCgn3hkbUdxm&si=IFZiluPevWYJd3c8)
 - [Computer Organization & Architecture by Neso Academy](https://www.youtube.com/watch?v=Ol8D69VKX2k&list=PLBlnK6fEyqRgLLlzdgiTUKULKJPYc0A4q&pp=iAQB)
 
 🔗 Projects:
 - [Brick Breaker Game](https://github.com/chussboi96/COAL-Project-Brick-breaker-game) - COAL Project by Hammad Javaid.
 - [Quiz Game in Assembly Language](https://github.com/eebrahimjoy/Quiz-Game-In-Assembly-Language) - by Ebrahim Joy
+- [4-UP-GAME](https://github.com/SUA0649/4-UP-GAME) - COAL Project by Shaheer Uddin
 
 🔗 Resources:
 - [Assembly Language Course by recluze](https://github.com/recluze/assembly-lang-course) - COAL Repository by Sir Nauman (recluze).
@@ -205,10 +210,14 @@ pata chale toh mujhe bhi bata dena pls
 
 ### 📌 Principles of Economics:
 🔗 Useful Youtube Playlists:
-- [MICRO ECONOMICS URDU / HINDI Lectures](https://youtube.com/playlist?list=PLNjIVEeLR7n5fqysiqJoPv7hdqBCCYq-u&si=i1qbpkL3HPJncQOY)
+- [O Level Economics (2281) & IGCSE Economics (0455) by AYLOTI](https://youtube.com/playlist?list=PL19Vv7Z28LFIfQ1qAwuA-3FCbet_zYYOT&si=OB3X7VH1PJqCCpoN)
+- [MICRO ECONOMICS URDU / HINDI Lectures by Mr. Shayan Siddiqui](https://youtube.com/playlist?list=PLNjIVEeLR7n5fqysiqJoPv7hdqBCCYq-u&si=i1qbpkL3HPJncQOY)
+- [Principles Of Economics by NPTEL-NOC IITM](https://youtube.com/playlist?list=PLyqSpQzTE6M_CfnHfWa5CkNn4PUa_2Rj0&si=Y6-Tt_4wLgyjcgxC)
 
 🔗 Resources:
 - ⭐ [Jacob Clifford](https://www.youtube.com/@JacobAClifford/playlists) - best Youtube channel for all economics concepts!
+- ⭐ [POE Full Notes Fall'24](https://docs.google.com/document/d/1XAZuk56ppsjI8DbExF-L_myNYSFgAHD-YXUZAoXp0qA/edit?usp=sharing) - lecture-wise compiled notes under Sir Michael Simon; by k230687 Fatima Riaz. 
+[PDF format is available here.](Principles%20of%20Economics/Notes/POE%20Compiled%20Notes%20Fall'24%20k230687.pdf)
 - [How The Economic Machine Works by Ray Dalio](https://youtu.be/PHe0bXAIuk0?si=2mKgrs1Oj4AaYaGr)
 - [Economics Demand & Supply Detailed Concept (26:00)](https://youtu.be/PYJgt4rDNoY?si=eGNNGReGG1PZ3z1U)
 - [Supply and demand in 8 minutes](https://youtu.be/kIFBaaPJUO0?si=X2lhSUZOFRcuXOf9)
@@ -235,6 +244,10 @@ Feeling this repository isn't enough? 😩 Here are all links to repositories an
 - [3rd-Semester-Material-FAST-NUCES](https://github.com/Mubin987/3rd-Semester-Material-FAST-NUCES) - by Mubin Farid
 - [BS-CS-Semester-3](https://github.com/umarwaseeem/BS-CS-Semester-3) - by Umar Waseem
 
+### 📌 Google Drives:
+- [3rd Semester](https://drive.google.com/drive/folders/1rbkpM85OXyS7prtLz9tMV3JOOt1NE1PE?usp=drive_link) - by Muhammad Rayyan Ali
+
+Note: All relevant material to FAST NU KHI Campus has been added already from these archives.
 
 ## 🔗 Mistakes I made in my 3rd-Semester!
 Here is a bunch of blunders I wish I hadn't made in my third semester at FAST KHI.
