@@ -26,13 +26,74 @@ For any queries/improvement feel free to contact me on k232001@nu.edu.pk<br>For 
 - [Time management](#-time-management)
 
 - [Course-wise guide](#-course-wise-guide)
-  <ul>
-  <li><a href="#-data-structures--algorithms">Data Structures & Algorithms (Theory+Lab)</li>
-  <li><a href="#-computer-organization--assembly-language">COAL (Theory+Lab)</li>
-  <li><a href="#-discrete-structures">Discrete Structures</li>
-  <li><a href="#-linear-algebra">Linear Algebra</li>
-  <li><a href="#-principles-of-economics">Principles of Economics (Elective)</li>
-  </ul>
+<table>
+  <tr>
+    <th>#</th>
+    <th>Course Code</th>
+    <th>Short</th>
+    <th>Name</th>
+    <th>Type</th>
+    <th>Credit Hours</th>
+  </tr>
+  <tr>
+    <td>1</td>
+    <td>CS2004</td>
+    <td>DS</td>
+    <td><a href="#-data-structures--algorithms">Data Structures & Algorithms</a></td>
+    <td>Core</td>
+    <td>3+1</td>
+  </tr>
+  <tr>
+    <td>2</td>
+    <td>CS2005</td>
+    <td>COAL</td>
+    <td><a href="#-computer-organization--assembly-language">COAL</a></td>
+    <td>Core</td>
+    <td>3+1</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>MT2003</td>
+    <td>DISC</td>
+    <td><a href="#-discrete-structures">Discrete Structures</a></td>
+    <td>Core</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>4</td>
+    <td>MT2004</td>
+    <td>LA</td>
+    <td><a href="#-linear-algebra">Linear Algebra</a></td>
+    <td>Core</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td rowspan="3" style="text-align:center;">5</td>
+    <td>SS2010</td>
+    <td>POE</td>
+    <td><a href="#-principles-of-economics">Principles of Economics</a></td>
+    <td>Elective</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>SS2012</td>
+    <td>FOA</td>
+    <td>Fundamentals of Accounting</td>
+    <td>Elective</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td>SS2011</td>
+    <td>FOM</td>
+    <td>Fundamentals of Management</td>
+    <td>Elective</td>
+    <td>3</td>
+  </tr>
+  <tr>
+    <td colspan="6" style="text-align:right;"><b>Total Credit Hours:</b></td>
+    <td><b>17</b></td>
+  </tr>
+</table>
 
 ## 🔗 Useful Websites you should know!
 
